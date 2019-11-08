@@ -18,6 +18,8 @@ namespace UserManagementService
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here
+        [OperationContract]
+        string Login(string userName,string passWord);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
