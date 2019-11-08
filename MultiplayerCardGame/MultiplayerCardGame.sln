@@ -9,15 +9,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{7724B3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{25C0D8E4-9CB3-40D8-B872-F815BB1A0654}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{17B1CE39-29FC-4E24-87E5-735580BA5E5B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagementService", "UserManagementService\UserManagementService.csproj", "{D692C0D2-CEE5-4854-9CA6-B4022C51FD14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{3470D8AC-C99E-4832-A56C-86042800E369}"
 EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D692C0D2-CEE5-4854-9CA6-B4022C51FD14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D692C0D2-CEE5-4854-9CA6-B4022C51FD14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D692C0D2-CEE5-4854-9CA6-B4022C51FD14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D692C0D2-CEE5-4854-9CA6-B4022C51FD14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{25C0D8E4-9CB3-40D8-B872-F815BB1A0654} = {7724B3C9-EF33-416E-AA44-56388E0D835A}
-		{17B1CE39-29FC-4E24-87E5-735580BA5E5B} = {7724B3C9-EF33-416E-AA44-56388E0D835A}
+		{D692C0D2-CEE5-4854-9CA6-B4022C51FD14} = {25C0D8E4-9CB3-40D8-B872-F815BB1A0654}
+		{3470D8AC-C99E-4832-A56C-86042800E369} = {7724B3C9-EF33-416E-AA44-56388E0D835A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87148347-E100-4333-8C09-F0E81CE16B78}
