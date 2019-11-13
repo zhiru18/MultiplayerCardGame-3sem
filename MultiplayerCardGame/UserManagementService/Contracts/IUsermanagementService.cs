@@ -11,10 +11,6 @@ namespace UserManagementService
     [ServiceContract]
     public interface IUserManagementService
     {       
-        [OperationContract]
-        string Login(string userName,string passWord);
-
-        [OperationContract]
-        bool IsValidUser();
+   
     }
 }
