@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{C30A6ECF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{1033C2B8-3580-427D-B292-FC6D5EF55933}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGameClient", "WebGameClient\WebGameClient.csproj", "{0CADB5B2-C2D3-4661-AB34-AB160174C471}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1033C2B8-3580-427D-B292-FC6D5EF55933}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1033C2B8-3580-427D-B292-FC6D5EF55933}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1033C2B8-3580-427D-B292-FC6D5EF55933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CADB5B2-C2D3-4661-AB34-AB160174C471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CADB5B2-C2D3-4661-AB34-AB160174C471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CADB5B2-C2D3-4661-AB34-AB160174C471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CADB5B2-C2D3-4661-AB34-AB160174C471}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{96644377-3642-4D77-8179-F5D0BB4FA264} = {CA8BCFEF-B9D5-471F-A78F-5CB02B4931C6}
 		{C30A6ECF-D917-4C4E-A3AB-619E03600993} = {7724B3C9-EF33-416E-AA44-56388E0D835A}
 		{1033C2B8-3580-427D-B292-FC6D5EF55933} = {C30A6ECF-D917-4C4E-A3AB-619E03600993}
+		{0CADB5B2-C2D3-4661-AB34-AB160174C471} = {98EA643A-C420-453D-BC5F-C90CCB615702}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87148347-E100-4333-8C09-F0E81CE16B78}
