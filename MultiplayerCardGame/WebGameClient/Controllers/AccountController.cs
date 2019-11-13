@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebGameClient.Models;
+using WebGameClient.UserManagementReference;
 
 namespace WebGameClient.Controllers
 {
@@ -79,6 +80,10 @@ namespace WebGameClient.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    using (UserManagementServiceClient proxy = new UserManagementServiceClient()) {
+                        string userId = User.Identity.GetUserId();
+                        proxy.CreateUser(userId);
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

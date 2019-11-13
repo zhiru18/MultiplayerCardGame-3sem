@@ -22,6 +22,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{1033C2B8-3580-427D-B292-FC6D5EF55933}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGameClient", "WebGameClient\WebGameClient.csproj", "{0CADB5B2-C2D3-4661-AB34-AB160174C471}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D692C0D2-CEE5-4854-9CA6-B4022C51FD14} = {D692C0D2-CEE5-4854-9CA6-B4022C51FD14}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

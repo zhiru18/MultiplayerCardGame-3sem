@@ -5,12 +5,14 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace UserManagementService
+namespace Server.Services.UserManagementService.Contracts
 {
    
     [ServiceContract]
-    public interface IUserManagementService
-    {       
-   
+    public interface IUserManagementService {
+
+       [OperationContract]
+        void CreateUser(string id);
+
     }
 }
