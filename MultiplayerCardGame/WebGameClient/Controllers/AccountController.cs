@@ -80,10 +80,6 @@ namespace WebGameClient.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    using (UserManagementServiceClient proxy = new UserManagementServiceClient()) {
-                        string userId = User.Identity.GetUserId();
-                        proxy.CreateUser(userId);
-                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -167,7 +163,10 @@ namespace WebGameClient.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    using(UserManagementServiceClient proxy = new UserManagementServiceClient()) {
+                       string UserId = User.Identity.GetUserId();
+                       proxy.CreateUser(UserId);
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
