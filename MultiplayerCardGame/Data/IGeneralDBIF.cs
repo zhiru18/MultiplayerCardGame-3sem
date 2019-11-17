@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Data.Data {
-    interface IGeneralDBIF<T> {
+    public interface IGeneralDBIF<T> {
         void Insert(T t);
         void Delete(T t);
         void Update(T t);

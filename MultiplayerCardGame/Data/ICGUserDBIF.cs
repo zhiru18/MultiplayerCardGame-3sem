@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Data.Data {
-    interface ICGUserDBIF : IGeneralDBIF<CGUser> {
-        CGUser GetUserByUsername(string userName);
+    public interface ICGUserDBIF : IGeneralDBIF<CGUser> {
+        CGUser GetUserByEmail(string useremail);
         CGUser GetById(string id);
     }
 }

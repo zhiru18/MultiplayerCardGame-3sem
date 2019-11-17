@@ -23,13 +23,13 @@ namespace UserManagementServiceTest {
         [TestMethod]
         public void GetUserByUserNameTest() {
             cgUserDB = new CGUserDB();
-            CGUser anders = cgUserDB.GetUserByUsername("Anders");
-            Assert.AreEqual("Anders", anders.UserName);
+            CGUser manny = cgUserDB.GetUserByEmail("Manny@manny.com");
+            Assert.AreEqual("Manny@manny.com", manny.Email);
         }
         [TestMethod]
         public void InsertTest() {
             cgUserDB = new CGUserDB();
-            var anders = new CGUser("qwerty12345678", "Anders", "Anders@anders.com", "sufhesfaoiuh", CGUser.UserType.PLAYER, CGUser.UserStatus.STUNNED);
+            var anders = new CGUser("qwerty12345678", null, "Anders@anders.com", CGUser.UserType.PLAYER, CGUser.UserStatus.STUNNED);
             cgUserDB.Insert(anders);
             var anders2 = cgUserDB.GetById("qwerty12345678");
             Assert.AreEqual(anders.UserName, anders2.UserName);
@@ -37,10 +37,18 @@ namespace UserManagementServiceTest {
         [TestMethod]
         public void UpdateTest() {
             cgUserDB = new CGUserDB();
-            var anders = new CGUser("qwerty12345678", "Anders", "Anders@anders.com", "sufhesfaoiuh", CGUser.UserType.PLAYER, CGUser.UserStatus.INGAME);
+            var anders = new CGUser("qwerty12345678", null, "Anders@anders.com", CGUser.UserType.PLAYER, CGUser.UserStatus.INGAME);
             cgUserDB.Update(anders);
             var anders2 = cgUserDB.GetById("qwerty12345678");
             Assert.AreEqual(anders.userStatus, anders2.userStatus);
+        }
+        [TestMethod]
+        public void DeleteTest() {
+            cgUserDB = new CGUserDB();
+            var anders = new CGUser("qwerty12345678", null, "Anders@anders.com", CGUser.UserType.PLAYER, CGUser.UserStatus.INGAME);
+            cgUserDB.Delete(anders);
+            anders = cgUserDB.GetById("qwerty12345678");
+            Assert.IsNull(anders);
         }
     }
 }

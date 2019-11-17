@@ -12,15 +12,13 @@ namespace Server.Model.Model {
         public string Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
-        public string UserPassword { get; set; }
         public UserType userType { get; set; }
         public UserStatus userStatus { get; set; }
 
-        public CGUser(string id, string userName, string email, string password, UserType userType, UserStatus userStatus) {
+        public CGUser(string id, string userName, string email, UserType userType, UserStatus userStatus) {
             this.Id = id;
             this.UserName = userName;
             this.Email = email;
-            this.UserPassword = password;
             this.userType = userType;
             this.userStatus = userStatus;
         }

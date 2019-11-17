@@ -18,37 +18,40 @@ namespace Server.Data.Data {
             //conString = ConfigurationManager.ConnectionStrings["con"].ConnectionString; 
         }
         public void Delete(CGUser user) {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                var sql = "DELETE FROM CGUser WHERE id = @id;";
+                connection.Execute(sql, user);
+            }
         }
 
         public IEnumerable<CGUser> GetAll() {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CGUser>("SELECT Id, userName, email, UserPassword, userType, UserStatus FROM CGUser").ToList();
+                return connection.Query<CGUser>("SELECT Id, userName, email, userType, UserStatus FROM CGUser").ToList();
             }
         }
 
         public CGUser GetById(string id) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CGUser>("SELECT Id, userName, email, UserPassword, userType, UserStatus FROM CGUser WHERE id = @id", new { id }).SingleOrDefault();
+                return connection.Query<CGUser>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE id = @id", new { id }).SingleOrDefault();
             }
         }
 
-        public CGUser GetUserByUsername(string userName) {
+        public CGUser GetUserByEmail(string email) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CGUser>("SELECT Id, userName, email, UserPassword, userType, UserStatus FROM CGUser WHERE userName = @userName", new { userName }).SingleOrDefault();
+                return connection.Query<CGUser>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE email = @email", new { email }).SingleOrDefault();
             }
         }
 
         public void Insert(CGUser user) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                var sql = "INSERT INTO CGUser (id, userName, email, userPassword, userType, userStatus) VALUES (@id, @userName, @email, @userPassword, @userType, @userStatus);";
+                var sql = "INSERT INTO CGUser (id, userName, email, userType, userStatus) VALUES (@id, @userName, @email, @userType, @userStatus);";
                 connection.Execute(sql, user);
             }
         }
 
         public void Update(CGUser user) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                var sql = "UPDATE CGUser SET userName = @userName, email = @email, userPassword = @userPassword, userType = @userType, userStatus = @userStatus WHERE id = @id;";
+                var sql = "UPDATE CGUser SET userName = @userName, email = @email, userType = @userType, userStatus = @userStatus WHERE id = @id;";
                 connection.Execute(sql, user);
             }
         }

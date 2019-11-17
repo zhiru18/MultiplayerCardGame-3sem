@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Model.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,7 +13,11 @@ namespace Server.Services.UserManagementService.Contracts
     public interface IUserManagementService {
 
        [OperationContract]
-        void CreateUser(string id);
+        void CreateUser(string id, string email);
+        [OperationContract]
+        CGUser GetUserByUserId(string id);
+        [OperationContract]
+        void UpdateUser(CGUser cguser);
 
     }
 }
