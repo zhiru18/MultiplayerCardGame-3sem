@@ -13,10 +13,11 @@ namespace Server.Services.UserManagementService
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class UserManagement : IUserManagementService {
         ICGUserDBIF cGUserDB = new CGUserDB();
-        public void CreateUser(string id, string email) {
+        public void CreateUser(string id, string email, string userName) {
             CGUser user = new CGUser();
             user.Email = email;
             user.Id = id;
+            user.UserName = userName;
             cGUserDB.Insert(user);
         }
 

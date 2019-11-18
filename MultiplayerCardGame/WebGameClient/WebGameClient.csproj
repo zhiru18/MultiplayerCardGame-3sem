@@ -203,6 +203,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Connected Services\UserManagementReference\Server.Model.Model.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\UserManagementReference\service.wsdl" />
     <None Include="Connected Services\UserManagementReference\service.xsd">
       <SubType>Designer</SubType>
@@ -210,6 +213,9 @@
     <None Include="Connected Services\UserManagementReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Connected Services\UserManagementReference\WebGameClient.UserManagementReference.CGUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

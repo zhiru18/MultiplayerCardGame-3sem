@@ -165,7 +165,7 @@ namespace WebGameClient.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     using(UserManagementServiceClient proxy = new UserManagementServiceClient()) {
                        string UserId = User.Identity.GetUserId();
-                       proxy.CreateUser(UserId);
+                       proxy.CreateUser(UserId, model.Email, model.Username);
                     }
                     return RedirectToAction("Index", "Home");
                 }

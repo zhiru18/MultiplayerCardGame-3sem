@@ -13,7 +13,7 @@ namespace Server.Services.UserManagementService.Contracts
     public interface IUserManagementService {
 
        [OperationContract]
-        void CreateUser(string id, string email);
+        void CreateUser(string id, string email, string userName);
         [OperationContract]
         CGUser GetUserByUserId(string id);
         [OperationContract]
