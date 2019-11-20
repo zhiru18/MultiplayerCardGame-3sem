@@ -14,8 +14,8 @@ namespace Server.Data.Data {
         private string conString; 
 
         public CGUserDB() {
-            conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            //conString = ConfigurationManager.ConnectionStrings["con"].ConnectionString; 
+            //conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString; 
         }
         public void Delete(CGUser user) {
             using (SqlConnection connection = new SqlConnection(conString)) {
