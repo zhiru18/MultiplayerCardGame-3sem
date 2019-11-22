@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebGameClient", "WebGameCli
 		{D692C0D2-CEE5-4854-9CA6-B4022C51FD14} = {D692C0D2-CEE5-4854-9CA6-B4022C51FD14}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTableManagementService", "GameTableManagementService\GameTableManagementService.csproj", "{6968B2CF-1EF6-4D2A-9095-3A90EDEFB934}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{0CADB5B2-C2D3-4661-AB34-AB160174C471}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CADB5B2-C2D3-4661-AB34-AB160174C471}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CADB5B2-C2D3-4661-AB34-AB160174C471}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6968B2CF-1EF6-4D2A-9095-3A90EDEFB934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6968B2CF-1EF6-4D2A-9095-3A90EDEFB934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6968B2CF-1EF6-4D2A-9095-3A90EDEFB934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6968B2CF-1EF6-4D2A-9095-3A90EDEFB934}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{1033C2B8-3580-427D-B292-FC6D5EF55933} = {C30A6ECF-D917-4C4E-A3AB-619E03600993}
 		{E2C35AAA-3F22-46C2-8469-424671759D7B} = {3470D8AC-C99E-4832-A56C-86042800E369}
 		{0CADB5B2-C2D3-4661-AB34-AB160174C471} = {98EA643A-C420-453D-BC5F-C90CCB615702}
+		{6968B2CF-1EF6-4D2A-9095-3A90EDEFB934} = {25C0D8E4-9CB3-40D8-B872-F815BB1A0654}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87148347-E100-4333-8C09-F0E81CE16B78}

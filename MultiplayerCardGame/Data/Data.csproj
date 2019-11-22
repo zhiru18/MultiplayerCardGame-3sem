@@ -40,6 +40,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameTableDB.cs" />
+    <Compile Include="IGameTableDBIF.cs" />
     <Compile Include="IGeneralDBIF.cs" />
     <Compile Include="ICGUserDBIF.cs" />
     <Compile Include="CGUserDB.cs" />
