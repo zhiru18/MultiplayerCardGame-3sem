@@ -40,6 +40,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardDB.cs" />
     <Compile Include="IGeneralDBIF.cs" />
     <Compile Include="ICGUserDBIF.cs" />
     <Compile Include="CGUserDB.cs" />
