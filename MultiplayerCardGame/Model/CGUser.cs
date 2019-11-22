@@ -14,6 +14,7 @@ namespace Server.Model.Model {
         public string Email { get; set; }
         public UserType userType { get; set; }
         public UserStatus userStatus { get; set; }
+        public int Health { get; set; } 
 
         public CGUser(string id, string userName, string email, UserType userType, UserStatus userStatus) {
             this.Id = id;
