@@ -8,6 +8,7 @@ using WebGameClient.Models;
 
 namespace WebGameClient.Controllers
 {
+    [Authorize]
     public class GameController : Controller
     {
         // GET: Game
