@@ -1,0 +1,50 @@
+﻿body {
+    max-width:400px;
+    max-height:400px;
+}
+h2  {
+    text-align:center;
+}
+.bottom {
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    left: 155px;
+    right: 155px;
+    background-color: gray;
+    height: 150px;
+}
+.right {
+    position: absolute;
+    right: 0px;
+    width:150px;
+    height: 100%;
+    text-align: center;
+    background-color: blue;
+}
+.left {
+    position: absolute;
+    left: 0px;
+    height: 100%;
+    width: 150px;
+    text-align: center;
+    background-color: red;
+}
+.top {
+    position: absolute;
+    top: 50px;
+    left:155px;
+    right:155px;
+    text-align: center;
+    height:100px;
+    background-color: yellow;
+}
+.middle {
+    position: absolute;
+    text-align: center;
+    top: 155px;
+    left:155px;
+    right:155px;
+    bottom:155px;
+    background-color:beige;
+}

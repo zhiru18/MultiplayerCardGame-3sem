@@ -1,7 +1,54 @@
-﻿
+﻿@model WebGameClient.Models.Game
+@using Microsoft.AspNet.Identity
+@using WebGameClient.Models
 @{
     ViewBag.Title = "Index";
 }
+@Styles.Render("~/Content/Game.css")
+<body>
+    <div class="bottom">
+        @{var userId = User.Identity.GetUserId(); }
+        @{CGUser user = null; }
+        @foreach (var CGUser in Model.gameTable.Users) {
+            if (CGUser.Id == userId) {
+                user = CGUser;
+            }
+        }
+        @Html.DisplayText(user.UserName)
+        <br />
+        @Html.Label("Kort1")
+        @Html.Label("Kort2")
+        @Html.Label("Kort3")
+        @Html.Label("Kort4")
+        @Html.Label("Kort5")
 
-<h2>Index</h2>
+    </div>
+    <div class="left">
+        This is to the left
+        @Html.Label("Kort1")
+        @Html.Label("Kort2")
+        @Html.Label("Kort3")
+        @Html.Label("Kort4")
+        @Html.Label("Kort5")
+    </div>
+    <div class="right">
+        This is to the right
+
+        @Html.Label("Kort1")
+        @Html.Label("Kort2")
+        @Html.Label("Kort3")
+        @Html.Label("Kort4")
+        @Html.Label("Kort5")
+    </div>
+    <div class="top">
+        Someplayer
+        @Html.Label("Kort1")
+        @Html.Label("Kort2")
+        @Html.Label("Kort3")
+        @Html.Label("Kort4")
+        @Html.Label("Kort5")
+    </div>
+    <div class="middle"> This is in the middle  </div>
+
+</body>
 
