@@ -47,7 +47,7 @@ namespace Server.Data.Data {
             }
         }
         //public void Insert(GameTable table) {
-        //    string insertString = "INSERT INTO GameTable (tableName, isFull, deckId) VALUES (@TableNam, @IsFull,@DeckI)";
+        //    string insertString = "INSERT INTO GameTable (tableName, isFull, deckId) VALUES (@TableNam, @IsFul, @DeckI)";
         //    using (SqlConnection connection = new SqlConnection(conString))
         //    using (SqlCommand createCommand = new SqlCommand(insertString, connection)) {
         //        SqlParameter tableNameParam = new SqlParameter("@TableNam", table.TableName);
