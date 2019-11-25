@@ -34,13 +34,17 @@ namespace Server.Controllers.Controller {
                 foreach (CGUser user in users) {
                     Card card = deck.cards[i];
                     user.cards.Add(card);
+                    deck.cards.Remove(card);
                 }
             }
         }
-
         public void CreateGame(Game game) {
             IGameDBIF gameDB = new GameDB();
             gameDB.Insert(game);
         }
+
+        //Update deck method??
+
+        //update game method??
     }
 }
