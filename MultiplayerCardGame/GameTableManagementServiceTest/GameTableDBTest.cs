@@ -12,7 +12,7 @@ namespace GameTableManagementServiceTest {
     public class GameTableDBTest {
         GameTableDB gameTableDB;
         [TestMethod]
-        public void DeleteTest() {
+        public void DeleteTest() {         
             gameTableDB = new GameTableDB();
             var table1 = gameTableDB.GetById(1);
             gameTableDB.Delete(table1);
