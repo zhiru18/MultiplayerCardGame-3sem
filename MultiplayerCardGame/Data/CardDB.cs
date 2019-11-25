@@ -41,7 +41,7 @@ namespace Server.Data.Data {
         public void Update(Card card)
         {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                var sql = "UPDATE CARD SET cardType = @cardType, name = @name, email = @email, userType = @userType, userStatus = @userStatus WHERE id = @id;";
+                var sql = "UPDATE CARD SET cardType = @cardType, name = @name, description = @description, value = @value WHERE id = @id;";
                 connection.Execute(sql, card);
             }
         }
