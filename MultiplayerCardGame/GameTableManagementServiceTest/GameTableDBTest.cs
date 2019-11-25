@@ -23,8 +23,6 @@ namespace GameTableManagementServiceTest {
         public void InsertTest() {
             gameTableDB = new GameTableDB();
             var table5 = new GameTable("Game5");
-            //table5.IsFull = false;
-            //table5.Deck.Id = 1;
             gameTableDB.Insert(table5);
             var tableT = gameTableDB.GetById(5);
             Assert.AreEqual(table5.TableName, tableT.TableName);

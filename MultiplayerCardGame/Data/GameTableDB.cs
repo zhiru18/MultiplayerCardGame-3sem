@@ -12,8 +12,8 @@ namespace Server.Data.Data {
     public class GameTableDB : IGameTableDBIF {
         private string conString;
         public GameTableDB() {
-            //conString = "data Source=.; dataBase= CardGameDB; integrated security= true";
-            conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            conString = "data Source=.; dataBase= CardGameDB; integrated security= true";
+            //conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             //conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
@@ -63,7 +63,7 @@ namespace Server.Data.Data {
         public void Update(GameTable table) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
-                var sql = "UPDATE GameTable SET tableName = @tableName, isFull = @isFull WHERE id = @id;";
+                var sql = "UPDATE GameTable SET tableName = @tableName, isFull = @isFull  WHERE id = @id;";
                 connection.Execute(sql, table);
             }
         }
