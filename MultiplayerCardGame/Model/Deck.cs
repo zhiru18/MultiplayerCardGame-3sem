@@ -9,5 +9,9 @@ namespace Server.Model.Model {
         public int Id { get; set; }
         public string Name { get; set; }
         public List<Card> cards { get; set; }
+
+        public Deck() {
+            cards = new List<Card>();
+        }
     }
 }
