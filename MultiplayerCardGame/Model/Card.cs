@@ -14,9 +14,8 @@ namespace Server.Model.Model {
         public string Description { get; set; }
         public int Value { get; set; }
 
-        public Card(CardType cardType, int id, string name, string description, int value) {
+        public Card(CardType cardType, string name, string description, int value) {
             this.cardtype = cardType;
-            this.Id = id;
             this.Name = name;
             this.Description = description;
             this.Value = value;
