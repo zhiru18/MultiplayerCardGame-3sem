@@ -1,9 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using Server.Model.Model;
+using Server.Data.Data;
 
 namespace Server.Controllers.Controller {
     public class GameController {
+
+        public Game StartGame(GameTable gameTable) {
+            gameTable.deck = ShuffleDeck(gameTable.deck);
+            DealCards(gameTable.deck, gameTable.Users);
+            Game game = new Game(gameTable);
+            CreateGame(game);
+            return game;
+        }
 
         public Deck ShuffleDeck(Deck inputDeck) {
             Deck outputDeck = new Deck();
@@ -27,6 +36,11 @@ namespace Server.Controllers.Controller {
                     user.cards.Add(card);
                 }
             }
+        }
+
+        public void CreateGame(Game game) {
+            IGameDBIF gameDB = new GameDB();
+            gameDB.Insert(game);
         }
     }
 }
