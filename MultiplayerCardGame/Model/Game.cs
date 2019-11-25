@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Server.Model.Model {
     public class Game {
         public int Id { get; set; }
-        public GameTable GameTable { get; set; }
+        public GameTable gameTable { get; set; }
 
         public Game(int id, GameTable gameTable) {
             this.Id = id;
