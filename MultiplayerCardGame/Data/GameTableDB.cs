@@ -12,7 +12,8 @@ namespace Server.Data.Data {
     public class GameTableDB : IGameTableDBIF {
         private string conString;
         public GameTableDB() {
-            conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
+            conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
         public void Delete(GameTable table) {
@@ -36,7 +37,7 @@ namespace Server.Data.Data {
 
         public void Insert(GameTable table) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                var sql = "INSERT INTO GameTable (id, tableName, isFull,) VALUES (@id, @tableName, @isFull);";
+                var sql = "INSERT INTO GameTable (id, tableName, isFull) VALUES (@id, @tableName, @isFull);";
                 connection.Execute(sql, table);
             }
         }
