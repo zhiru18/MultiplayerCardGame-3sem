@@ -11,7 +11,7 @@ namespace Server.Model.Model {
 
         public Game(int id, GameTable gameTable) {
             this.Id = id;
-            this.GameTable = gameTable; 
+            this.gameTable = gameTable; 
         }
     }
 }
