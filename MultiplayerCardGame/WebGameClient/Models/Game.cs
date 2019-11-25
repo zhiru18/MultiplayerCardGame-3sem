@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Server.Model.Model {
-    public class Game {
+namespace WebGameClient.Models
+{
+    public class Game
+    {
         public int Id { get; set; }
         public GameTable gameTable { get; set; }
 
-        public Game(int id, GameTable gameTable) {
+        public Game(int id, GameTable gameTable)
+        {
             this.Id = id;
-            this.gameTable = gameTable; 
+            this.gameTable = gameTable;
         }
     }
 }
