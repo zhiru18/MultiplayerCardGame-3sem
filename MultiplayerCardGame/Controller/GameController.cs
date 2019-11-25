@@ -7,8 +7,8 @@ namespace Server.Controllers.Controller {
     public class GameController {
 
         public Game StartGame(GameTable gameTable) {
-            gameTable.deck = ShuffleDeck(gameTable.deck);
-            DealCards(gameTable.deck, gameTable.Users);
+            gameTable.Deck = ShuffleDeck(gameTable.Deck);
+            DealCards(gameTable.Deck, gameTable.Users);
             Game game = new Game(gameTable);
             CreateGame(game);
             return game;

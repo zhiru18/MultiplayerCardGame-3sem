@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using WebGameClient.GameServiceReference;
+using WebGameClient.Models;
 
 namespace WebGameClient.ServiceAcces {
     public class GameServiceAcces {
-        //der mangler en reference til gameservice som jeg ikke kan tilføje på nuværende tidpunkt
-        public Game StartGame(GameTable gameTable) {
+        
+        public Models.Game StartGame(Models.GameTable clientGameTable) {
             using (GameServiceClient proxy = new GameServiceClient()) {
-                Game serviceGame = proxy.StartGame(gameTable);
-                Game clientGame = ConvertFromServiceToClient(serviceGame);
+                GameServiceReference.GameTable serviceGameTable = DataConverter.ConvertFromClientGameTableToServiceGameTable(clientGameTable);
+                GameServiceReference.Game serviceGame = proxy.StartGame(serviceGameTable);
+                Models.Game clientGame = DataConverter.ConvertFromServiceGameToClientGame(serviceGame);
                 return clientGame;
             }
         }
 
-        private Game ConvertFromServiceToClient(Game serviceGame) {
+        internal Models.GameTable GetGameTable(int gameTableId) {
             throw new NotImplementedException();
         }
     }

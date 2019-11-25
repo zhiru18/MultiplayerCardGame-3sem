@@ -15,7 +15,7 @@ namespace WebGameClient.Controllers
         {
             GameServiceAcces gameServiceAcces = new GameServiceAcces();
             GameTable gameTable = gameServiceAcces.GetGameTable(gameTableId);
-            Game game= gameServiceAcces.StartGame(gametable);
+            Game game= gameServiceAcces.StartGame(gameTable);
             return View(game);
         }
     }

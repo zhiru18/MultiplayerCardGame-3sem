@@ -1,20 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Model.Model {
+    [DataContract]
     public class CGUser {
-        public enum UserType { PLAYER, ADMIN };
-        public enum UserStatus { UNATTACKABLE, ATTACKABLE, STUNNED, INGAME };
-
+        [DataContract]
+        public enum UserType {
+            [EnumMember]
+            PLAYER, 
+            [EnumMember]
+            ADMIN };
+        [DataContract]
+        public enum UserStatus {
+            [EnumMember]
+            UNATTACKABLE, 
+            [EnumMember]
+            ATTACKABLE, 
+            [EnumMember]
+            STUNNED, 
+            [EnumMember]
+            INGAME };
+        [DataMember]
         public string Id { get; set; }
+        [DataMember]
         public string UserName { get; set; }
+        [DataMember]
         public string Email { get; set; }
+        [DataMember]
         public UserType userType { get; set; }
+        [DataMember]
         public UserStatus userStatus { get; set; }
+        [DataMember]
         public int Health { get; set; } 
+        [DataMember]
         public List<Card> cards { get; set; }
 
         public CGUser(string id, string userName, string email, UserType userType, UserStatus userStatus) {

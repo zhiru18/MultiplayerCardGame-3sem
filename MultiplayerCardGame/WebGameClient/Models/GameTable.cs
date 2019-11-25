@@ -19,5 +19,7 @@ namespace WebGameClient.Models
             this.Users = new List<CGUser>();
         }
 
+        public GameTable() {
+        }
     }
 }
