@@ -14,6 +14,6 @@ namespace Server.Services.GameTableManagementService.Contracts {
         GameTable CreateGameTable(CGUser user, string tableName);
 
         [OperationContract]
-        void DeleteGameTable(int id);
+        bool DeleteGameTable(int id);
     }
 }

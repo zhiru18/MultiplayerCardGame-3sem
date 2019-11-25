@@ -19,9 +19,14 @@ namespace Server.Services.GameTableManagementService {
             return table;
         }
 
-        public void DeleteGameTable(int id) {
+        public bool DeleteGameTable(int id) {
+            bool res = false;
             GameTable table = gameTablerDB.GetById(id);
-            gameTablerDB.Delete(table);
+            if (table != null) {
+                gameTablerDB.Delete(table);
+                res = true;
+            }
+            return res;
         }
     }
 }
