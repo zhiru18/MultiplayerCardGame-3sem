@@ -17,6 +17,5 @@ namespace Tests.DataTest
             List<Card> cards = (List<Card>)cardDB.GetAll();
             Assert.IsTrue(cards.Count > 0);
         }
-    
     }
 }

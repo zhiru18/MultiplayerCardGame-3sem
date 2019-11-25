@@ -12,11 +12,13 @@ namespace Server.Data.Data {
     public class GameTableDB : IGameTableDBIF {
         private string conString;
         public GameTableDB() {
-            conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
+            conString = conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
         public void Delete(GameTable table) {
             using (SqlConnection connection = new SqlConnection(conString)) {
+                connection.Open();
                 var sql = "DELETE FROM GameTable WHERE id = @id;";
                 connection.Execute(sql, table);
             }
@@ -24,26 +26,29 @@ namespace Server.Data.Data {
 
         public IEnumerable<GameTable> GetAll() {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<GameTable>("SELECT Id, TableName, IsFull, DeckId,  FROM GameTable").ToList();
+                connection.Open();
+                return connection.Query<GameTable>("SELECT Id, tableName, isFull, deckId FROM GameTable").ToList();
             }
         }
 
         public GameTable GetById(int id) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<GameTable>("SELECT Id, TableName, IsFull, DeckId,  FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
+                connection.Open();
+                return connection.Query<GameTable>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
             }
         }
 
         public void Insert(GameTable table) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                var sql = "INSERT INTO GameTable (id, tableName, isFull, deckId,) VALUES (@id, @tableName, @isFull, @deckId);";
+                connection.Open();
+                var sql = "INSERT INTO GameTable (tableName, isFull) VALUES (@tableName, @isFull);";
                 connection.Execute(sql, table);
             }
         }
 
         public void Update(GameTable table) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                var sql = "UPDATE GameTable SET tableName = @tableName, isFull = @isFull, deckId = @deckId, WHERE id = @id;";
+                var sql = "UPDATE GameTable SET tableName = @tableName, isFull = @isFull WHERE id = @id;";
                 connection.Execute(sql, table);
             }
         }
