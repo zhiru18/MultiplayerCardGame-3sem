@@ -15,5 +15,8 @@ namespace WebGameClient.Models
             this.Id = id;
             this.gameTable = gameTable;
         }
+
+        public Game() {
+        }
     }
 }

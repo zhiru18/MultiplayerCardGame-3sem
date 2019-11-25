@@ -23,5 +23,8 @@ namespace WebGameClient.Models
             this.Description = description;
             this.Value = value;
         }
+
+        public Card() {
+        }
     }
 }

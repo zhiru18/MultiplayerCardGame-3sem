@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebGameClient.Models;
 using WebGameClient.ServiceAcces;
-using WebGameClient.UserManagementReference;
+
 
 namespace WebGameClient.Controllers
 {

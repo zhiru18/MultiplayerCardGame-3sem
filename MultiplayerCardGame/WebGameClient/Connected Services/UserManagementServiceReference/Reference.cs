@@ -35,6 +35,9 @@ namespace WebGameClient.UserManagementServiceReference {
         private string UserNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WebGameClient.UserManagementServiceReference.Card[] cardsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private WebGameClient.UserManagementServiceReference.CGUser.UserStatus userStatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -103,6 +106,19 @@ namespace WebGameClient.UserManagementServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public WebGameClient.UserManagementServiceReference.Card[] cards {
+            get {
+                return this.cardsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.cardsField, value) != true)) {
+                    this.cardsField = value;
+                    this.RaisePropertyChanged("cards");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public WebGameClient.UserManagementServiceReference.CGUser.UserStatus userStatus {
             get {
                 return this.userStatusField;
@@ -163,6 +179,129 @@ namespace WebGameClient.UserManagementServiceReference {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
             ADMIN = 1,
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Card", Namespace="http://schemas.datacontract.org/2004/07/Server.Model.Model")]
+    [System.SerializableAttribute()]
+    public partial class Card : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WebGameClient.UserManagementServiceReference.Card.CardType cardtypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WebGameClient.UserManagementServiceReference.Card.CardType cardtype {
+            get {
+                return this.cardtypeField;
+            }
+            set {
+                if ((this.cardtypeField.Equals(value) != true)) {
+                    this.cardtypeField = value;
+                    this.RaisePropertyChanged("cardtype");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="Card.CardType", Namespace="http://schemas.datacontract.org/2004/07/Server.Model.Model")]
+        public enum CardType : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            ATTACK = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            DEFENSE = 1,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            EFFECT = 2,
         }
     }
     
