@@ -16,32 +16,27 @@ namespace Server.Data.Data {
             conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
-        public void Delete(GameDB t) {
+        public void Delete(Game t) {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<GameDB> GetAll() {
+        public IEnumerable<Game> GetAll() {
             throw new NotImplementedException();
         }
 
-        public void insert(Game game) {
-            string queryString ="INSERT INTO Game (GameTableId) VALUES (@GametableId);";
-            using (SqlConnection connection = new SqlConnection(conString)) 
+        public void Insert(Game t) {
+            string queryString = "INSERT INTO Game (GameTableId) VALUES (@GametableId);";
+            using (SqlConnection connection = new SqlConnection(conString))
             using (SqlCommand insertCommand = new SqlCommand(queryString, connection)) {
-                SqlParameter GameTableIDParam = new SqlParameter("@GameTableId", game.gameTable.Id);
+                SqlParameter GameTableIDParam = new SqlParameter("@GameTableId", t.gameTable.Id);
                 insertCommand.Parameters.Add(GameTableIDParam);
                 connection.Open();
 
                 SqlDataReader reader = insertCommand.ExecuteReader();
-            }   
-            
+            }
         }
 
-        public void Insert(GameDB t) {
-            throw new NotImplementedException();
-        }
-
-        public void Update(GameDB t) {
+        public void Update(Game t) {
             throw new NotImplementedException();
         }
     }
