@@ -1,4 +1,6 @@
-﻿using Server.Services.GameService.Contracts;
+﻿using Server.Controllers.Controller;
+using Server.Model.Model;
+using Server.Services.GameService.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,7 @@ namespace Server.Services.GameService {
     public class GameService : IGameService {
         GameController gameCtrl = new GameController();
         public Game StartGame(GameTable gameTable) {
-            return gameCtrl.StartGame(gameTable);
+           return gameCtrl.StartGame(gameTable);
         }
     }
 }
