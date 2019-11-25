@@ -24,26 +24,26 @@ namespace Server.Data.Data {
 
         public IEnumerable<GameTable> GetAll() {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<GameTable>("SELECT Id, TableName, IsFull, DeckId,  FROM GameTable").ToList();
+                return connection.Query<GameTable>("SELECT Id, tableName, isFull FROM GameTable").ToList();
             }
         }
 
         public GameTable GetById(int id) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<GameTable>("SELECT Id, TableName, IsFull, DeckId,  FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
+                return connection.Query<GameTable>("SELECT Id, tableName, isFull FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
             }
         }
 
         public void Insert(GameTable table) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                var sql = "INSERT INTO GameTable (id, tableName, isFull, deckId,) VALUES (@id, @tableName, @isFull, @deckId);";
+                var sql = "INSERT INTO GameTable (id, tableName, isFull,) VALUES (@id, @tableName, @isFull);";
                 connection.Execute(sql, table);
             }
         }
 
         public void Update(GameTable table) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                var sql = "UPDATE GameTable SET tableName = @tableName, isFull = @isFull, deckId = @deckId, WHERE id = @id;";
+                var sql = "UPDATE GameTable SET tableName = @tableName, isFull = @isFull, WHERE id = @id;";
                 connection.Execute(sql, table);
             }
         }
