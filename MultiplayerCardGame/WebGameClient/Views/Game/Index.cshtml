@@ -8,47 +8,151 @@
 <body>
     <div class="bottom">
         @{var userId = User.Identity.GetUserId(); }
-        @{CGUser user = null; }
-        @foreach (var CGUser in Model.gameTable.Users) {
+        @{CGUser playerOne = null; }
+        @{List<CGUser> users = new List<CGUser>(Model.gameTable.Users); }
+        @foreach (var CGUser in users) {
             if (CGUser.Id == userId) {
-                user = CGUser;
+                playerOne = CGUser;
+                users.Remove(CGUser);
             }
         }
-        @Html.DisplayText(user.UserName)
+        @Html.DisplayText(playerOne.UserName)
         <br />
-        @Html.Label(user.cards[0].Name)
-        @Html.Label(user.cards[1].Name)
-        @Html.Label(user.cards[2].Name)
-        @Html.Label(user.cards[3].Name)
-        @Html.Label(user.cards[4].Name)
+        @Html.Label(playerOne.cards[0].Name)
+        @Html.Label(playerOne.cards[1].Name)
+        @Html.Label(playerOne.cards[2].Name)
+        @Html.Label(playerOne.cards[3].Name)
+        @Html.Label(playerOne.cards[4].Name)
 
     </div>
     <div class="left">
-        This is to the left
-        @Html.Label("Card 1")
-        @Html.Label("Card 2")
-        @Html.Label("Card 3")
-        @Html.Label("Card 4")
-        @Html.Label("Card 5")
+        @{ CGUser playerTwo = users[0];
+            users.Remove(playerTwo);
+        }
+        @Html.Label(playerTwo.UserName)
+        <br />
+        <svg width="100" height="70">
+            <g>
+                <rect width="100" height="60" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 1</text>
+            </g>
+        </svg>
+        <br />
+        <svg width="100" height="70">
+            <g>
+                <rect width="100" height="60" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 2</text>
+            </g>
+        </svg>
+        <br />
+        <svg width="100" height="70">
+            <g>
+                <rect width="100" height="60" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 3</text>
+            </g>
+        </svg>
+        <br />
+        <svg width="100" height="70">
+            <g>
+                <rect width="100" height="60" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 4</text>
+            </g>
+        </svg>
+        <br />
+        <svg width="100" height="70">
+            <g>
+                <rect width="100" height="60" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 5</text>
+            </g>
+        </svg>
     </div>
     <div class="right">
-        This is to the right
-
-        @Html.Label("Card 1")
-        @Html.Label("Card 2")
-        @Html.Label("Card 3")
-        @Html.Label("Card 4")
-        @Html.Label("Card 5")
+        @{ CGUser playerThree = users[0];
+            users.Remove(playerThree);
+        }
+        @Html.Label(playerThree.UserName)
+        <br />
+        <svg width="100" height="70">
+            <g>
+                <rect width="100" height="60" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 1</text>
+            </g>
+        </svg>
+        <br />
+        <svg width="100" height="70">
+            <g>
+                <rect width="100" height="60" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 2</text>
+            </g>
+        </svg>
+        <br />
+        <svg width="100" height="70">
+            <g>
+                <rect width="100" height="60" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 3</text>
+            </g>
+        </svg>
+        <br />
+        <svg width="100" height="70">
+            <g>
+                <rect width="100" height="60" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 4</text>
+            </g>
+        </svg>
+        <br />
+        <svg width="100" height="70">
+            <g>
+                <rect width="100" height="60" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 5</text>
+            </g>
+        </svg>
     </div>
     <div class="top">
-        Someplayer
-        @Html.Label("Card 1")
-        @Html.Label("Card 2")
-        @Html.Label("Card 3")
-        @Html.Label("Card 4")
-        @Html.Label("Card 5")
+        @{ CGUser playerFour = users[0];
+            users.Remove(playerFour);
+        }
+        @Html.Label(playerFour.UserName)
+        <br />
+        <svg width="70" height="100">
+            <g>
+                <rect width="60" height="100" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 1</text>
+            </g>
+        </svg>
+        <svg width="70" height="100">
+            <g>
+                <rect width="60" height="100" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 2</text>
+            </g>
+        </svg>
+        <svg width="70" height="100">
+            <g>
+                <rect width="60" height="100" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 3</text>
+            </g>
+        </svg>
+        <svg width="70" height="100">
+            <g>
+                <rect width="60" height="100" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 4</text>
+            </g>
+        </svg>
+        <svg width="70" height="100">
+            <g>
+                <rect width="60" height="100" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">Card 5</text>
+            </g>
+        </svg>
     </div>
-    <div class="middle"> This is in the middle  </div>
+    <div class="middle">
+        This is in the middle
+        <svg alignment-baseline="middle" width="80" height="110">
+            <rect width="75" height="100" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
+        </svg>
+        <svg width="80" height="110">
+            <rect width="75" height="100" style="fill:rgb(12, 54, 164);stroke-width:3;stroke:rgb(0, 0, 0)" />
+        </svg>
+    </div>
 
 </body>
 
