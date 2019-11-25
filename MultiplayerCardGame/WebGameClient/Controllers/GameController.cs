@@ -9,9 +9,12 @@ namespace WebGameClient.Controllers
     public class GameController : Controller
     {
         // GET: Game
-        public ActionResult Index()
+        public ActionResult Index(int gameTableId) 
         {
-            return View();
+            GameServiceAcces gameServiceAcces = new GameServiceAcces();
+            GameTable gameTable = gameServiceAcces.GetGameTable(gameTableId);
+            Game game= gameServiceAcces.StartGame(gametable);
+            return View(game);
         }
     }
 }
