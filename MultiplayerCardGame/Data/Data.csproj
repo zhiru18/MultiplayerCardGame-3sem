@@ -43,6 +43,7 @@
     <Compile Include="CardDB.cs" />
     <Compile Include="GameDB.cs" />
     <Compile Include="GameTableDB.cs" />
+    <Compile Include="ICardDBIF.cs" />
     <Compile Include="IGameTableDBIF.cs" />
     <Compile Include="IGeneralDBIF.cs" />
     <Compile Include="ICGUserDBIF.cs" />
