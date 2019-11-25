@@ -15,6 +15,7 @@ namespace Server.Model.Model {
         public UserType userType { get; set; }
         public UserStatus userStatus { get; set; }
         public int Health { get; set; } 
+        public List<Card> cards { get; set; }
 
         public CGUser(string id, string userName, string email, UserType userType, UserStatus userStatus) {
             this.Id = id;
@@ -22,6 +23,7 @@ namespace Server.Model.Model {
             this.Email = email;
             this.userType = userType;
             this.userStatus = userStatus;
+            cards = new List<Card>();
         }
         public CGUser() {
 
