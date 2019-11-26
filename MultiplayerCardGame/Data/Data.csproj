@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CardDB.cs" />
+    <Compile Include="DeckDB.cs" />
     <Compile Include="GameDB.cs" />
     <Compile Include="GameTableDB.cs" />
     <Compile Include="ICardDBIF.cs" />
+    <Compile Include="IDeckDBIF.cs" />
     <Compile Include="IGameDBIF.cs" />
     <Compile Include="IGameTableDBIF.cs" />
     <Compile Include="IGeneralDBIF.cs" />
