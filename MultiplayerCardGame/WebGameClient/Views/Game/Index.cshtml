@@ -10,26 +10,28 @@
         @{var userId = User.Identity.GetUserId(); }
         @{CGUser playerOne = null; }
         @{List<CGUser> users = new List<CGUser>(Model.gameTable.Users); }
+        @{List<CGUser> deletedUsers = new List<CGUser>(); }
         @foreach (var CGUser in users) {
             if (CGUser.Id == userId) {
                 playerOne = CGUser;
-                users.Remove(CGUser);
+                deletedUsers.Add(CGUser);
             }
         }
+        @{users.Except(deletedUsers); }
         @Html.DisplayText(playerOne.UserName)
         <br />
         <svg width="70" height="100">
             <g>
                 <rect width="60" height="100" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
-                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">@Html.DisplayText(playerOne.cards[0].Name)</text>
-                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">@Html.DisplayText(playerOne.cards[0].cardtype.ToString())</text>
-                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">@Html.DisplayText(playerOne.cards[0].Value.ToString())</text>
+                <text x="1" y="20" font-family="Verdana" font-size="12" fill="black">@playerOne.cards[0].Name</text>
+                <text x="1" y="40" font-family="Verdana" font-size="12" fill="black">@playerOne.cards[0].cardtype.ToString()</text>
+                <text x="1" y="60" font-family="Verdana" font-size="12" fill="black">@playerOne.cards[0].Value.ToString()</text>
             </g>
         </svg>
         <svg width="70" height="100">
             <g>
                 <rect width="60" height="100" style="fill:rgb(255, 255, 255);stroke-width:3;stroke:rgb(0,0,0)" />
-                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">@Html.DisplayText(playerOne.cards[1].Name)</text>
+                <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">@playerOne.cards[1].Name</text>
                 <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">@Html.DisplayText(playerOne.cards[1].cardtype.ToString())</text>
                 <text x="0" y="20" font-family="Verdana" font-size="16" fill="black">@Html.DisplayText(playerOne.cards[1].Value.ToString())</text>
             </g>

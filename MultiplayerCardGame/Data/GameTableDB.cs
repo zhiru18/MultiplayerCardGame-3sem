@@ -34,11 +34,13 @@ namespace Server.Data.Data {
 
         public GameTable GetById(int id) {
             IDeckDBIF deckDB = new DeckDB();
+            ICGUserDBIF userDB = new CGUserDB();
             GameTable table = new GameTable();
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
                 table = connection.Query<GameTable>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
-                deckDB.GetById(table.Deck.Id);
+                table.Deck = deckDB.GetById(3);
+                table.Users = userDB.GetUserByTableId(id);
                 return table;
             }
         }

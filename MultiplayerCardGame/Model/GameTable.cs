@@ -23,6 +23,7 @@ namespace Server.Model.Model{
         public GameTable(string tableName) {
             this.TableName = tableName;
             this.Users = new List<CGUser>();
+            this.Deck = new Deck();
         }
 
         public GameTable(int id, string tableName, bool isfull, int deckId) {
@@ -30,11 +31,13 @@ namespace Server.Model.Model{
             this.TableName = tableName;
             this.IsFull = isfull;
             this.Users = new List<CGUser>();
+            this.Deck = new Deck();
             this.Deck.Id = deckId;
         }
 
         public GameTable() {
             this.Users = new List<CGUser>();
+            this.Deck = new Deck();
         }
     }
 }
