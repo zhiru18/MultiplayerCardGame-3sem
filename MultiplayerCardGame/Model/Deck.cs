@@ -14,5 +14,9 @@ namespace Server.Model.Model {
         public string Name { get; set; }
         [DataMember]
         public List<Card> cards { get; set; }
+
+        public Deck() {
+            cards = new List<Card>();
+        }
     }
 }

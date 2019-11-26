@@ -18,6 +18,7 @@ namespace Server.Model.Model{
         public List<CGUser> Users { get; set; }
         [DataMember]
         public Deck Deck { get; set; }
+     
 
         public GameTable(string tableName) {
             this.TableName = tableName;

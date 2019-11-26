@@ -13,7 +13,8 @@ namespace Server.Data.Data {
         private string conString;
 
         public CardDB() {
-            conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
+            conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
         public void Delete(Card card){
@@ -26,14 +27,14 @@ namespace Server.Data.Data {
         public IEnumerable<Card> GetAll()
         {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<Card>("SELECT cardType, Id, name, description, value FROM CARD").ToList();
+                return connection.Query<Card>("SELECT cardType, name, description, value FROM CARD").ToList();
             }
         }
 
         public void Insert(Card card)
         {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                var sql = "INSERT INTO Card (cardType, Id, name, description, value) VALUES (@cardType, @id, @name, @description, @value);";
+                var sql = "INSERT INTO Card (cardType, name, description, value) VALUES (@cardType, @name, @description, @value);";
                 connection.Execute(sql, card);
             }
         }

@@ -12,7 +12,8 @@ namespace Server.Data.Data {
     public class GameTableDB : IGameTableDBIF {
         private string conString;
         public GameTableDB() {
-            conString = conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+              //conString = "data Source=.; dataBase= CardGameDB; integrated security= true";
+              conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             //conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
@@ -38,19 +39,37 @@ namespace Server.Data.Data {
             }
         }
 
+        //insert the gametable without Deck
+        //public void Insert(GameTable table) {
+        //    using (SqlConnection connection = new SqlConnection(conString)) {
+        //        connection.Open();
+        //        var sql = "INSERT INTO GameTable (tableName, isFull) VALUES (@tableName, @isFull);";
+        //        connection.Execute(sql, table);
+        //    }
+        //}
+
+        //insert the gametable with Deck
         public void Insert(GameTable table) {
-            using (SqlConnection connection = new SqlConnection(conString)) {
+            string insertString = "INSERT INTO GameTable (tableName, isFull, deckId) VALUES (@TableNam, @IsFul, @DeckI)";
+            using (SqlConnection connection = new SqlConnection(conString))
+            using (SqlCommand createCommand = new SqlCommand(insertString, connection)) {
+                SqlParameter tableNameParam = new SqlParameter("@TableNam", table.TableName);
+                createCommand.Parameters.Add(tableNameParam);
+                SqlParameter isFullParam = new SqlParameter("@IsFul", table.IsFull);
+                createCommand.Parameters.Add(isFullParam);
+                SqlParameter deckIdParam = new SqlParameter("@DeckI", table.Deck.Id);
+                createCommand.Parameters.Add(deckIdParam);
                 connection.Open();
-                var sql = "INSERT INTO GameTable (tableName, isFull) VALUES (@tableName, @isFull);";
-                connection.Execute(sql, table);
+                createCommand.ExecuteNonQuery();
             }
         }
 
         public void Update(GameTable table) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                var sql = "UPDATE GameTable SET tableName = @tableName, isFull = @isFull WHERE id = @id;";
+                connection.Open();
+                var sql = "UPDATE GameTable SET tableName = @tableName, isFull = @isFull  WHERE id = @id;";
                 connection.Execute(sql, table);
             }
-        }
+        }       
     }
 }

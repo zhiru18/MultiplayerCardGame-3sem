@@ -27,9 +27,8 @@ namespace Server.Model.Model {
         [DataMember]
         public int Value { get; set; }
 
-        public Card(CardType cardType, int id, string name, string description, int value) {
+        public Card(CardType cardType, string name, string description, int value) {
             this.cardtype = cardType;
-            this.Id = id;
             this.Name = name;
             this.Description = description;
             this.Value = value;

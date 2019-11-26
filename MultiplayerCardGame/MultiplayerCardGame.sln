@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTableManagementServiceT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTest", "DataTest\DataTest.csproj", "{8A1AD23F-018C-4A7A-8546-2001C5D26E88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameControllerTest", "GameServiviceTest\GameControllerTest.csproj", "{3697F876-B109-4208-87D9-2094724932BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{8A1AD23F-018C-4A7A-8546-2001C5D26E88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A1AD23F-018C-4A7A-8546-2001C5D26E88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A1AD23F-018C-4A7A-8546-2001C5D26E88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3697F876-B109-4208-87D9-2094724932BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3697F876-B109-4208-87D9-2094724932BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3697F876-B109-4208-87D9-2094724932BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3697F876-B109-4208-87D9-2094724932BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,6 +112,7 @@ Global
 		{6968B2CF-1EF6-4D2A-9095-3A90EDEFB934} = {25C0D8E4-9CB3-40D8-B872-F815BB1A0654}
 		{C0375254-6611-4188-967B-8D48ED13EA09} = {CA8BCFEF-B9D5-471F-A78F-5CB02B4931C6}
 		{8A1AD23F-018C-4A7A-8546-2001C5D26E88} = {CA8BCFEF-B9D5-471F-A78F-5CB02B4931C6}
+		{3697F876-B109-4208-87D9-2094724932BF} = {CA8BCFEF-B9D5-471F-A78F-5CB02B4931C6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87148347-E100-4333-8C09-F0E81CE16B78}
