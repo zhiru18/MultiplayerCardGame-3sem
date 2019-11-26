@@ -32,9 +32,14 @@ namespace Server.Data.Data {
         }
 
         public Deck GetById(int id) {
+            ICardDBIF cardDB = new CardDB();
+            Deck deck = new Deck();
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
-                return connection.Query<Deck>("SELECT Id, deckName FROM Deck WHERE id = @id", new { id }).SingleOrDefault();
+                deck = connection.Query<Deck>("SELECT Id, deckName FROM Deck WHERE id = @id", new { id }).SingleOrDefault();
+                // TODO: Change so it only gets cards that are linked to the deck. Must also add table CardDeck to the db and add column to card.
+                deck.cards = (List<Card>)cardDB.GetAll();
+                return deck;
             }
         }
 
