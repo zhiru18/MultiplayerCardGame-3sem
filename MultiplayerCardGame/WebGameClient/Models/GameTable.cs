@@ -11,6 +11,8 @@ namespace WebGameClient.Models
         public bool IsFull { get; set; }
         public string TableName { get; set; }
         public List<CGUser> Users { get; set; }
+        public Deck Deck { get; internal set; }
+
         //public Deck Deck { get; set; }
 
         public GameTable(string tableName)
