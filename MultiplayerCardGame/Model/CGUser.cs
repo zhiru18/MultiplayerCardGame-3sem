@@ -48,7 +48,7 @@ namespace Server.Model.Model {
             cards = new List<Card>();
         }
         public CGUser() {
-
+            cards = new List<Card>();
         }
     }
 }
