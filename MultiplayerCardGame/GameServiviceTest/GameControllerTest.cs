@@ -78,11 +78,11 @@ namespace Tests.GameControllerTest {
            Assert.IsTrue(userCards.Count >0);
         }
 
-        [TestMethod]
-        public void CreateGameTest() {
-            GameController gameController = new GameController();
-            Game game1 = new Game();
-            gameController.CreateGame(game1);
-        }
+        //[TestMethod]
+        //public void CreateGameTest() {
+        //    GameController gameController = new GameController();
+        //    Game game1 = new Game();
+        //    gameController.CreateGame(game1);
+        //}
     }
 }

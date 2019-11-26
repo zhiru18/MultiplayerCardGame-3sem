@@ -33,7 +33,7 @@ namespace Server.Controllers.Controller {
             List<Card> dealtCards = new List<Card>();
             foreach (CGUser user in users) {
                 for (int i = 0; i < 5; i++) {
-                    Card card = deck.cards[i];
+                    Card card = deck.cards[0];
                     dealtCards.Add(card);
                     deck.cards.Remove(card);
                 }
