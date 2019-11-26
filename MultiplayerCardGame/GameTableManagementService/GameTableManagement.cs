@@ -11,22 +11,26 @@ using Server.Services.GameTableManagementService.Contracts;
 namespace Server.Services.GameTableManagementService {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class GameTableManagement : IGameTableManagementService {
-        IGameTableDBIF gameTablerDB = new GameTableDB();
+        IGameTableDBIF gameTableDB = new GameTableDB();
         public GameTable CreateGameTable(CGUser user, string tableName) {
             GameTable table = new GameTable(tableName);
             table.Users.Add(user);
-            gameTablerDB.Insert(table);
+            gameTableDB.Insert(table);
             return table;
         }
 
         public bool DeleteGameTable(int id) {
             bool res = false;
-            GameTable table = gameTablerDB.GetById(id);
+            GameTable table = gameTableDB.GetById(id);
             if (table != null) {
-                gameTablerDB.Delete(table);
+                gameTableDB.Delete(table);
                 res = true;
             }
             return res;
+        }
+
+        public GameTable GetGameTableById(int id) {
+            return gameTableDB.GetById(id);
         }
     }
 }
