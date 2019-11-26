@@ -506,6 +506,12 @@ namespace WebGameClient.GameTableServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/DeleteGameTable", ReplyAction="http://tempuri.org/IGameTableManagementService/DeleteGameTableResponse")]
         System.Threading.Tasks.Task<bool> DeleteGameTableAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/GetGameTableById", ReplyAction="http://tempuri.org/IGameTableManagementService/GetGameTableByIdResponse")]
+        WebGameClient.GameTableServiceReference.GameTable GetGameTableById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/GetGameTableById", ReplyAction="http://tempuri.org/IGameTableManagementService/GetGameTableByIdResponse")]
+        System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable> GetGameTableByIdAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -549,6 +555,14 @@ namespace WebGameClient.GameTableServiceReference {
         
         public System.Threading.Tasks.Task<bool> DeleteGameTableAsync(int id) {
             return base.Channel.DeleteGameTableAsync(id);
+        }
+        
+        public WebGameClient.GameTableServiceReference.GameTable GetGameTableById(int id) {
+            return base.Channel.GetGameTableById(id);
+        }
+        
+        public System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable> GetGameTableByIdAsync(int id) {
+            return base.Channel.GetGameTableByIdAsync(id);
         }
     }
 }

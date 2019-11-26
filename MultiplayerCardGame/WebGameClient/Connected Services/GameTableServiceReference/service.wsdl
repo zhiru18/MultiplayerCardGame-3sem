@@ -19,6 +19,12 @@
   <wsdl:message name="IGameTableManagementService_DeleteGameTable_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteGameTableResponse" />
   </wsdl:message>
+  <wsdl:message name="IGameTableManagementService_GetGameTableById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameTableById" />
+  </wsdl:message>
+  <wsdl:message name="IGameTableManagementService_GetGameTableById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameTableByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGameTableManagementService">
     <wsdl:operation name="CreateGameTable">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameTableManagementService/CreateGameTable" message="tns:IGameTableManagementService_CreateGameTable_InputMessage" />
@@ -27,6 +33,10 @@
     <wsdl:operation name="DeleteGameTable">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameTableManagementService/DeleteGameTable" message="tns:IGameTableManagementService_DeleteGameTable_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGameTableManagementService/DeleteGameTableResponse" message="tns:IGameTableManagementService_DeleteGameTable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGameTableById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameTableManagementService/GetGameTableById" message="tns:IGameTableManagementService_GetGameTableById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameTableManagementService/GetGameTableByIdResponse" message="tns:IGameTableManagementService_GetGameTableById_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGameTableManagementService" type="tns:IGameTableManagementService">
@@ -42,6 +52,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteGameTable">
       <soap:operation soapAction="http://tempuri.org/IGameTableManagementService/DeleteGameTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGameTableById">
+      <soap:operation soapAction="http://tempuri.org/IGameTableManagementService/GetGameTableById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
