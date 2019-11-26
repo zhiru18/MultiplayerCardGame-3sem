@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using WebGameClient.GameServiceReference;
 
 namespace WebGameClient.ServiceAcces {
     internal class GameModelConverter {
@@ -8,9 +9,19 @@ namespace WebGameClient.ServiceAcces {
                 Id = clientGameTable.Id,
                 IsFull = clientGameTable.IsFull,
                 TableName = clientGameTable.TableName,
-                Users = ConvertFromClientListOfUsersToServiceListOfUsers(clientGameTable.Users)
+                Users = ConvertFromClientListOfUsersToServiceListOfUsers(clientGameTable.Users),
+                Deck = ConvertFromClientDeckToServiceDeck(clientGameTable.Deck)
             };
             return serviceGameTable;
+        }
+
+        private static GameServiceReference.Deck ConvertFromClientDeckToServiceDeck(Models.Deck clientDeck) {
+            GameServiceReference.Deck serviceDeck = new GameServiceReference.Deck() {
+                Id = clientDeck.Id,
+                Name = clientDeck.Name,
+                cards = ConvertFromListOfClientCardsToListOfServiceCards(clientDeck.cards)
+            };
+            return serviceDeck;
         }
 
         internal static Models.Game ConvertFromServiceGameToClientGame(GameServiceReference.Game serviceGame) {
@@ -26,9 +37,19 @@ namespace WebGameClient.ServiceAcces {
                 Id = serviceGameTable.Id,
                 IsFull = serviceGameTable.IsFull,
                 TableName = serviceGameTable.TableName,
-                Users = ConvertFromServiceListOfUsersToClientListOfUsers(serviceGameTable.Users)
+                Users = ConvertFromServiceListOfUsersToClientListOfUsers(serviceGameTable.Users),
+                Deck = (Models.Deck)ConvertFromServiceDeckToClientDeck(serviceGameTable.Deck)
             };
             return clientGameTable;
+        }
+
+        private static object ConvertFromServiceDeckToClientDeck(Deck serviceDeck) {
+            Models.Deck clientDeck = new Models.Deck() {
+                Id = serviceDeck.Id,
+                Name = serviceDeck.Name,
+                cards = ConvertFromListOfServiceCardsToListOfClientCards(serviceDeck.cards)
+            };
+            return clientDeck;
         }
 
         private static List<Models.CGUser> ConvertFromServiceListOfUsersToClientListOfUsers(GameServiceReference.CGUser[] ServiceUsers) {
