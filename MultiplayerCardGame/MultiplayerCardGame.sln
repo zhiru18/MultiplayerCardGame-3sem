@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTest", "DataTest\DataTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameControllerTest", "GameServiviceTest\GameControllerTest.csproj", "{3697F876-B109-4208-87D9-2094724932BF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameServiceTest", "GameServiceTest\GameServiceTest.csproj", "{F20AC1AA-5BD3-415F-B831-269791FD19CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{3697F876-B109-4208-87D9-2094724932BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3697F876-B109-4208-87D9-2094724932BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3697F876-B109-4208-87D9-2094724932BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F20AC1AA-5BD3-415F-B831-269791FD19CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F20AC1AA-5BD3-415F-B831-269791FD19CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F20AC1AA-5BD3-415F-B831-269791FD19CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F20AC1AA-5BD3-415F-B831-269791FD19CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -113,6 +119,7 @@ Global
 		{C0375254-6611-4188-967B-8D48ED13EA09} = {CA8BCFEF-B9D5-471F-A78F-5CB02B4931C6}
 		{8A1AD23F-018C-4A7A-8546-2001C5D26E88} = {CA8BCFEF-B9D5-471F-A78F-5CB02B4931C6}
 		{3697F876-B109-4208-87D9-2094724932BF} = {CA8BCFEF-B9D5-471F-A78F-5CB02B4931C6}
+		{F20AC1AA-5BD3-415F-B831-269791FD19CD} = {CA8BCFEF-B9D5-471F-A78F-5CB02B4931C6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87148347-E100-4333-8C09-F0E81CE16B78}

@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0375254-6611-4188-967B-8D48ED13EA09}</ProjectGuid>
+    <ProjectGuid>{F20AC1AA-5BD3-415F-B831-269791FD19CD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameTableManagementServiceTest</RootNamespace>
-    <AssemblyName>GameTableManagementServiceTest</AssemblyName>
+    <RootNamespace>GameServiceTest</RootNamespace>
+    <AssemblyName>GameServiceTest</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -52,8 +52,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameTableDBTest.cs" />
-    <Compile Include="GameTableManagementTest.cs" />
+    <Compile Include="GameDBTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,10 +63,6 @@
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{e2c35aaa-3f22-46c2-8469-424671759d7b}</Project>
       <Name>Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GameTableManagementService\GameTableManagementService.csproj">
-      <Project>{6968B2CF-1EF6-4D2A-9095-3A90EDEFB934}</Project>
-      <Name>GameTableManagementService</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{1033c2b8-3580-427d-b292-fc6d5ef55933}</Project>

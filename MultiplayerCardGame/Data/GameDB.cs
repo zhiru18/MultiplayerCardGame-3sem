@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 using Server.Model.Model;
 
 namespace Server.Data.Data {
@@ -13,7 +14,7 @@ namespace Server.Data.Data {
 
         public GameDB() {
 
-            conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
+            conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         }
 
         public void Delete(Game t) {
@@ -38,6 +39,13 @@ namespace Server.Data.Data {
 
         public void Update(Game t) {
             throw new NotImplementedException();
+        }
+
+        public Game GetById(int id) {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                connection.Open();
+                return connection.Query<Game>("SELECT Id, GameTableId FROM Game WHERE id = @id", new { id }).SingleOrDefault();
+            }
         }
     }
 }
