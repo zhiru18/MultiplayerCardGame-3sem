@@ -64,8 +64,8 @@
   <xs:element name="GameTable" nillable="true" type="tns:GameTable" />
   <xs:complexType name="Deck">
     <xs:sequence>
+      <xs:element minOccurs="0" name="DeckName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="cards" nillable="true" type="tns:ArrayOfCard" />
     </xs:sequence>
   </xs:complexType>

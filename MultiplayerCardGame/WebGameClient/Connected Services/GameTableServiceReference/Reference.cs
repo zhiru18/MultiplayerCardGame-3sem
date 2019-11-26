@@ -424,10 +424,10 @@ namespace WebGameClient.GameTableServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
+        private string DeckNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
+        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private WebGameClient.GameTableServiceReference.Card[] cardsField;
@@ -443,6 +443,19 @@ namespace WebGameClient.GameTableServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeckName {
+            get {
+                return this.DeckNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeckNameField, value) != true)) {
+                    this.DeckNameField = value;
+                    this.RaisePropertyChanged("DeckName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Id {
             get {
                 return this.IdField;
@@ -451,19 +464,6 @@ namespace WebGameClient.GameTableServiceReference {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
                 }
             }
         }

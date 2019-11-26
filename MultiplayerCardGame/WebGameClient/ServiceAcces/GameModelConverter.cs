@@ -52,7 +52,7 @@ namespace WebGameClient.ServiceAcces {
             return clientDeck;
         }
 
-        private static List<Models.CGUser> ConvertFromServiceListOfUsersToClientListOfUsers(GameServiceReference.CGUser[] ServiceUsers) {
+        private static List<Models.CGUser> ConvertFromServiceListOfUsersToClientListOfUsers(GameServiceReference.CGUser[] serviceUsers) {
             List<Models.CGUser> clientUsers = new List<Models.CGUser>();
             for(int i = 0; i <= serviceUsers.Length; i++) {
                 Models.CGUser clientUser = ConvertFromServiceUserToClientUser(serviceUsers[i]);
