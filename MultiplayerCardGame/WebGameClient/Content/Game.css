@@ -9,18 +9,18 @@ h2  {
     position: absolute;
     bottom: 0px;
     text-align: center;
-    left: 155px;
-    right: 155px;
-    background-color: gray;
+    left: 150px;
+    right: 150px;
+    background-color: lightgray;
     height: 150px;
 }
 .right {
     position: absolute;
     right: 0px;
-    width:150px;
+    width: 150px;
     height: 100%;
     text-align: center;
-    background-color: blue;
+    background-color: lightgray;
 }
 .left {
     position: absolute;
@@ -28,23 +28,24 @@ h2  {
     height: 100%;
     width: 150px;
     text-align: center;
-    background-color: red;
+    background-color: lightgray;
 }
 .top {
     position: absolute;
     top: 50px;
-    left:155px;
-    right:155px;
+    left:150px;
+    right:150px;
     text-align: center;
-    height:100px;
-    background-color: yellow;
+    height:140px;
+    background-color:lightgray;
 }
 .middle {
     position: absolute;
-    text-align: center;
-    top: 155px;
-    left:155px;
-    right:155px;
-    bottom:155px;
-    background-color:beige;
+    padding: 10px;
+    text-align:center;
+    top: 190px;
+    left:150px;
+    right:150px;
+    bottom:150px;
+    background-color:darkgreen;
 }
