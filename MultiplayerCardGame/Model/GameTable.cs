@@ -16,7 +16,10 @@ namespace Server.Model.Model{
         public string TableName { get; set;}
         [DataMember]
         public List<CGUser> Users { get; set; }
+
+        public int deckId { get; set; }
         [DataMember]
+
         public Deck Deck { get; set; }
      
 

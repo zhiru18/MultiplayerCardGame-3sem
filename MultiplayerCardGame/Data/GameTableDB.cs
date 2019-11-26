@@ -39,7 +39,7 @@ namespace Server.Data.Data {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
                 table = connection.Query<GameTable>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
-                table.Deck = deckDB.GetById(3);
+                table.Deck = deckDB.GetById(table.deckId);
                 table.Users = userDB.GetUserByTableId(id);
                 return table;
             }

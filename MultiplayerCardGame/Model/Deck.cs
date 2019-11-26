@@ -18,10 +18,5 @@ namespace Server.Model.Model {
         public Deck() {
             cards = new List<Card>();
         }
-        public Deck(int id, string deckName, List<Card> cards) {
-            this.Id = id;
-            this.DeckName = deckName;
-            this.cards = cards;
-        }
     }
 }
