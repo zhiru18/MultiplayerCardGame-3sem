@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using WebGameClient.GameServiceReference;
-using WebGameClient.Models;
 
 namespace WebGameClient.ServiceAcces {
-    internal class DataConverter {
+    internal class GameModelConverter {
         internal static GameServiceReference.GameTable ConvertFromClientGameTableToServiceGameTable(Models.GameTable clientGameTable) {
             GameServiceReference.GameTable serviceGameTable = new GameServiceReference.GameTable() {
                 Id = clientGameTable.Id,
@@ -58,13 +56,13 @@ namespace WebGameClient.ServiceAcces {
         private static List<Models.Card> ConvertFromListOfServiceCardsToListOfClientCards(GameServiceReference.Card[] serviceCards) {
             List<Models.Card> clientCards = new List<Models.Card>();
             for(int i = 0; i <= serviceCards.Length; i++) {
-                Models.Card clientCard = ConvertFromListCardToClientCard(serviceCards[i]);
+                Models.Card clientCard = ConvertFromServiceCardToClientCard(serviceCards[i]);
                 clientCards.Add(clientCard);
             }
             return clientCards;
         }
 
-        private static Models.Card ConvertFromListCardToClientCard(GameServiceReference.Card serviceCard) {
+        private static Models.Card ConvertFromServiceCardToClientCard(GameServiceReference.Card serviceCard) {
             Models.Card clientCard = new Models.Card() {
                 Id = serviceCard.Id,
                 cardtype = (Models.Card.CardType)serviceCard.cardtype,

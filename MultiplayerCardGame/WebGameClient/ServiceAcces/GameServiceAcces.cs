@@ -10,9 +10,9 @@ namespace WebGameClient.ServiceAcces {
         
         public Models.Game StartGame(Models.GameTable clientGameTable) {
             using (GameServiceClient proxy = new GameServiceClient()) {
-                GameServiceReference.GameTable serviceGameTable = DataConverter.ConvertFromClientGameTableToServiceGameTable(clientGameTable);
+                GameServiceReference.GameTable serviceGameTable = GameModelConverter.ConvertFromClientGameTableToServiceGameTable(clientGameTable);
                 GameServiceReference.Game serviceGame = proxy.StartGame(serviceGameTable);
-                Models.Game clientGame = DataConverter.ConvertFromServiceGameToClientGame(serviceGame);
+                Models.Game clientGame = GameModelConverter.ConvertFromServiceGameToClientGame(serviceGame);
                 return clientGame;
             }
         }

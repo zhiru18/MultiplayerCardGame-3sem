@@ -194,9 +194,10 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceAcces\DataConverter.cs" />
+    <Compile Include="ServiceAcces\GameModelConverter.cs" />
     <Compile Include="ServiceAcces\GameServiceAcces.cs" />
     <Compile Include="ServiceAcces\UserManagementServiceAccess.cs" />
+    <Compile Include="ServiceAcces\UserModelConverter.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
