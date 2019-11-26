@@ -29,7 +29,7 @@ namespace WebGameClient.ServiceAcces {
 
         private static List<Models.CGUser> ConvertFromServiceListOfUsersToClientListOfUsers(GameTableServiceReference.CGUser[] serviceUsers) {
             List<Models.CGUser> clientUsers = new List<Models.CGUser>();
-            for (int i = 0; i <= serviceUsers.Length; i++) {
+            for (int i = 0; i < serviceUsers.Length; i++) {
                 Models.CGUser clientUser = ConvertFromServiceUserToClientUser(serviceUsers[i]);
                 clientUsers.Add(clientUser);
             }
@@ -51,7 +51,7 @@ namespace WebGameClient.ServiceAcces {
 
         private static List<Models.Card> ConvertFromListOfServiceCardsToListOfClientCards(GameTableServiceReference.Card[] serviceCards) {
             List<Models.Card> clientCards = new List<Models.Card>();
-            for (int i = 0; i <= serviceCards.Length; i++) {
+            for (int i = 0; i < serviceCards.Length; i++) {
                 Models.Card clientCard = ConvertFromServiceCardToClientCard(serviceCards[i]);
                 clientCards.Add(clientCard);
             }
@@ -91,7 +91,7 @@ namespace WebGameClient.ServiceAcces {
 
         private static GameTableServiceReference.CGUser[] ConvertFromClientListOfUsersToServiceListOfUsers(List<Models.CGUser> clientUsers) {
             GameTableServiceReference.CGUser[] serviceUsers = new GameTableServiceReference.CGUser[clientUsers.Count];
-            for (int i = 0; i <= clientUsers.Count; i++) {
+            for (int i = 0; i < clientUsers.Count; i++) {
                 GameTableServiceReference.CGUser serviceUser = ConvertFromClientUserToServiceUser(clientUsers[i]);
                 serviceUsers[i] = serviceUser;
             }
@@ -113,7 +113,7 @@ namespace WebGameClient.ServiceAcces {
 
         private static GameTableServiceReference.Card[] ConvertFromListOfClientCardsToListOfServiceCards(List<Models.Card> clientCards) {
             GameTableServiceReference.Card[] serviceCards = new GameTableServiceReference.Card[clientCards.Count];
-            for (int i = 0; i <= clientCards.Count; i++) {
+            for (int i = 0; i < clientCards.Count; i++) {
                 GameTableServiceReference.Card serviceCard = ConvertFromClientCardToServiceCard(clientCards[i]);
                 serviceCards[i] = serviceCard;
             }

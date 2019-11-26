@@ -14,9 +14,10 @@ namespace WebGameClient.Controllers
         // GET: Game
         public ActionResult Index(int gameTableId) 
         {
-            GameServiceAcces gameServiceAcces = new GameServiceAcces();
-            GameTable gameTable = gameServiceAcces.GetGameTable(gameTableId);
-            Game game= gameServiceAcces.StartGame(gameTable);
+            GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
+            GameServiceAcces gameServiceAccess = new GameServiceAcces();
+            GameTable gameTable = gameTableServiceAcces.GetGameTable(gameTableId);
+            Game game= gameServiceAccess.StartGame(gameTable);
             return View(game);
         }
     }
