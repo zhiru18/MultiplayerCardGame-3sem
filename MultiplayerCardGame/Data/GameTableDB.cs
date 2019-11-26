@@ -33,9 +33,13 @@ namespace Server.Data.Data {
         }
 
         public GameTable GetById(int id) {
+            IDeckDBIF deckDB = new DeckDB();
+            GameTable table = new GameTable();
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
-                return connection.Query<GameTable>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
+                table = connection.Query<GameTable>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
+                deckDB.GetById(table.Deck.Id);
+                return table;
             }
         }
 
@@ -50,14 +54,14 @@ namespace Server.Data.Data {
 
         //insert the gametable with Deck
         public void Insert(GameTable table) {
-            string insertString = "INSERT INTO GameTable (tableName, isFull, deckId) VALUES (@TableNam, @IsFul, @DeckI)";
+            string insertString = "INSERT INTO GameTable (tableName, isFull, deckId) VALUES (@TableName, @IsFull, @DeckId)";
             using (SqlConnection connection = new SqlConnection(conString))
             using (SqlCommand createCommand = new SqlCommand(insertString, connection)) {
-                SqlParameter tableNameParam = new SqlParameter("@TableNam", table.TableName);
+                SqlParameter tableNameParam = new SqlParameter("@TableName", table.TableName);
                 createCommand.Parameters.Add(tableNameParam);
-                SqlParameter isFullParam = new SqlParameter("@IsFul", table.IsFull);
+                SqlParameter isFullParam = new SqlParameter("@IsFull", table.IsFull);
                 createCommand.Parameters.Add(isFullParam);
-                SqlParameter deckIdParam = new SqlParameter("@DeckI", table.Deck.Id);
+                SqlParameter deckIdParam = new SqlParameter("@DeckId", table.Deck.Id);
                 createCommand.Parameters.Add(deckIdParam);
                 connection.Open();
                 createCommand.ExecuteNonQuery();

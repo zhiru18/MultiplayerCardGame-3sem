@@ -11,14 +11,14 @@ namespace Tests.GameControllerTest {
         public void ShuffleDeckTest() {
             GameController gameController = new GameController();
             Deck deck = new Deck();
-            Card card1 = new Card(Card.CardType.ATTACK, 1, "Attack", "Attack", 10);
-            Card card2 = new Card(Card.CardType.ATTACK, 2, "Attack", "Attack", 10);
-            Card card3 = new Card(Card.CardType.ATTACK, 3, "Attack", "Attack", 10);
-            Card card4 = new Card(Card.CardType.ATTACK, 4, "Attack", "Attack", 10);
-            Card card5 = new Card(Card.CardType.ATTACK, 5, "Attack", "Attack", 10);
-            Card card6 = new Card(Card.CardType.ATTACK, 6, "Attack", "Attack", 10);
-            Card card7 = new Card(Card.CardType.ATTACK, 7, "Attack", "Attack", 10);
-            Card card8 = new Card(Card.CardType.ATTACK, 8, "Attack", "Attack", 10);
+            Card card1 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card2 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card3 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card4 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card5 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card6 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card7 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card8 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
             deck.cards.Add(card1);
             deck.cards.Add(card2);
             deck.cards.Add(card3);
@@ -46,5 +46,43 @@ namespace Tests.GameControllerTest {
                 }
             }
         }
+
+        [TestMethod]
+        public void DealCardsTest() {
+            GameController gameController = new GameController();
+            Deck deck = new Deck();
+            Card card1 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card2 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card3 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card4 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card5 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card6 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card7 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            Card card8 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
+            deck.cards.Add(card1);
+            deck.cards.Add(card2);
+            deck.cards.Add(card3);
+            deck.cards.Add(card4);
+            deck.cards.Add(card5);
+            deck.cards.Add(card6);
+            deck.cards.Add(card7);
+            deck.cards.Add(card8);
+
+            List<CGUser> users = new List<CGUser>();
+            CGUser user1 = new CGUser();          
+            users.Add(user1);
+         
+            gameController.DealCards(deck, users);
+            List<Card> userCards = user1.cards;
+            
+           Assert.IsTrue(userCards.Count >0);
+        }
+
+        //[TestMethod]
+        //public void CreateGameTest() {
+        //    GameController gameController = new GameController();
+        //    Game game1 = new Game();
+        //    gameController.CreateGame(game1);
+        //}
     }
 }

@@ -17,8 +17,6 @@ namespace WebGameClient.ServiceAcces {
             }
         }
 
-        internal Models.GameTable GetGameTable(int gameTableId) {
-            throw new NotImplementedException();
-        }
+       
     }
 }

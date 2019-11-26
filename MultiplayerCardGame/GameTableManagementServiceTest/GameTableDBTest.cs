@@ -32,7 +32,7 @@ namespace GameTableManagementServiceTest {
             Assert.AreEqual(table5.TableName, tableT.TableName);
         }
         [TestMethod]
-        public void getbyidtest() {
+        public void GetbyIdTest() {
             gameTableDB = new GameTableDB();
             GameTable table1 = gameTableDB.GetById(2);
             Assert.AreEqual(2, table1.Id);

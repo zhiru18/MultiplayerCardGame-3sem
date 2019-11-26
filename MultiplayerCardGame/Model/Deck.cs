@@ -11,7 +11,7 @@ namespace Server.Model.Model {
         [DataMember]
         public int Id { get; set; }
         [DataMember]
-        public string Name { get; set; }
+        public string DeckName { get; set; }
         [DataMember]
         public List<Card> cards { get; set; }
 
