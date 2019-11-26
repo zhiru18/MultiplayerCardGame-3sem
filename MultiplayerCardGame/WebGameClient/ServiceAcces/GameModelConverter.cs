@@ -31,10 +31,10 @@ namespace WebGameClient.ServiceAcces {
             return clientGameTable;
         }
 
-        private static List<Models.CGUser> ConvertFromServiceListOfUsersToClientListOfUsers(GameServiceReference.CGUser[] ServiceUsers) {
+        private static List<Models.CGUser> ConvertFromServiceListOfUsersToClientListOfUsers(GameServiceReference.CGUser[] serviceUsers) {
             List<Models.CGUser> clientUsers = new List<Models.CGUser>();
-            for(int i = 0; i <= ServiceUsers.Length; i++) {
-                Models.CGUser clientUser = ConvertFromServiceUserToClientUser(ServiceUsers[i]);
+            for(int i = 0; i <= serviceUsers.Length; i++) {
+                Models.CGUser clientUser = ConvertFromServiceUserToClientUser(serviceUsers[i]);
                 clientUsers.Add(clientUser);
             }
             return clientUsers;
