@@ -30,7 +30,7 @@ namespace Server.Controllers.Controller {
         }
 
         public void DealCards(Deck deck, List<CGUser> users) {
-            for (int i = 0; i <= 5; i++) {
+            for (int i = 0; i < 5; i++) {
                 foreach (CGUser user in users) {
                     Card card = deck.cards[i];
                     user.cards.Add(card);

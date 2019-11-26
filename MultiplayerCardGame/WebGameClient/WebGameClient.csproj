@@ -174,6 +174,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\GameTableServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\UserManagementServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -197,6 +202,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceAcces\GameModelConverter.cs" />
     <Compile Include="ServiceAcces\GameServiceAcces.cs" />
+    <Compile Include="ServiceAcces\GameTableModelConverter.cs" />
+    <Compile Include="ServiceAcces\GameTableServiceAccess.cs" />
     <Compile Include="ServiceAcces\UserManagementServiceAccess.cs" />
     <Compile Include="ServiceAcces\UserModelConverter.cs" />
     <Compile Include="Startup.cs" />
@@ -215,6 +222,19 @@
     <Content Include="Connected Services\GameServiceReference\WebGameClient.GameServiceReference.Game.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\GameTableServiceReference\Server.Model.Model.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GameTableServiceReference\service.wsdl" />
+    <None Include="Connected Services\GameTableServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GameTableServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\GameTableServiceReference\WebGameClient.GameTableServiceReference.GameTable.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\UserManagementServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\UserManagementServiceReference\configuration.svcinfo" />
     <None Include="Connected Services\UserManagementServiceReference\Reference.svcmap">
@@ -224,6 +244,12 @@
     <None Include="Connected Services\GameServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\GameServiceReference\configuration.svcinfo" />
     <None Include="Connected Services\GameServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\GameTableServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\GameTableServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\GameTableServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -319,6 +345,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\GameServiceReference\" />
+    <WCFMetadataStorage Include="Connected Services\GameTableServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\UserManagementServiceReference\" />
   </ItemGroup>
   <PropertyGroup>

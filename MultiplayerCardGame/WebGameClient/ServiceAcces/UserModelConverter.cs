@@ -22,7 +22,7 @@ namespace WebGameClient.ServiceAcces {
 
         private static List<Models.Card> ConvertFromListOfServiceCardsToListOfClientCards(UserManagementServiceReference.Card[] serviceCards) {
             List<Models.Card> clientCards = new List<Models.Card>();
-            for (int i = 0; i <= serviceCards.Length; i++) {
+            for (int i = 0; i < serviceCards.Length; i++) {
                 Models.Card clientCard = ConvertFromServiceCardToClientCard(serviceCards[i]);
                 clientCards.Add(clientCard);
             }
@@ -56,7 +56,7 @@ namespace WebGameClient.ServiceAcces {
 
         private static UserManagementServiceReference.Card[] ConvertFromListOfClientCardsToListOfServiceCards(List<Models.Card> clientCards) {
             UserManagementServiceReference.Card[] serviceCards = new UserManagementServiceReference.Card[clientCards.Count];
-            for (int i = 0; i <= clientCards.Count; i++) {
+            for (int i = 0; i < clientCards.Count; i++) {
                 UserManagementServiceReference.Card serviceCard = ConvertFromClientCardToServiceCard(clientCards[i]);
                 serviceCards[i] = serviceCard;
             }
