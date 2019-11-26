@@ -30,22 +30,17 @@ namespace Server.Controllers.Controller {
         }
 
         public void DealCards(Deck deck, List<CGUser> users) {
-            int cardindex = 0;
-            for (int i = 0; i < 5; i++) {
-                foreach (CGUser user in users) {
-                    if (i == 0 && cardindex == 0) {
-                        Card card = deck.cards[cardindex];
-                        user.cards.Add(card);
-                        deck.cards.Remove(card);
-                        cardindex++;
-                    } else {
-                        Card card = deck.cards[cardindex];
-                        user.cards.Add(card);
-                        deck.cards.Remove(card);
-                        cardindex++;
-                    }
+            List<Card> dealtCards = new List<Card>();
+            foreach (CGUser user in users) {
+                for (int i = 0; i < 5; i++) {
+                    Card card = deck.cards[i];
+                    dealtCards.Add(card);
+                    deck.cards.Remove(card);
                 }
+                user.cards.AddRange(dealtCards);
+                dealtCards.Clear();
             }
+              
         }
         public void CreateGame(Game game) {
             IGameDBIF gameDB = new GameDB();
