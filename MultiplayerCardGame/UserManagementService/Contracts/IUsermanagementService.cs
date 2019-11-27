@@ -19,5 +19,7 @@ namespace Server.Services.UserManagementService.Contracts
         [OperationContract]
         void UpdateUser(CGUser cguser);
 
+        void UpdateUserTableId(CGUser cgUser, int tableId);
+
     }
 }

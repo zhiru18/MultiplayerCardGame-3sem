@@ -28,5 +28,12 @@ namespace Server.Services.UserManagementService
         public void UpdateUser(CGUser user) {
             cGUserDB.Update(user);
         }
+
+        public void UpdateUserTableId(CGUser cgUser, int tableId) {
+            cGUserDB.UpdateUserTableId(cgUser, tableId);
+        }
+        public List<CGUser> GetUserByTableId(int id) {
+            return cGUserDB.GetUserByTableId(id);
+        }
     }
 }

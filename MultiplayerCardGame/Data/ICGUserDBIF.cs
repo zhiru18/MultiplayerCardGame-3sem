@@ -10,5 +10,6 @@ namespace Server.Data.Data {
         CGUser GetUserByEmail(string useremail);
         CGUser GetById(string id);
         List<CGUser> GetUserByTableId(int id);
+        void UpdateUserTableId(CGUser user, int tableId);
     }
 }

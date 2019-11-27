@@ -60,5 +60,11 @@ namespace Server.Data.Data {
                 return (List<CGUser>)connection.Query<CGUser>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE tableId = @id", new { id });
             }
         }
+        public void UpdateUserTableId(CGUser user, int tableId) {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                var sql = "UPDATE CGUser SET tableId = @tableId WHERE id = @id;";
+                connection.Execute(sql, user);
+            }
+        }
     }
 }
