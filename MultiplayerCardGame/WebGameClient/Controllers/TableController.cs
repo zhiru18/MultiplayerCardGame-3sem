@@ -12,17 +12,16 @@ namespace WebGameClient.Controllers {
         public ActionResult Index() {
             List<GameTable> gameTables;
             GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
-            ViewBag.Situation = 0;
-            gameTables = gameTableServiceAcces.GetAll();
-            return View(gameTables);
+             ViewBag.Situation = 0;
+             gameTables = gameTableServiceAcces.GetAll();                      
+             return View(gameTables);
         }
-
         [HttpPost]
-        public ActionResult Index(string tableName) {
+        public ActionResult Index(string InputTableName) {
             GameTable foundGt = null;
             GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
-            if (tableName != null) {
-                foundGt = gameTableServiceAcces.GetTableByName(tableName);
+            if (InputTableName != null) {
+                foundGt = gameTableServiceAcces.GetTableByName(InputTableName);
             }
             List<GameTable> tables = new List<GameTable>() {foundGt };
             ViewBag.Situation = 2;
