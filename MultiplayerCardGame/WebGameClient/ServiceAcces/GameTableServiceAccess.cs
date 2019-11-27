@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using WebGameClient.GameTableServiceReference;
-
+using WebGameClient.Models;
 
 namespace WebGameClient.ServiceAcces {
     public class GameTableServiceAccess {
@@ -14,6 +14,15 @@ namespace WebGameClient.ServiceAcces {
                 Models.GameTable clientGameTable = GameTableModelConverter.ConvertFromServiceGameTableToClientGameTable(serviceGameTable);
                 return clientGameTable;
             }
+        }
+
+        public List<Models.GameTable> GetAll() {
+            using (GameTableManagementServiceClient proxy = new GameTableManagementServiceClient()) {
+                var serviceGameTables = proxy.GetAll();
+                List<Models.GameTable> clientGameTables = GameTableModelConverter.ConvertFromServiceGameTablesToClientGameTables(serviceGameTables);
+                return clientGameTables;
+            }
+
         }
 
         public Models.GameTable CreateGameTable(Models.CGUser user, string tableName) {

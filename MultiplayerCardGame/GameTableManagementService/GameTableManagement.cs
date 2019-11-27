@@ -29,8 +29,13 @@ namespace Server.Services.GameTableManagementService {
             return res;
         }
 
+        public IEnumerable<GameTable> GetAll() {
+            return gameTableDB.GetAll();
+        }
+
         public GameTable GetGameTableById(int id) {
             return gameTableDB.GetById(id);
         }
+
     }
 }

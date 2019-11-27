@@ -512,6 +512,12 @@ namespace WebGameClient.GameTableServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/GetGameTableById", ReplyAction="http://tempuri.org/IGameTableManagementService/GetGameTableByIdResponse")]
         System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable> GetGameTableByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/GetAll", ReplyAction="http://tempuri.org/IGameTableManagementService/GetAllResponse")]
+        WebGameClient.GameTableServiceReference.GameTable[] GetAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/GetAll", ReplyAction="http://tempuri.org/IGameTableManagementService/GetAllResponse")]
+        System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable[]> GetAllAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -563,6 +569,14 @@ namespace WebGameClient.GameTableServiceReference {
         
         public System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable> GetGameTableByIdAsync(int id) {
             return base.Channel.GetGameTableByIdAsync(id);
+        }
+        
+        public WebGameClient.GameTableServiceReference.GameTable[] GetAll() {
+            return base.Channel.GetAll();
+        }
+        
+        public System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable[]> GetAllAsync() {
+            return base.Channel.GetAllAsync();
         }
     }
 }

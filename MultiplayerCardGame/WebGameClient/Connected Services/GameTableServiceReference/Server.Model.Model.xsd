@@ -76,4 +76,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCGUser" nillable="true" type="tns:ArrayOfCGUser" />
+  <xs:complexType name="ArrayOfGameTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GameTable" nillable="true" type="tns:GameTable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGameTable" nillable="true" type="tns:ArrayOfGameTable" />
 </xs:schema>

@@ -17,5 +17,7 @@ namespace Server.Services.GameTableManagementService.Contracts {
         bool DeleteGameTable(int id);
         [OperationContract]
         GameTable GetGameTableById(int id);
+        [OperationContract]
+        IEnumerable<GameTable> GetAll();
     }
 }

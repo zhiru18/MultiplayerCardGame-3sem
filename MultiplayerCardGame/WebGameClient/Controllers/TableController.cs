@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebGameClient.Models;
+using WebGameClient.ServiceAcces;
 
 namespace WebGameClient.Controllers
 {
@@ -11,7 +13,9 @@ namespace WebGameClient.Controllers
         // GET: Table
         public ActionResult Index()
         {
-            return View();
+            GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
+            List<GameTable> gameTables = gameTableServiceAcces.GetAll();
+            return View(gameTables);
         }
     }
 }
