@@ -25,6 +25,14 @@ namespace WebGameClient.ServiceAcces {
 
         }
 
+        public Models.GameTable GetTableByName(string tableName) {
+            using (GameTableManagementServiceClient proxy = new GameTableManagementServiceClient()) {
+                GameTableServiceReference.GameTable serviceGameTable = proxy.GetGameTableByTableName(tableName);
+                Models.GameTable clientGameTable = GameTableModelConverter.ConvertFromServiceGameTableToClientGameTable(serviceGameTable);
+                return clientGameTable;
+            }
+        }
+
         public Models.GameTable CreateGameTable(Models.CGUser user, string tableName) {
             using(GameTableManagementServiceClient proxy = new GameTableManagementServiceClient()) {
                 GameTableServiceReference.CGUser serviceUser = GameTableModelConverter.ConvertFromClientUserToServiceUser(user);

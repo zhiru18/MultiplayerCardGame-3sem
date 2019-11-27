@@ -56,4 +56,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetGameTableByTableName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGameTableByTableNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Server.Model.Model" minOccurs="0" name="GetGameTableByTableNameResult" nillable="true" type="q5:GameTable" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

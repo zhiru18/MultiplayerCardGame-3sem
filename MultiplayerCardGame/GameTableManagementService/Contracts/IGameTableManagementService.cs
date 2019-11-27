@@ -19,5 +19,7 @@ namespace Server.Services.GameTableManagementService.Contracts {
         GameTable GetGameTableById(int id);
         [OperationContract]
         IEnumerable<GameTable> GetAll();
+        [OperationContract]
+        GameTable GetGameTableByTableName(string name);
     }
 }

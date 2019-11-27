@@ -37,5 +37,8 @@ namespace Server.Services.GameTableManagementService {
             return gameTableDB.GetById(id);
         }
 
+        public GameTable GetGameTableByTableName(string name) {
+            return gameTableDB.GetGameTableByTableName(name);
+        }
     }
 }
