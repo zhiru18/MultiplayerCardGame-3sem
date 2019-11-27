@@ -1,7 +1,37 @@
-﻿
+﻿@model List<WebGameClient.Models.GameTable>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    li a {
+        display: block;
+        color: green;
+        text-align: center;
+        padding: 16px;
+        text-decoration: none;
+    }
+</style>
+
+<h2>Game Tables</h2>
+    <form action="/Table/Index" method="post">
+        <input id="InputTableName" name="InputTableName" type="text" />
+        <input type="submit" value="Search table name" />
+    </form>
+@if (ViewBag.Situation < 1) {
+    <select multiple>
+        @foreach (WebGameClient.Models.GameTable item in Model) {
+            <option>
+                Table ID: @item.Id Table Name: @item.TableName Available: @item.IsFull
+            </option>
+        }
+    </select>
+} else if (ViewBag.Situation == 2) {
+    List<WebGameClient.Models.CGUser> users = Model[0].Users;
+    <h2>Found Table: @Model[0].TableName</h2>
+    foreach (WebGameClient.Models.CGUser item in users) {
+    <h3>Users: @item.UserName</h3>
+        }
+    }
+
 

@@ -18,6 +18,14 @@ namespace WebGameClient.ServiceAcces {
             return clientGameTable;
         }
 
+        public static List<Models.GameTable> ConvertFromServiceGameTablesToClientGameTables(IEnumerable<GameTableServiceReference.GameTable> serviceGameTables) {
+            List<Models.GameTable> clientGameTables = new List<Models.GameTable>();
+            foreach (GameTableServiceReference.GameTable sgt in serviceGameTables) {
+                Models.GameTable mgt = ConvertFromServiceGameTableToClientGameTable(sgt);
+                clientGameTables.Add(mgt);
+            }
+            return clientGameTables;
+        }
         private static Models.Deck ConvertFromServiceDeckToClientDeck(GameTableServiceReference.Deck serviceDeck) {
             Models.Deck clientDeck = new Models.Deck() {
                 Id = serviceDeck.Id,

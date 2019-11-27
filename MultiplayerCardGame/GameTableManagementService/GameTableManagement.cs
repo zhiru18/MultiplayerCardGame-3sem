@@ -31,6 +31,10 @@ namespace Server.Services.GameTableManagementService {
             return res;
         }
 
+        public IEnumerable<GameTable> GetAll() {
+            return gameTableDB.GetAll();
+        }
+
         public GameTable GetGameTableById(int id) {
             return gameTableDB.GetById(id);
         }
@@ -42,6 +46,10 @@ namespace Server.Services.GameTableManagementService {
                 table.IsFull = true;
             }
             return table;
+        }
+
+        public GameTable GetGameTableByTableName(string name) {
+            return gameTableDB.GetGameTableByTableName(name);
         }
     }
 }

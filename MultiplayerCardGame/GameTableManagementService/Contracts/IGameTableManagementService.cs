@@ -18,6 +18,10 @@ namespace Server.Services.GameTableManagementService.Contracts {
         [OperationContract]
         GameTable GetGameTableById(int id);
         [OperationContract]
+        IEnumerable<GameTable> GetAll();
+        [OperationContract]
+        GameTable GetGameTableByTableName(string name);
+        [OperationContract]
         GameTable JoinGameTable(CGUser user, GameTable table);
     }
 }

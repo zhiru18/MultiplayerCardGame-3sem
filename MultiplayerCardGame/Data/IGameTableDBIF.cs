@@ -8,5 +8,6 @@ using Server.Model.Model;
 namespace Server.Data.Data {
     public interface IGameTableDBIF : IGeneralDBIF<GameTable> {
         GameTable GetById(int id);
+        GameTable GetGameTableByTableName(string name);
     }
 }

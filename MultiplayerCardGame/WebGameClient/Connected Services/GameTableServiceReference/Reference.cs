@@ -512,6 +512,18 @@ namespace WebGameClient.GameTableServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/GetGameTableById", ReplyAction="http://tempuri.org/IGameTableManagementService/GetGameTableByIdResponse")]
         System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable> GetGameTableByIdAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/GetAll", ReplyAction="http://tempuri.org/IGameTableManagementService/GetAllResponse")]
+        WebGameClient.GameTableServiceReference.GameTable[] GetAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/GetAll", ReplyAction="http://tempuri.org/IGameTableManagementService/GetAllResponse")]
+        System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable[]> GetAllAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/GetGameTableByTableName", ReplyAction="http://tempuri.org/IGameTableManagementService/GetGameTableByTableNameResponse")]
+        WebGameClient.GameTableServiceReference.GameTable GetGameTableByTableName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/GetGameTableByTableName", ReplyAction="http://tempuri.org/IGameTableManagementService/GetGameTableByTableNameResponse")]
+        System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable> GetGameTableByTableNameAsync(string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -563,6 +575,22 @@ namespace WebGameClient.GameTableServiceReference {
         
         public System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable> GetGameTableByIdAsync(int id) {
             return base.Channel.GetGameTableByIdAsync(id);
+        }
+        
+        public WebGameClient.GameTableServiceReference.GameTable[] GetAll() {
+            return base.Channel.GetAll();
+        }
+        
+        public System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable[]> GetAllAsync() {
+            return base.Channel.GetAllAsync();
+        }
+        
+        public WebGameClient.GameTableServiceReference.GameTable GetGameTableByTableName(string name) {
+            return base.Channel.GetGameTableByTableName(name);
+        }
+        
+        public System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable> GetGameTableByTableNameAsync(string name) {
+            return base.Channel.GetGameTableByTableNameAsync(name);
         }
     }
 }

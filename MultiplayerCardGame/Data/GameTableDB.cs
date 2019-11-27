@@ -45,6 +45,19 @@ namespace Server.Data.Data {
             }
         }
 
+        public GameTable GetGameTableByTableName(string tableName) {
+            IDeckDBIF deckDB = new DeckDB();
+            ICGUserDBIF userDB = new CGUserDB();
+            GameTable table = new GameTable();
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                connection.Open();
+                table = connection.Query<GameTable>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE tableName = @tableName", new { tableName }).SingleOrDefault();
+                table.Deck = deckDB.GetById(table.deckId);
+                table.Users = userDB.GetUserByTableId(table.Id);
+                return table;
+            }
+        }
+
         //insert the gametable without Deck
         //public void Insert(GameTable table) {
         //    using (SqlConnection connection = new SqlConnection(conString)) {
