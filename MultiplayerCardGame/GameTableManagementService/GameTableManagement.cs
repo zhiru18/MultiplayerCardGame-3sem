@@ -39,13 +39,16 @@ namespace Server.Services.GameTableManagementService {
             return gameTableDB.GetById(id);
         }
 
-        public GameTable JoinGameTable(CGUser user, GameTable table) {
-            userManagement.UpdateUserTableId(user, table.Id);
-            table.Users.Add(user);
-            if (table.Users.Count == 4) {
-                table.IsFull = true;
+        public GameTable JoinGameTable(CGUser user, GameTable chosenTable) {
+            GameTable databaseTable = gameTableDB.GetById(chosenTable.Id);
+            if (chosenTable.IsFull == databaseTable.IsFull) {
+                userManagement.UpdateUserTableId(user, chosenTable.Id);
+                chosenTable.Users.Add(user);
+                if (chosenTable.Users.Count == 4) {
+                    chosenTable.IsFull = true;
+                }
             }
-            return table;
+            return chosenTable;
         }
 
         public GameTable GetGameTableByTableName(string name) {

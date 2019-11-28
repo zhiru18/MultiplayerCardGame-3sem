@@ -26,12 +26,27 @@ namespace Server.Data.Data {
             }
         }
 
-        //deck og users vil være tomme i alle GameTables
+        
         public IEnumerable<GameTable> GetAll() {
-            using (SqlConnection connection = new SqlConnection(conString)) {
-                connection.Open();
-                return connection.Query<GameTable>("SELECT Id, tableName, isFull, deckId FROM GameTable").ToList();
+            IDeckDBIF deckDB = new DeckDB();
+            ICGUserDBIF userDB = new CGUserDB();
+            IEnumerable<GameTable> tables = null;
+            try {
+                using (TransactionScope scope = new TransactionScope()) {
+                    using (SqlConnection connection = new SqlConnection(conString)) {
+                        connection.Open();
+                        tables = connection.Query<GameTable>("SELECT Id, tableName, isFull, deckId FROM GameTable").ToList();
+                        foreach(GameTable gameTable in tables) {
+                            gameTable.Deck = deckDB.GetById(gameTable.deckId);
+                            gameTable.Users = userDB.GetUserByTableId(gameTable.Id);
+                        }
+                        scope.Complete();
+                    }
+                }
+            }catch(TransactionAbortedException tae) {
+
             }
+            return tables;
         }
 
         public GameTable GetById(int id) {
