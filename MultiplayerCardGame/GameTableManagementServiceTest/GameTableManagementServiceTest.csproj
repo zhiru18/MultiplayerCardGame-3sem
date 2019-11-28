@@ -54,7 +54,7 @@
   <ItemGroup>
     <Compile Include="GameTableDBTest.cs" />
     <Compile Include="GameTableManagementTest.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="GameTableManagementServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
