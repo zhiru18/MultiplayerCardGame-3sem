@@ -54,5 +54,9 @@ namespace WebGameClient.Controllers {
         public ActionResult Succes() {
             return View();
         }
+
+        public ActionResult Join() {
+            return View();
+        }
     }
 }
