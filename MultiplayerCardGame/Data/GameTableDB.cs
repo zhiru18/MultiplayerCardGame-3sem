@@ -28,10 +28,18 @@ namespace Server.Data.Data {
 
         //deck og users vil være tomme i alle GameTables
         public IEnumerable<GameTable> GetAll() {
+            ICGUserDBIF userDB = new CGUserDB();
+            IDeckDBIF deckDB = new DeckDB();
+            List<GameTable> gameTables;
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
-                return connection.Query<GameTable>("SELECT Id, tableName, isFull, deckId FROM GameTable").ToList();
+                gameTables= connection.Query<GameTable>("SELECT Id, tableName, isFull, deckId FROM GameTable").ToList();
+                foreach(var t in gameTables) {
+                    t.Deck = deckDB.GetById(t.deckId);
+                    t.Users = userDB.GetUserByTableId(t.Id);
+                }
             }
+            return gameTables;
         }
 
         public GameTable GetById(int id) {
