@@ -34,21 +34,25 @@ namespace WebGameClient.Controllers {
         //    return View(gameTables);
 
         //}
-        public ActionResult Create() {
+        //public ActionResult Create() {
 
-            return View();
-        }
-        [HttpPost]
+        //    return View();
+        //}
+        //[HttpPost]
         public ActionResult Create(string tableName) {
             GameTable foundGt = null;
             GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
             if (tableName != null ) {
               string userId = User.Identity.GetUserId();
-              gameTableServiceAcces.CreateGameTable(userId,tableName);
+              foundGt = gameTableServiceAcces.CreateGameTable(userId,tableName);
             }
             List<GameTable> tables = new List<GameTable>() { foundGt };
-            ViewBag.Situation = 2;
+            ViewBag.Situation = 3;
             return View(tables);
+        }
+
+        public ActionResult Succes() {
+            return View();
         }
     }
 }

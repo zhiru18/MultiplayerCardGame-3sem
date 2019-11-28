@@ -1,0 +1,16 @@
+﻿@model List<WebGameClient.Models.GameTable>
+@{
+    ViewBag.Title = "Succes";
+}
+
+<h2>Game Table was created</h2>
+
+@if (ViewBag.Situation == 2) {
+    List<WebGameClient.Models.CGUser>
+    users = Model[0].Users;
+    <h2>Created Game Table: @Model[0].TableName</h2>
+    foreach (WebGameClient.Models.CGUser item in users) {
+    <h3>Players on table: @item.UserName</h3>
+    }
+}
+
