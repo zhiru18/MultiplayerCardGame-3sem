@@ -22,6 +22,6 @@ namespace Server.Services.GameTableManagementService.Contracts {
         [OperationContract]
         GameTable GetGameTableByTableName(string name);
         [OperationContract]
-        GameTable JoinGameTable(CGUser user, GameTable table);
+        bool JoinGameTable(CGUser user, GameTable table);
     }
 }
