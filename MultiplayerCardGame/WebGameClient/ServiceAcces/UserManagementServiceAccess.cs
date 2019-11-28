@@ -15,10 +15,10 @@ namespace WebGameClient.ServiceAcces {
         }
 
         public Models.CGUser GetUserByUserId(string userId) {
-            throw new NotImplementedException();
+
             using (UserManagementServiceClient proxy = new UserManagementServiceClient()) {
-                GameTableServiceReference.CGUser serviceUser= proxy.GetUserByUserId(userId);
-                Models.CGUser clientUser = GameTableModelConverter.ConvertFromServiceUserToClientUser(serviceUser);
+                UserManagementServiceReference.CGUser serviceUser = proxy.GetUserByUserId(userId);
+                Models.CGUser clientUser = UserModelModelConverter.ConvertFromServiceUserToClientUser(serviceUser);
                 return clientUser;
             }
         }

@@ -7,7 +7,7 @@ namespace WebGameClient.ServiceAcces {
     internal class UserModelModelConverter {
        
 
-        private static Models.CGUser ConvertFromServiceUserToClientUser(UserManagementServiceReference.CGUser serviceUser) {
+        internal static Models.CGUser ConvertFromServiceUserToClientUser(UserManagementServiceReference.CGUser serviceUser) {
             Models.CGUser clientUser = new Models.CGUser() {
                 Id = serviceUser.Id,
                 UserName = serviceUser.UserName,
