@@ -29,8 +29,7 @@ namespace Server.Model.Model{
             this.Deck = new Deck();
         }
 
-        public GameTable(int id, string tableName, bool isfull, int deckId) {
-            this.Id = id;
+        public GameTable(string tableName, bool isfull, int deckId) {
             this.TableName = tableName;
             this.IsFull = isfull;
             this.Users = new List<CGUser>();
