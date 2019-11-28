@@ -15,12 +15,12 @@ namespace Server.Services.GameTableManagementService {
         IGameTableDBIF gameTableDB = new GameTableDB();
         UserManagement userManagement = new UserManagement();
         public GameTable CreateGameTable(CGUser user, string tableName) {
-            GameTable table = new GameTable(tableName);
-            table.Users.Add(user);
+            GameTable table = new GameTable(tableName);          
             Deck deck = new Deck();
             deck.Id = 2;
             table.Deck = deck;
             gameTableDB.Insert(table);
+            JoinGameTable(user, table);
             return table;
         }
 
