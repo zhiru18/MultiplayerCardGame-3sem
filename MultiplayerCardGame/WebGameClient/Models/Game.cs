@@ -10,9 +10,8 @@ namespace WebGameClient.Models
         public int Id { get; set; }
         public GameTable gameTable { get; set; }
 
-        public Game(int id, GameTable gameTable)
+        public Game(GameTable gameTable)
         {
-            this.Id = id;
             this.gameTable = gameTable;
         }
 

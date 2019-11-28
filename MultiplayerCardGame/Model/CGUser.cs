@@ -39,8 +39,7 @@ namespace Server.Model.Model {
         [DataMember]
         public List<Card> cards { get; set; }
 
-        public CGUser(string id, string userName, string email, UserType userType, UserStatus userStatus) {
-            this.Id = id;
+        public CGUser(string userName, string email, UserType userType, UserStatus userStatus) {
             this.UserName = userName;
             this.Email = email;
             this.userType = userType;

@@ -18,9 +18,8 @@ namespace WebGameClient.Models
         public int Health { get; set; }
         public List<Card> cards { get; set; }
 
-        public CGUser(string id, string userName, string email, UserType userType, UserStatus userStatus)
+        public CGUser(string userName, string email, UserType userType, UserStatus userStatus)
         {
-            this.Id = id;
             this.UserName = userName;
             this.Email = email;
             this.userType = userType;

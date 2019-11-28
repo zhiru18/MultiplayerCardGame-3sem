@@ -9,8 +9,7 @@ namespace WebGameClient.Models {
         public string Name { get; set; }
         public List<Card> cards { get; set; }
 
-        public Deck(int id, string name) {
-            this.Id = id;
+        public Deck(string name) {
             this.Name = name;
             cards = new List<Card>();
         }
