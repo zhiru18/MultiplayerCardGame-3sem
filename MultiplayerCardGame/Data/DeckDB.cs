@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using Dapper;
 using Server.Model.Model;
 
@@ -34,13 +35,20 @@ namespace Server.Data.Data {
         public Deck GetById(int id) {
             ICardDBIF cardDB = new CardDB();
             Deck deck = new Deck();
-            using (SqlConnection connection = new SqlConnection(conString)) {
-                connection.Open();
-                deck = connection.Query<Deck>("SELECT Id, deckName FROM Deck WHERE id = @id", new { id }).SingleOrDefault();
-                // TODO: Change so it only gets cards that are linked to the deck. Must also add table CardDeck to the db and add column to card.
-                deck.cards = (List<Card>)cardDB.GetAll();
-                return deck;
+            try {
+                using (TransactionScope scope = new TransactionScope()) {
+                    using (SqlConnection connection = new SqlConnection(conString)) {
+                        connection.Open();
+                        deck = connection.Query<Deck>("SELECT Id, deckName FROM Deck WHERE id = @id", new { id }).SingleOrDefault();
+                        // TODO: Change so it only gets cards that are linked to the deck. Must also add table CardDeck to the db and add column to card.
+                        deck.cards = (List<Card>)cardDB.GetAll();
+                        scope.Complete(); 
+                    }
+                }
+            }catch(TransactionAbortedException tae) {
+                //maybe throw our own exception
             }
+            return deck;
         }
 
         public void Insert(Deck deck) {
