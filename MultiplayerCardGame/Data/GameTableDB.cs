@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using Dapper;
 using Server.Model.Model;
 
@@ -25,6 +26,7 @@ namespace Server.Data.Data {
             }
         }
 
+        //deck og users vil være tomme i alle GameTables
         public IEnumerable<GameTable> GetAll() {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
@@ -36,26 +38,41 @@ namespace Server.Data.Data {
             IDeckDBIF deckDB = new DeckDB();
             ICGUserDBIF userDB = new CGUserDB();
             GameTable table = new GameTable();
-            using (SqlConnection connection = new SqlConnection(conString)) {
-                connection.Open();
-                table = connection.Query<GameTable>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
-                table.Deck = deckDB.GetById(table.deckId);
-                table.Users = userDB.GetUserByTableId(id);
-                return table;
+            try {
+                using (TransactionScope scope = new TransactionScope()) { 
+                using (SqlConnection connection = new SqlConnection(conString)) {
+                    connection.Open();
+                    table = connection.Query<GameTable>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
+                    table.Deck = deckDB.GetById(table.deckId);
+                    table.Users = userDB.GetUserByTableId(id);
+                        scope.Complete();
+                }
             }
+            }catch(TransactionAbortedException tae) {
+                //maybe throw our own exception here to catch further up 
+            }
+            return table;
         }
 
         public GameTable GetGameTableByTableName(string tableName) {
             IDeckDBIF deckDB = new DeckDB();
             ICGUserDBIF userDB = new CGUserDB();
             GameTable table = new GameTable();
-            using (SqlConnection connection = new SqlConnection(conString)) {
-                connection.Open();
-                table = connection.Query<GameTable>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE tableName = @tableName", new { tableName }).SingleOrDefault();
-                table.Deck = deckDB.GetById(table.deckId);
-                table.Users = userDB.GetUserByTableId(table.Id);
-                return table;
+            try {
+                using (TransactionScope scope = new TransactionScope()) {
+                    using (SqlConnection connection = new SqlConnection(conString)) {
+                        connection.Open();
+                        table = connection.Query<GameTable>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE tableName = @tableName", new { tableName }).SingleOrDefault();
+                        table.Deck = deckDB.GetById(table.deckId);
+                        table.Users = userDB.GetUserByTableId(table.Id);
+                        scope.Complete();
+                        
+                    }
+                }
+            }catch(TransactionAbortedException tae) {
+                //maybe thorw our own exception
             }
+            return table;
         }
 
         //insert the gametable without Deck
