@@ -44,7 +44,7 @@ namespace WebGameClient.ServiceAcces {
             return clientUsers;
         }
 
-        private static Models.CGUser ConvertFromServiceUserToClientUser(GameTableServiceReference.CGUser serviceUser) {
+        public static Models.CGUser ConvertFromServiceUserToClientUser(GameTableServiceReference.CGUser serviceUser) {
             Models.CGUser clientUser = new Models.CGUser() {
                 Id = serviceUser.Id,
                 UserName = serviceUser.UserName,

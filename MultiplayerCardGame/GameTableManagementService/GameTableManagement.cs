@@ -17,6 +17,9 @@ namespace Server.Services.GameTableManagementService {
         public GameTable CreateGameTable(CGUser user, string tableName) {
             GameTable table = new GameTable(tableName);
             table.Users.Add(user);
+            Deck deck = new Deck();
+            deck.Id = 2;
+            table.Deck = deck;
             gameTableDB.Insert(table);
             return table;
         }
