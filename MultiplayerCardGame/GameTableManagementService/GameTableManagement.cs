@@ -43,19 +43,19 @@ namespace Server.Services.GameTableManagementService {
             return gameTableDB.GetById(id);
         }
 
-        public bool JoinGameTable(CGUser user, GameTable chosenTable) {
-            bool succeeded = false;
-            GameTable databaseTable = gameTableDB.GetById(chosenTable.Id);
-            if (chosenTable.IsFull == databaseTable.IsFull) {
-                userManagement.UpdateUserTableId(user, chosenTable.Id);
-                chosenTable.Users.Add(user);
-                if (chosenTable.Users.Count == 4) {
-                    chosenTable.IsFull = true;
-                    gameTableDB.Update(chosenTable);
-                    succeeded = true;
-                }
-            }
-            return succeeded;
+        public GameTable JoinGameTable(CGUser user, GameTable chosenTable) {
+
+                GameTable databaseTable = gameTableDB.GetById(chosenTable.Id);
+                if (chosenTable.IsFull == databaseTable.IsFull && databaseTable.Users.Count < 4) {
+                    userManagement.UpdateUserTableId(user, databaseTable.Id);
+                    chosenTable.Users.Add(user);
+                    if (databaseTable.Users.Count == 4) {
+                        databaseTable.IsFull = true;
+                        gameTableDB.Update(databaseTable);
+                    }
+                    gameTableDB.UpdateGameTableSeats(databaseTable, 1);
+                } 
+            return databaseTable;
         }
 
         public GameTable GetGameTableByTableName(string name) {
