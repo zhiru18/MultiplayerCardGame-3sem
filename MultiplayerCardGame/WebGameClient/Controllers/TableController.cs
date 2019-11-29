@@ -34,11 +34,11 @@ namespace WebGameClient.Controllers {
         //    return View(gameTables);
 
         //}
-        //public ActionResult Create() {
+        public ActionResult Create() {
 
-        //    return View();
-        //}
-        //[HttpPost]
+            return View();
+        }
+        [HttpPost]
         public ActionResult Create(string tableName) {
             GameTable foundGt = null;
             GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();

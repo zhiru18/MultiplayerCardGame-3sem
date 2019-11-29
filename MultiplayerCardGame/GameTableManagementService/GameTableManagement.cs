@@ -19,9 +19,10 @@ namespace Server.Services.GameTableManagementService {
             Deck deck = new Deck();
             deck.Id = 2;
             table.Deck = deck;
+            table.Users.Add(user);
             gameTableDB.Insert(table);
-            JoinGameTable(user, table);
-            return table;
+            GameTable table2 = gameTableDB.GetGameTableByTableName(tableName);
+            return table2;
         }
 
         public bool DeleteGameTable(int id) {
