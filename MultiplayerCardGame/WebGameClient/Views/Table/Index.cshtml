@@ -2,6 +2,9 @@
 @{
     ViewBag.Title = "Index";
 }
+    <head>
+        <link rel="stylesheet" type="text/css" href="../css/Button.css" />
+    </head>
 
 <style>
     table tr:not(:first-child) {
@@ -17,28 +20,32 @@
 <h2>Game Tables</h2>
 <form action="/Table/Index" method="post">
     <input id="InputTableName" name="InputTableName" type="text" />
-    <input type="submit" value="Search table name" />
+    <input type="submit" value="Search table name" class="button"/>
+    <br>
+    <br>
 </form>
     
-     <form id='joinName' action='@Url.Action("JoinTable","Table")' method="post">
-            Game Table ID:
-            <input type="text" name="gameTableID" id="gameTableID">
-            <br>
-            <br>
-            Available:
-            <input type="text" name="isFull" id="isFull">
-            <br>
-            <br>
-            Game Table Name:
-            <input type="text" name="gameTableName" id="gameTableName">
-            <br>
-            <br>
-            Users:
-            <input type="text" name="users" id="users">
-            <br>
-            <br>
-            <input type="submit" value="Join Table" />
-        </form>
+<form id='joinName' action='@Url.Action("JoinTable","Table")' method="post">
+
+    Game Table ID:
+    <input type="text" name="gameTableID" id="gameTableID">
+    <br>
+    Available:
+    <input type="text" name="isFull" id="isFull">
+    <br>
+    Game Table Name:
+    <input type="text" name="gameTableName" id="gameTableName">
+    <br>
+    Users:
+    <input type="text" name="users" id="users">
+    <br>
+    <br>
+
+    <input type="submit" value="Join Game Table" />
+    <br>
+    <br>
+
+</form>
         @if (ViewBag.Situation < 1) {
             <table id="table" border="1">
                 <tr>
@@ -76,10 +83,10 @@
                     <h3>Players on table: @item.UserName</h3>
                 }
             }
-
-        <div>
-            <input type="button" style="float:left; width: 20%; background-color:lawngreen" value="Join Game Table" onclick="location.href='@Url.Action("Join","Table")'" />
-        </div>
+        @if(ViewBag.Situation == 4) {
+            <h2>Join successfull</h2>
+        }
+        }
 
 
 
