@@ -332,6 +332,7 @@
     <Content Include="Views\Table\Create.cshtml" />
     <Content Include="Views\Table\Succes.cshtml" />
     <Content Include="Views\Table\Join.cshtml" />
+    <Content Include="Views\Table\JoinTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
