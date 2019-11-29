@@ -39,7 +39,7 @@ namespace WebGameClient.Controllers {
             return View();
         }
         [HttpPost]
-        public ActionResult CreatePost(string tableName) {
+        public ActionResult Create(string tableName) {
             GameTable foundGt = null;
             GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
             if (tableName != null ) {
