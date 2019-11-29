@@ -2,9 +2,6 @@
 @{
     ViewBag.Title = "Index";
 }
-    <head>
-        <link rel="stylesheet" type="text/css" href="./css/Button.css" />
-    </head>
 
 <style>
     table tr:not(:first-child) {
@@ -18,12 +15,12 @@
 </style>
 
 <h2>Game Tables</h2>
-<form action="/Table/Index" method="post">
-    <input id="InputTableName" name="InputTableName" type="text" />
-    <input type="submit" value="Search table name" class="button"/>
-    <br>
-    <br>
-</form>
+    <form action="/Table/Index" method="post">
+        <input id="InputTableName" name="InputTableName" type="text" />
+        <input type="submit" value="Search table name" />
+        <br>
+        <br>
+    </form>
     
 <form id='joinName' action='@Url.Action("JoinTable","Table")' method="post">
 
@@ -86,7 +83,7 @@
         @if(ViewBag.Situation == 4) {
             <h2>Join successfull</h2>
         }
-        }
+
 
 
 

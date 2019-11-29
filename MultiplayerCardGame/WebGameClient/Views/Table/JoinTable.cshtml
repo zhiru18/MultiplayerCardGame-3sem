@@ -1,10 +1,15 @@
-﻿
+﻿@model List<WebGameClient.Models.GameTable>
 @{
     ViewBag.Title = "JoinTable";
 }
 @if (ViewBag.Situation == 4) {
-<h2>Join sucess</h2>
-} else if(ViewBag.Situation == 5) {
-    <h2>Failed to join game table</h2>
+    <h2>Join sucess</h2>
+    <h3>Joined Game Table: @Model[0].TableName</h3>
+    List<WebGameClient.Models.CGUser> users = Model[0].Users;
+    foreach (WebGameClient.Models.CGUser item in users) {
+        <h3>Players on table: @item.UserName</h3>
+    }
+} else if (ViewBag.Situation == 5) {
+    < h2 > Failed to join game table</ h2 >
 }
 

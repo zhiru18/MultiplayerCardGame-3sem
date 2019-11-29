@@ -10,9 +10,9 @@
 
 @if (ViewBag.Situation == 3) {
     List<WebGameClient.Models.CGUser> users = Model[0].Users;
-<h2>Created Game Table: @Model[0].TableName</h2>
+    <h2>Created Game Table: @Model[0].TableName</h2>
     foreach (WebGameClient.Models.CGUser item in users) {
-    <h3>Players on table: @item.UserName</h3>
+        <h3>Players on table: @item.UserName</h3>
     }
 }
 <form name="/Table/Create" method="post">
@@ -27,6 +27,10 @@
         <input type="reset" value="Cancel" />
     </div>
 </form>
+
+@if (ViewBag.Situation == 6) {
+    <h2>Table with that name already exists.</h2>
+}
 
 
 
