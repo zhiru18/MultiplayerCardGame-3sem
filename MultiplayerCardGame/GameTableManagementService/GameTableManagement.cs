@@ -22,7 +22,8 @@ namespace Server.Services.GameTableManagementService {
             gameTableDB.Insert(table);
             GameTable table2 = gameTableDB.GetGameTableByTableName(tableName);
             JoinGameTable(user, table2);
-            return table2;
+            GameTable table3 = gameTableDB.GetGameTableByTableName(tableName);
+            return table3;
         }
 
         public bool DeleteGameTable(int id) {
