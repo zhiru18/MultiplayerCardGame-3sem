@@ -53,6 +53,7 @@
     <Compile Include="CardDBTest.cs" />
     <Compile Include="CGUserDBTest.cs" />
     <Compile Include="DeckDBTest.cs" />
+    <Compile Include="GameTableDBTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -93,6 +93,17 @@ namespace Server.Data.Data {
             return table;
         }
 
+        public int GetGameTableSeats(GameTable table) {
+            var updateString = "SELECT seats FROM GameTable WHERE id = @id;";
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                using (SqlCommand updateCommand = new SqlCommand(updateString, connection)) {
+                    updateCommand.Parameters.AddWithValue("@id", table.Id);
+                    connection.Open();
+                    return (int)updateCommand.ExecuteScalar();
+                }
+            }
+        }
+
         //insert the gametable without Deck
         //public void Insert(GameTable table) {
         //    using (SqlConnection connection = new SqlConnection(conString)) {

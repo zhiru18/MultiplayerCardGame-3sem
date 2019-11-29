@@ -11,5 +11,6 @@ namespace Server.Data.Data {
         GameTable GetGameTableByTableName(string name);
 
         void UpdateGameTableSeats(GameTable table, int seats);
+        int GetGameTableSeats(GameTable table);
     }
 }

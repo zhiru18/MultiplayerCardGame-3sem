@@ -46,6 +46,7 @@ namespace Server.Services.GameTableManagementService {
 
         public GameTable JoinGameTable(CGUser user, GameTable chosenTable) {
             GameTable databaseTable = null;
+            //TODO: Add a check to see if a user is at another table, and then remove him form that table.
             try {
                 using (TransactionScope scope = new TransactionScope()) {
                     databaseTable = gameTableDB.GetById(chosenTable.Id);
