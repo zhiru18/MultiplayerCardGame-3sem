@@ -54,7 +54,10 @@ namespace WebGameClient.Controllers {
         public ActionResult Succes() {
             return View();
         }
-        [HttpPost]
+        public ActionResult JoinTable() {
+            return View();
+        }
+       [HttpPost]
         public ActionResult JoinTable(string gameTableID) {
             //GameTable foundGt = null;
             bool isJoin = false;
