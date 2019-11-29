@@ -25,8 +25,7 @@ namespace Server.Services.GameTableManagementService {
                 table.Deck = deck;
                 gameTableDB.Insert(table);
                 GameTable table2 = gameTableDB.GetGameTableByTableName(tableName);
-                JoinGameTable(user, table2);
-                table3 = gameTableDB.GetGameTableByTableName(tableName);
+                table3=JoinGameTable(user, table2);
             }
             return table3;
         }

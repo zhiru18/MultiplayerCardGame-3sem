@@ -63,17 +63,15 @@ namespace WebGameClient.Controllers {
         }
        [HttpPost]
         public ActionResult JoinTable(string gameTableID) {
-            //GameTable foundGt = null;
-            bool isJoin = false;
+            GameTable foundGt = null;
             GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
             if (gameTableID != null) {
                 string userId = User.Identity.GetUserId();
                 int tableId = Int32.Parse(gameTableID);
-                //foundGt = gameTableServiceAcces.JoinGameTable(userId, tableId);
-                isJoin = gameTableServiceAcces.JoinGameTable(userId, tableId);
+                foundGt = gameTableServiceAcces.JoinGameTable(userId, tableId);
             }
             // List<GameTable> tables = new List<GameTable>() { foundGt };
-            if (isJoin) {
+            if (foundGt!=null) {
                 ViewBag.Situation = 4;
             } else {
                 ViewBag.Situation = 5;

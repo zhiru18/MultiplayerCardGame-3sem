@@ -81,7 +81,7 @@
   <xs:element name="JoinGameTableResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="JoinGameTableResult" type="xs:boolean" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Server.Model.Model" minOccurs="0" name="JoinGameTableResult" nillable="true" type="q8:GameTable" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
