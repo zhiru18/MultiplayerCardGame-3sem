@@ -524,6 +524,12 @@ namespace WebGameClient.GameTableServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/GetGameTableByTableName", ReplyAction="http://tempuri.org/IGameTableManagementService/GetGameTableByTableNameResponse")]
         System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable> GetGameTableByTableNameAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/JoinGameTable", ReplyAction="http://tempuri.org/IGameTableManagementService/JoinGameTableResponse")]
+        bool JoinGameTable(WebGameClient.GameTableServiceReference.CGUser user, WebGameClient.GameTableServiceReference.GameTable table);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/JoinGameTable", ReplyAction="http://tempuri.org/IGameTableManagementService/JoinGameTableResponse")]
+        System.Threading.Tasks.Task<bool> JoinGameTableAsync(WebGameClient.GameTableServiceReference.CGUser user, WebGameClient.GameTableServiceReference.GameTable table);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -591,6 +597,14 @@ namespace WebGameClient.GameTableServiceReference {
         
         public System.Threading.Tasks.Task<WebGameClient.GameTableServiceReference.GameTable> GetGameTableByTableNameAsync(string name) {
             return base.Channel.GetGameTableByTableNameAsync(name);
+        }
+        
+        public bool JoinGameTable(WebGameClient.GameTableServiceReference.CGUser user, WebGameClient.GameTableServiceReference.GameTable table) {
+            return base.Channel.JoinGameTable(user, table);
+        }
+        
+        public System.Threading.Tasks.Task<bool> JoinGameTableAsync(WebGameClient.GameTableServiceReference.CGUser user, WebGameClient.GameTableServiceReference.GameTable table) {
+            return base.Channel.JoinGameTableAsync(user, table);
         }
     }
 }
