@@ -45,20 +45,26 @@ namespace Server.Services.GameTableManagementService {
         }
 
         public GameTable JoinGameTable(CGUser user, GameTable chosenTable) {
-
-            using (TransactionScope scope = new TransactionScope()) {
-                GameTable databaseTable = gameTableDB.GetById(chosenTable.Id);
-                if (chosenTable.IsFull == databaseTable.IsFull && databaseTable.Users.Count < 4) {
-                    userManagement.UpdateUserTableId(user, databaseTable.Id);
-                    chosenTable.Users.Add(user);
-                    if (databaseTable.Users.Count == 4) {
-                        databaseTable.IsFull = true;
-                        gameTableDB.Update(databaseTable);
+            GameTable databaseTable = null;
+            try {
+                using (TransactionScope scope = new TransactionScope()) {
+                    databaseTable = gameTableDB.GetById(chosenTable.Id);
+                    if (chosenTable.IsFull == databaseTable.IsFull && databaseTable.Users.Count < 4) {
+                        userManagement.UpdateUserTableId(user, databaseTable.Id);
+                        databaseTable.Users.Add(user);
+                        if (databaseTable.Users.Count == 4) {
+                            databaseTable.IsFull = true;
+                            gameTableDB.Update(databaseTable);
+                        }
+                        gameTableDB.UpdateGameTableSeats(databaseTable, 1);
                     }
-                    gameTableDB.UpdateGameTableSeats(databaseTable, 1);
+                    scope.Complete();
                 }
-                return databaseTable;
+            } catch (TransactionAbortedException tae) {
+
+                throw;
             }
+            return databaseTable;
         }
 
         public GameTable GetGameTableByTableName(string name) {
