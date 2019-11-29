@@ -8,17 +8,23 @@
 
 <h2>Create a new Game Table</h2>
 
-    @if (ViewBag.Situation == 3) {
-        <form name="createGameTable" method="post" action="Succes">
-            <div>
-                Name
-                <input name="tableName" type="text" maxlength="30" />
-            </div>
-            <div>
-                <input type="submit" value="Create" onclick="if ( ! validate()) return false;" language="javascript" />
-                <input type="reset" value="Cancel" />
-            </div>
-        </form>
+@if (ViewBag.Situation == 3) {
+    List<WebGameClient.Models.CGUser> users = Model[0].Users;
+<h2>Created Game Table: @Model[0].TableName</h2>
+    foreach (WebGameClient.Models.CGUser item in users) {
+    <h3>Players on table: @item.UserName</h3>
+    }
 }
+<form name="/Table/Create" method="post">
+    <div>
+        Name
+        <input id="tableName" name="tableName" type="text" maxlength="30" />
+    </div>
+    <div>
+        <input type="submit" value="Create" onclick="if ( ! validate()) return false;" language="javascript" />
+        <input type="reset" value="Cancel" />
+    </div>
+</form>
+
 
 

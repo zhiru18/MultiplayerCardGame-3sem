@@ -70,4 +70,19 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="JoinGameTable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Server.Model.Model" minOccurs="0" name="user" nillable="true" type="q6:CGUser" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Server.Model.Model" minOccurs="0" name="table" nillable="true" type="q7:GameTable" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JoinGameTableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="JoinGameTableResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

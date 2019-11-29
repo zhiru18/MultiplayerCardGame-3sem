@@ -54,8 +54,26 @@ namespace WebGameClient.Controllers {
         public ActionResult Succes() {
             return View();
         }
-
-        public ActionResult Join() {
+        public ActionResult JoinTable() {
+            return View();
+        }
+       [HttpPost]
+        public ActionResult JoinTable(string gameTableID) {
+            //GameTable foundGt = null;
+            bool isJoin = false;
+            GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
+            if (gameTableID != null) {
+                string userId = User.Identity.GetUserId();
+                int tableId = Int32.Parse(gameTableID);
+                //foundGt = gameTableServiceAcces.JoinGameTable(userId, tableId);
+                isJoin = gameTableServiceAcces.JoinGameTable(userId, tableId);
+            }
+            // List<GameTable> tables = new List<GameTable>() { foundGt };
+            if (isJoin) {
+                ViewBag.Situation = 4;
+            } else {
+                ViewBag.Situation = 5;
+            }
             return View();
         }
     }
