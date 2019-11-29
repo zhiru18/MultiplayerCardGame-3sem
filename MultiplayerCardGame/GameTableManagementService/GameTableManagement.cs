@@ -15,18 +15,14 @@ namespace Server.Services.GameTableManagementService {
     public class GameTableManagement : IGameTableManagementService {
         IGameTableDBIF gameTableDB = new GameTableDB();
         UserManagement userManagement = new UserManagement();
-        public GameTable CreateGameTable(CGUser user, string tableName) {
-            GameTable table3 = null;
-            var table1 = gameTableDB.GetGameTableByTableName(tableName);
-            if (table1 == null) {
-                GameTable table = new GameTable(tableName);
-                Deck deck = new Deck();
-                deck.Id = 2;
-                table.Deck = deck;
-                gameTableDB.Insert(table);
-                GameTable table2 = gameTableDB.GetGameTableByTableName(tableName);
-                table3=JoinGameTable(user, table2);
-            }
+        public GameTable CreateGameTable(CGUser user, string tableName) {         
+            GameTable table = new GameTable(tableName);
+            Deck deck = new Deck();
+            deck.Id = 2;
+            table.Deck = deck;
+            gameTableDB.Insert(table);
+            GameTable table2 = gameTableDB.GetGameTableByTableName(tableName);
+            GameTable table3=JoinGameTable(user, table2);
             return table3;
         }
 
