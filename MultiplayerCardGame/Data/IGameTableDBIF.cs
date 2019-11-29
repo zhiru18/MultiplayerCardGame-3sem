@@ -9,5 +9,7 @@ namespace Server.Data.Data {
     public interface IGameTableDBIF : IGeneralDBIF<GameTable> {
         GameTable GetById(int id);
         GameTable GetGameTableByTableName(string name);
+
+        void UpdateGameTableSeats(GameTable table, int seats);
     }
 }

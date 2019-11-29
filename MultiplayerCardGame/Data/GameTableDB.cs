@@ -75,10 +75,13 @@ namespace Server.Data.Data {
             GameTable table = new GameTable();
             try {
                 using (TransactionScope scope = new TransactionScope()) {
-                    using (SqlConnection connection = new SqlConnection(conString)) {
+                    using (SqlConnection connection = new SqlConnection(conString)) {                   
                         connection.Open();
-                        table = connection.Query<GameTable>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE tableName = @tableName", new { tableName }).SingleOrDefault();
-                        table.Deck = deckDB.GetById(table.deckId);
+                        table = connection.Query<GameTable, Deck, GameTable>("select * from GameTable join Deck on deck.id = GameTable.deckId where tableName = @tableName", (gt, dk) => {
+                            gt.Deck = dk;
+                            return gt;
+                        }, new { tableName }).SingleOrDefault();
+                        table.Deck = deckDB.GetById(table.Deck.Id);
                         table.Users = userDB.GetUserByTableId(table.Id);
                         scope.Complete();
                         
@@ -121,6 +124,18 @@ namespace Server.Data.Data {
                 var sql = "UPDATE GameTable SET tableName = @tableName, isFull = @isFull  WHERE id = @id;";
                 connection.Execute(sql, table);
             }
-        }       
+        }
+
+        public void UpdateGameTableSeats(GameTable table, int seats) {
+            var updateString = "UPDATE GameTable SET seats = seats - @seats WHERE id = @id;";
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                using (SqlCommand updateCommand = new SqlCommand(updateString, connection)) {
+                    updateCommand.Parameters.AddWithValue("@seats", seats);
+                    updateCommand.Parameters.AddWithValue("@id", table.Id);
+                    connection.Open();
+                    updateCommand.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Transactions;
 using Server.Data.Data;
 using Server.Model.Model;
 using Server.Services.GameTableManagementService.Contracts;
@@ -48,19 +49,21 @@ namespace Server.Services.GameTableManagementService {
             return gameTableDB.GetById(id);
         }
 
-        public bool JoinGameTable(CGUser user, GameTable chosenTable) {
-            bool succeeded = false;
-            GameTable databaseTable = gameTableDB.GetById(chosenTable.Id);
-            if (chosenTable.IsFull == databaseTable.IsFull) {
-                userManagement.UpdateUserTableId(user, chosenTable.Id);
-                chosenTable.Users.Add(user);
-                if (chosenTable.Users.Count == 4) {
-                    chosenTable.IsFull = true;
-                    gameTableDB.Update(chosenTable);
-                    succeeded = true;
+        public GameTable JoinGameTable(CGUser user, GameTable chosenTable) {
+
+            using (TransactionScope scope = new TransactionScope()) {
+                GameTable databaseTable = gameTableDB.GetById(chosenTable.Id);
+                if (chosenTable.IsFull == databaseTable.IsFull && databaseTable.Users.Count < 4) {
+                    userManagement.UpdateUserTableId(user, databaseTable.Id);
+                    chosenTable.Users.Add(user);
+                    if (databaseTable.Users.Count == 4) {
+                        databaseTable.IsFull = true;
+                        gameTableDB.Update(databaseTable);
+                    }
+                    gameTableDB.UpdateGameTableSeats(databaseTable, 1);
                 }
+                return databaseTable;
             }
-            return succeeded;
         }
 
         public GameTable GetGameTableByTableName(string name) {

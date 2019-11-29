@@ -3,7 +3,7 @@
     ViewBag.Title = "Create";
 }
 <head>
-    <script src="../Js/FormValidate.js"></script>
+    <script src="../js/FormValidate.js"></script>
 </head>
 
 <h2>Create a new Game Table</h2>
@@ -19,6 +19,8 @@
     <div>
         Name
         <input id="tableName" name="tableName" type="text" maxlength="30" />
+        <br>
+        <br>
     </div>
     <div>
         <input type="submit" value="Create" onclick="if ( ! validate()) return false;" language="javascript" />
