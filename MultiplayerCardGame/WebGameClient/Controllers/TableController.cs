@@ -66,13 +66,13 @@ namespace WebGameClient.Controllers {
                 int tableId = Int32.Parse(gameTableID);
                 foundGt = gameTableServiceAcces.JoinGameTable(userId, tableId);
             }
-            // List<GameTable> tables = new List<GameTable>() { foundGt };
+            List<GameTable> tables = new List<GameTable>() { foundGt };
             if (foundGt!=null) {
                 ViewBag.Situation = 4;
             } else {
                 ViewBag.Situation = 5;
             }
-            return View();
+            return View(tables);
         }
     }
 }
