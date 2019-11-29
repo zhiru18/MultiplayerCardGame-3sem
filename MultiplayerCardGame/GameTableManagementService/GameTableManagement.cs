@@ -19,9 +19,9 @@ namespace Server.Services.GameTableManagementService {
             Deck deck = new Deck();
             deck.Id = 2;
             table.Deck = deck;
-            table.Users.Add(user);
             gameTableDB.Insert(table);
             GameTable table2 = gameTableDB.GetGameTableByTableName(tableName);
+            JoinGameTable(user, table2);
             return table2;
         }
 
