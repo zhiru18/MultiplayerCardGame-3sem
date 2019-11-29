@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Transactions;
 using Server.Data.Data;
 using Server.Model.Model;
 using Server.Services.GameTableManagementService.Contracts;
@@ -46,6 +47,7 @@ namespace Server.Services.GameTableManagementService {
 
         public GameTable JoinGameTable(CGUser user, GameTable chosenTable) {
 
+            using (TransactionScope scope = new TransactionScope()) {
                 GameTable databaseTable = gameTableDB.GetById(chosenTable.Id);
                 if (chosenTable.IsFull == databaseTable.IsFull && databaseTable.Users.Count < 4) {
                     userManagement.UpdateUserTableId(user, databaseTable.Id);
@@ -55,8 +57,9 @@ namespace Server.Services.GameTableManagementService {
                         gameTableDB.Update(databaseTable);
                     }
                     gameTableDB.UpdateGameTableSeats(databaseTable, 1);
-                } 
-            return databaseTable;
+                }
+                return databaseTable;
+            }
         }
 
         public GameTable GetGameTableByTableName(string name) {

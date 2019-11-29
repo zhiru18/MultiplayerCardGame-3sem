@@ -81,7 +81,7 @@ namespace Server.Data.Data {
                             gt.Deck = dk;
                             return gt;
                         }, new { tableName }).SingleOrDefault();
-                        //table.Deck = deckDB.GetById(table.deckId);
+                        table.Deck = deckDB.GetById(table.Deck.Id);
                         table.Users = userDB.GetUserByTableId(table.Id);
                         scope.Complete();
                         
