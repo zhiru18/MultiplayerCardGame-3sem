@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
 }
+@Styles.Render("~/Content/Button.css")
 
 <style>
     table tr:not(:first-child) {
@@ -15,13 +16,13 @@
 </style>
 
 <h2>Game Tables</h2>
-    <form action="/Table/Index" method="post">
-        <input id="InputTableName" name="InputTableName" type="text" />
-        <input type="submit" value="Search table name" />
-        <br>
-        <br>
-    </form>
-    
+<form action="/Table/Index" method="post">
+    <input id="InputTableName" name="InputTableName" type="text" />
+    <input type="submit" value="Search table name" class="button" />
+    <br>
+    <br>
+</form>
+
 <form id='joinName' action='@Url.Action("JoinTable","Table")' method="post">
 
     Game Table ID:
@@ -38,51 +39,51 @@
     <br>
     <br>
 
-    <input type="submit" value="Join Game Table" />
+    <input type="submit" value="Join Game Table" class="button" />
     <br>
     <br>
 
 </form>
-        @if (ViewBag.Situation < 1) {
-            <table id="table" border="1">
-                <tr>
-                    <th>Game Table ID</th>
-                    <th>Is table full</th>
-                    <th>Game Table name</th>
-                    <th>Number of players</th>
-                </tr>
-                <tr>
-                    @foreach (WebGameClient.Models.GameTable item in Model) {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.IsFull</td>
-                        <td>@item.TableName</td>
-                        <td>@item.Users.Count</td>
-                    </tr>
-                }
-                </table>
-                <script>
-                    var table = document.getElementById('table');
-                    for (var i = 1; i < table.rows.length; i++) {
-                        table.rows[i].onclick = function () {
-                            //rIndex = this.rowIndex;
-                            document.getElementById("gameTableID").value = this.cells[0].innerHTML;
-                            document.getElementById("isFull").value = this.cells[1].innerHTML;
-                            document.getElementById("gameTableName").value = this.cells[2].innerHTML;
-                            document.getElementById("users").value = this.cells[3].innerHTML;
-                        };
-                    }
-                </script>
-            } else if (ViewBag.Situation == 2) {
-                List<WebGameClient.Models.CGUser> users = Model[0].Users;
-                <h2>Found Game Table: @Model[0].TableName</h2>
-                foreach (WebGameClient.Models.CGUser item in users) {
-                    <h3>Players on table: @item.UserName</h3>
-                }
-            }
-        @if(ViewBag.Situation == 4) {
-            <h2>Join successfull</h2>
+@if (ViewBag.Situation < 1) {
+    <table id="table" border="1">
+        <tr>
+            <th>Game Table ID</th>
+            <th>Is table full</th>
+            <th>Game Table name</th>
+            <th>Number of players</th>
+        </tr>
+        <tr>
+            @foreach (WebGameClient.Models.GameTable item in Model) {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.IsFull</td>
+                <td>@item.TableName</td>
+                <td>@item.Users.Count</td>
+            </tr>
         }
+        </table>
+        <script>
+            var table = document.getElementById('table');
+            for (var i = 1; i < table.rows.length; i++) {
+                table.rows[i].onclick = function () {
+                    //rIndex = this.rowIndex;
+                    document.getElementById("gameTableID").value = this.cells[0].innerHTML;
+                    document.getElementById("isFull").value = this.cells[1].innerHTML;
+                    document.getElementById("gameTableName").value = this.cells[2].innerHTML;
+                    document.getElementById("users").value = this.cells[3].innerHTML;
+                };
+            }
+        </script>
+    } else if (ViewBag.Situation == 2) {
+        List<WebGameClient.Models.CGUser> users = Model[0].Users;
+        <h2>Found Game Table: @Model[0].TableName</h2>
+        foreach (WebGameClient.Models.CGUser item in users) {
+            <h3>Players on table: @item.UserName</h3>
+        }
+    }
+@if (ViewBag.Situation == 4) {
+    <h2>Join successfull</h2>
+}
 
 
 

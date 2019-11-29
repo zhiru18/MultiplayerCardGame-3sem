@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Create";
 }
+@Styles.Render("~/Content/Button.css")
 <head>
     <script src="../js/FormValidate.js"></script>
 </head>
@@ -23,7 +24,7 @@
         <br>
     </div>
     <div>
-        <input type="submit" value="Create" onclick="if ( ! validate()) return false;" language="javascript" />
+        <input type="submit" value="Create" class="button" onclick="if ( ! validate()) return false;" language="javascript" />
         <input type="reset" value="Cancel" />
     </div>
 </form>
