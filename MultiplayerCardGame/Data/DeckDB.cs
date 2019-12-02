@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 using System.Transactions;
 using Dapper;
 using Server.Model.Model;
+using System.Configuration;
 
 namespace Server.Data.Data {
     public class DeckDB : IDeckDBIF {
         private string conString;
 
         public DeckDB() {
-            conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            //conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
+            //conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
         public void Delete(DeckModel deck) {
