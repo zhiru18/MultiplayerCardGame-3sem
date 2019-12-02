@@ -44,6 +44,7 @@
     <Compile Include="CardConverter.cs" />
     <Compile Include="CGUserConverter.cs" />
     <Compile Include="DeckConverter.cs" />
+    <Compile Include="GameConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

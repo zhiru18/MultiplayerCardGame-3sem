@@ -1,4 +1,5 @@
-﻿using Server.DataContracts.DataContracts;
+﻿using Server.Data.Data;
+using Server.DataContracts.DataContracts;
 using Server.Model.Model;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,17 @@ namespace Server.Converters.DataContractConverters {
                 DeckName = deck.DeckName
             };
             return deckModel;
+        }
+
+        public static Deck ConvertFromDeckModelToDeck(DeckModel deckModel) {
+            ICardDBIF cardDB = new CardDB();
+            List<CardModel> deckCards = cardDB.GetCardsByDeckId(deckModel.Id);
+            Deck deck = new Deck() {
+                Id = deckModel.Id,
+                DeckName = deckModel.DeckName,
+                cards = CardConverter.ConvertFromListOfCardModelToListOfCard(deckCards)
+            };
+            return deck;
         }
     }
 }
