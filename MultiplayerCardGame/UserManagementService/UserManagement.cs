@@ -8,6 +8,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Server.DataContracts.DataContracts;
+using Server.Converters.DataContractConverters;
 
 namespace Server.Services.UserManagementService
 {
@@ -23,18 +24,20 @@ namespace Server.Services.UserManagementService
         }
 
         public CGUser GetUserByUserId(string id) {
-            return cGUserDB.GetById(id);
+            return CGUserConverter.convertFromCGUserModelToCGUser(cGUserDB.GetById(id));
         }
 
         public void UpdateUser(CGUser user) {
-            cGUserDB.Update(user);
+            CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+            cGUserDB.Update(userModel);
         }
 
-        public void UpdateUserTableId(CGUser cgUser, int tableId) {
-            cGUserDB.UpdateUserTableId(cgUser, tableId);
+        public void UpdateUserTableId(CGUser user, int tableId) {
+            CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+            cGUserDB.UpdateUserTableId(userModel, tableId);
         }
         public List<CGUser> GetUserByTableId(int id) {
-            return cGUserDB.GetUserByTableId(id);
+            return CGUserConverter.ConvertFromListOfCGUserModelToListOfCGUser(cGUserDB.GetUserByTableId(id));
         }
     }
 }

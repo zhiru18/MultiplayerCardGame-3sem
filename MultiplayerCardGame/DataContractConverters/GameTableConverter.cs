@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Converters.DataContractConverters {
-    class GameTableConverter {
+    public class GameTableConverter {
  
         public static GameTableModel ConvertFromGameTableToGameTableModel(GameTable gameTable) {
             GameTableModel gameTableModel = new GameTableModel() {

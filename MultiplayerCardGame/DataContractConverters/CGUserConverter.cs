@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Converters.DataContractConverters {
-    class CGUserConverter {
+    public class CGUserConverter {
         public static CGUserModel ConvertFromCGUserToCGUserModel(CGUser cGUser) {
             CGUserModel cGUserModel = new CGUserModel() {
                 Id= cGUser.Id,
