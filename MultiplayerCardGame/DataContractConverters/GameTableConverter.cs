@@ -21,12 +21,13 @@ namespace Server.Converters.DataContractConverters {
         }
         public static GameTable ConvertFromGameTableModelToGameTable(GameTableModel tableModel) {
             CGUserDB cGUserDB = new CGUserDB();
+            DeckDB deckDB = new DeckDB();
             GameTable gameTable = new GameTable() {
                 Id = tableModel.Id,
                 IsFull = tableModel.IsFull,
                 TableName = tableModel.TableName,
                 Users = CGUserConverter.ConvertFromListOfCGUserModelToListOfCGUser(cGUserDB.GetUserByTableId(tableModel.Id)),
-                //Deck = DeckConverter
+                Deck = DeckConverter.ConvertFromDeckModelToDeck(deckDB.GetById(tableModel.DeckId))
             };
             return gameTable;
         }
