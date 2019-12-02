@@ -22,10 +22,9 @@ namespace GameTableManagementServiceTest {
         [TestMethod]
         public void InsertTest() {
             gameTableDB = new GameTableDB();
-            var table5 = new GameTable("Game5");
-            Deck deck = new Deck();
-            table5.Deck = deck;
-            table5.Deck.Id = 1;
+            var table5 = new GameTableModel("Game5");
+            DeckModel deck = new DeckModel();
+            table5.DeckId = 1;
             table5.IsFull = false;
             gameTableDB.Insert(table5);
             var tableT = gameTableDB.GetById(5);
@@ -34,13 +33,13 @@ namespace GameTableManagementServiceTest {
         [TestMethod]
         public void GetbyIdTest() {
             gameTableDB = new GameTableDB();
-            GameTable table1 = gameTableDB.GetById(2);
+            GameTableModel table1 = gameTableDB.GetById(2);
             Assert.AreEqual(2, table1.Id);
         }
         [TestMethod]
         public void GetAllTest() {
             gameTableDB = new GameTableDB();
-            List<GameTable> gameTables = (List<GameTable>)gameTableDB.GetAll();
+            List<GameTableModel> gameTables = (List<GameTableModel>)gameTableDB.GetAll();
             Assert.IsTrue(gameTables.Count > 0);
         }
         [TestMethod]

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Server.DataContracts.DataContracts;
 
 namespace Server.Services.UserManagementService
 {
@@ -14,7 +15,7 @@ namespace Server.Services.UserManagementService
     public class UserManagement : IUserManagementService {
         ICGUserDBIF cGUserDB = new CGUserDB();
         public void CreateUser(string id, string email, string userName) {
-            CGUser user = new CGUser();
+            CGUserModel user = new CGUserModel();
             user.Email = email;
             user.Id = id;
             user.UserName = userName;

@@ -15,27 +15,27 @@ namespace Tests.DataTest
         public void GetAllTest()
         {
             cardDB = new CardDB();
-            List<Card> cards = (List<Card>)cardDB.GetAll();
+            List<CardModel> cards = (List<CardModel>)cardDB.GetAll();
             Assert.IsTrue(cards.Count > 0);
         }
         [TestMethod]
         public void InsertTest()
         {
             cardDB = new CardDB();
-            List<Card> cardList = (List<Card>)cardDB.GetAll();
-            var testCard = new Card(Card.CardType.ATTACK, "Attack card", "It can attack", 10);
+            List<CardModel> cardList = (List<CardModel>)cardDB.GetAll();
+            var testCard = new CardModel(CardModel.CardType.ATTACK, "Attack card", "It can attack", 10);
             cardDB.Insert(testCard);
-            List<Card> updatedCardList = (List<Card>)cardDB.GetAll();
+            List<CardModel> updatedCardList = (List<CardModel>)cardDB.GetAll();
             Assert.IsTrue(cardList.Count < updatedCardList.Count);
         }
         [TestMethod]
         public void DeleteTest()
         {
             cardDB = new CardDB();
-            List<Card> cardList = (List<Card>)cardDB.GetAll();
-            var testCard = new Card(Card.CardType.ATTACK, "Attack DeleteTest card", "It can attack", 10);
+            List<CardModel> cardList = (List<CardModel>)cardDB.GetAll();
+            var testCard = new CardModel(CardModel.CardType.ATTACK, "Attack DeleteTest card", "It can attack", 10);
             cardDB.Delete(testCard);
-            List<Card> updatedCardList = (List<Card>)cardDB.GetAll();
+            List<CardModel> updatedCardList = (List<CardModel>)cardDB.GetAll();
             Assert.IsTrue(cardList.Count > updatedCardList.Count);
         }
         // TODO: Fix this method.

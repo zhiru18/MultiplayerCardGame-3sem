@@ -57,9 +57,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataContract\DataContracts.csproj">
+      <Project>{c35a2e51-1437-4aa6-b6c9-b76895e56f2c}</Project>
+      <Name>DataContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{E2C35AAA-3F22-46C2-8469-424671759D7B}</Project>
       <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{095f941f-d5b7-4d22-8c99-cf8f749df82e}</Project>
+      <Name>Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\UserManagementService\UserManagementService.csproj">
       <Project>{d692c0d2-cee5-4854-9ca6-b4022c51fd14}</Project>

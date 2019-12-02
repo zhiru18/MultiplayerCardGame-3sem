@@ -1,4 +1,5 @@
 ﻿using Server.Controllers.Controller;
+using Server.DataContracts.DataContracts;
 using Server.Model.Model;
 using Server.Services.GameService.Contracts;
 using System;

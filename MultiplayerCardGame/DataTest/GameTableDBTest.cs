@@ -13,7 +13,7 @@ namespace Server.Data.Data.Tests {
         [TestMethod()]
         public void GetGameTableSeatsTest() {
             GameTableDB gameTableDB = new GameTableDB();
-            GameTable table = gameTableDB.GetById(15);
+            GameTableModel table = gameTableDB.GetById(15);
             int seats = gameTableDB.GetGameTableSeats(table);
             Assert.AreEqual(seats, 4);
             //TODO: Make this test actually useful.

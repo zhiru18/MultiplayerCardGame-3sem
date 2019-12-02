@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Server.Model.Model;
 
 namespace Server.Data.Data {
-    public interface IDeckDBIF : IGeneralDBIF<Deck> {
-       Deck GetById(int id);
+    public interface IDeckDBIF : IGeneralDBIF<DeckModel> {
+       DeckModel GetById(int id);
     }
 }

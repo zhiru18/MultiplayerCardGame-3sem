@@ -48,7 +48,7 @@ namespace Server.Data.Data {
             }
         }
 
-        public int GetGameTableSeats(GameTable table) {
+        public int GetGameTableSeats(GameTableModel table) {
             var updateString = "SELECT seats FROM GameTable WHERE id = @id;";
             using (SqlConnection connection = new SqlConnection(conString)) {
                 using (SqlCommand updateCommand = new SqlCommand(updateString, connection)) {
@@ -101,7 +101,7 @@ namespace Server.Data.Data {
             }
         }
 
-        public void UpdateGameTableSeats(GameTable table, int seats) {
+        public void UpdateGameTableSeats(GameTableModel table, int seats) {
             var updateString = "UPDATE GameTable SET seats = seats - @seats WHERE id = @id;";
             using (SqlConnection connection = new SqlConnection(conString)) {
                 using (SqlCommand updateCommand = new SqlCommand(updateString, connection)) {

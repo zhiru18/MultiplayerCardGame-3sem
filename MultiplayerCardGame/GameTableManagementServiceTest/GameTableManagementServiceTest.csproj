@@ -70,6 +70,10 @@
       <Project>{6968B2CF-1EF6-4D2A-9095-3A90EDEFB934}</Project>
       <Name>GameTableManagementService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{095F941F-D5B7-4D22-8C99-CF8F749DF82E}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
