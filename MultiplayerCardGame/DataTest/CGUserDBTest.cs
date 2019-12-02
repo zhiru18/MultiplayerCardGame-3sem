@@ -13,7 +13,7 @@ namespace Server.Data.Data.Tests {
         [TestMethod()]
         public void UpdateUserTableIdTest() {
             ICGUserDBIF cgUserDB = new CGUserDB();
-            CGUser user = cgUserDB.GetById("3e0cd506-d7d6-431d-9f25-afc70d6ce993");
+            CGUserModel user = cgUserDB.GetById("3e0cd506-d7d6-431d-9f25-afc70d6ce993");
             cgUserDB.UpdateUserTableId(user, 10);
         }
     }

@@ -27,7 +27,7 @@ namespace Tests.DataTest {
         public void InsertTest() {
             // Arrange
             deckDB = new DeckDB();
-            var deck5 = new Deck() {
+            var deck5 = new DeckModel() {
                 DeckName = "GameDeck5"
             };
             //Act
@@ -42,7 +42,7 @@ namespace Tests.DataTest {
             // Arrange
             deckDB = new DeckDB();
             //Act
-            Deck deck3 = deckDB.GetById(3);
+            DeckModel deck3 = deckDB.GetById(3);
             //Assert
             Assert.AreEqual(3, deck3.Id);
         }
@@ -52,7 +52,7 @@ namespace Tests.DataTest {
             // Arrange
             deckDB = new DeckDB();
             //Act
-            List<Deck> decks = (List<Deck>)deckDB.GetAll();
+            List<DeckModel> decks = (List<DeckModel>)deckDB.GetAll();
             //Assert
             Assert.IsTrue(decks.Count > 0);
         }

@@ -1,4 +1,5 @@
-﻿using Server.Model.Model;
+﻿using Server.DataContracts.DataContracts;
+using Server.Model.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

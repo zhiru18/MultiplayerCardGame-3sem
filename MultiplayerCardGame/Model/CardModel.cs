@@ -12,14 +12,12 @@ namespace Server.Model.Model {
         public string Name { get; set; }
         public string Description { get; set; }
         public int Value { get; set; }
-        public int DeckId { get; set; }
 
-        public CardModel(CardType cardType, string name, string description, int value, int deckId) {
+        public CardModel(CardType cardType, string name, string description, int value) {
             this.cardType = cardType;
             this.Name = name;
             this.Description = description;
             this.Value = value;
-            this.DeckId = deckId;
         }
 
         public CardModel() {

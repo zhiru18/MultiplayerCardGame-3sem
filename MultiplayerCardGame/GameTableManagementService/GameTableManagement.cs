@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Transactions;
 using Server.Data.Data;
+using Server.DataContracts.DataContracts;
 using Server.Model.Model;
 using Server.Services.GameTableManagementService.Contracts;
 using Server.Services.UserManagementService;

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Server.Model.Model;
 using Server.Data.Data;
+using Server.DataContracts.DataContracts;
 
 namespace GameServiceTest {
 

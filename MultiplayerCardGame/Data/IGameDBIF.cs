@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Data.Data {
-    public interface IGameDBIF : IGeneralDBIF<Game>{
+    public interface IGameDBIF : IGeneralDBIF<GameModel>{
 
     }
 }

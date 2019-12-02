@@ -58,9 +58,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataContract\DataContracts.csproj">
+      <Project>{c35a2e51-1437-4aa6-b6c9-b76895e56f2c}</Project>
+      <Name>DataContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{e2c35aaa-3f22-46c2-8469-424671759d7b}</Project>
       <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{095F941F-D5B7-4D22-8C99-CF8F749DF82E}</Project>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Data.Data {
-    public interface ICGUserDBIF : IGeneralDBIF<CGUser> {
-        CGUser GetUserByEmail(string useremail);
-        CGUser GetById(string id);
-        List<CGUser> GetUserByTableId(int id);
-        void UpdateUserTableId(CGUser user, int tableId);
+    public interface ICGUserDBIF : IGeneralDBIF<CGUserModel> {
+        CGUserModel GetUserByEmail(string useremail);
+        CGUserModel GetById(string id);
+        List<CGUserModel> GetUserByTableId(int id);
+        void UpdateUserTableId(CGUserModel user, int tableId);
     }
 }

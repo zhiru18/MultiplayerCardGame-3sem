@@ -11,7 +11,7 @@ namespace Tests.GameTableManagementServiceTest {
         public void JoinGameTableTest() {
             GameTableManagement gameTableManagement = new GameTableManagement();
             ICGUserDBIF userDB = new CGUserDB();
-            GameTable table = gameTableManagement.GetGameTableById(2);
+            GameTableModel table = gameTableManagement.GetGameTableById(2);
             CGUser cGUser = userDB.GetById("ce2b4942-69bc-4423-a2c0-2b28f53e7817");
             gameTableManagement.JoinGameTable(cGUser, table);
             // TODO: Fix this test.

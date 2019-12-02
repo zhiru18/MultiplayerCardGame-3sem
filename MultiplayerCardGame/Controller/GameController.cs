@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Server.Model.Model;
 using Server.Data.Data;
+using Server.DataContracts.DataContracts;
 
 namespace Server.Controllers.Controller {
     public class GameController {
@@ -44,7 +45,10 @@ namespace Server.Controllers.Controller {
         }
         public void CreateGame(Game game) {
             IGameDBIF gameDB = new GameDB();
-            gameDB.Insert(game);
+            GameModel gameModel = new GameModel() {
+                GameTableId = game.gameTable.Id
+            };
+            gameDB.Insert(gameModel);
         }
 
         //Update deck method??

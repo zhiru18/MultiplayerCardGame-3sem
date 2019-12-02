@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Server.Controllers.Controller;
-using Server.Model.Model;
+using Server.DataContracts.DataContracts;
 
 namespace Tests.GameControllerTest {
     [TestClass]
