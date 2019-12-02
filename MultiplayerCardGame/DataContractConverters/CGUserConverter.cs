@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Server.Converters.DataContractConverters {
     class CGUserConverter {
-        public static CGUserModel ConvertFRomCGUserToCGUserModel(CGUser cGUser) {
+        public static CGUserModel ConvertFromCGUserToCGUserModel(CGUser cGUser) {
             CGUserModel cGUserModel = new CGUserModel() {
                 Id= cGUser.Id,
                 UserName = cGUser.UserName,
@@ -34,6 +34,14 @@ namespace Server.Converters.DataContractConverters {
                 cards = CardConverter.ConvertFromListOfCardModelToListOfCard(userCards)
             };
             return cGUser;
+        }
+        public static List<CGUser> ConvertFromListOfCGUserModelToListOfCGUser(List<CGUserModel> cGUserModels) {
+            List<CGUser> cGUsers = new List<CGUser>();
+            foreach (CGUserModel cGUserModel in cGUserModels) {
+                CGUser cGUser = convertFromCGUserModelToCGUser(cGUserModel);
+                cGUsers.Add(cGUser);
+            }
+            return cGUsers;
         }
     }
 }
