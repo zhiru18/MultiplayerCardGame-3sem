@@ -22,7 +22,7 @@ namespace Server.Converters.DataContractConverters {
             GameTableModel gameTableModel = gameTableDB.GetById(gameModel.GameTableId);
             Game game = new Game() {
                 Id = gameModel.Id,
-                gameTable = GameTableConverter.ConvertFromGameTableModelToGametable(gameTableModel)
+                gameTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableModel)
             };
             return game;
         }

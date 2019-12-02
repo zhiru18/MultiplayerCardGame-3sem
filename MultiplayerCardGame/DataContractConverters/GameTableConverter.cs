@@ -31,5 +31,13 @@ namespace Server.Converters.DataContractConverters {
             };
             return gameTable;
         }
+        public static List<GameTable> ConvertFromListOfGameTableModelToListOfGameTable(List<GameTableModel> gameTableModels) {
+            List<GameTable> gameTables = new List<GameTable>();
+            foreach (GameTableModel gameTableModel in gameTableModels) {
+                GameTable gameTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableModel);
+                gameTables.Add(gameTable);
+            }
+            return gameTables;
+        }
     }
 }

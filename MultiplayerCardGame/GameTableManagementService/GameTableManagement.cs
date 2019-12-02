@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Transactions;
+using Server.Converters.DataContractConverters;
 using Server.Data.Data;
 using Server.DataContracts.DataContracts;
 using Server.Model.Model;
@@ -16,33 +17,34 @@ namespace Server.Services.GameTableManagementService {
     public class GameTableManagement : IGameTableManagementService {
         IGameTableDBIF gameTableDB = new GameTableDB();
         UserManagement userManagement = new UserManagement();
-        public GameTable CreateGameTable(CGUser user, string tableName) {         
-            GameTable table = new GameTable(tableName);
-            Deck deck = new Deck();
-            deck.Id = 2;
-            table.Deck = deck;
-            gameTableDB.Insert(table);
-            GameTable table2 = gameTableDB.GetGameTableByTableName(tableName);
-            GameTable table3=JoinGameTable(user, table2);
-            return table3;
+        public GameTable CreateGameTable(CGUser user, string tableName) {
+            GameTableModel tableModel = new GameTableModel() {
+                TableName = tableName,
+                DeckId = 2, 
+                IsFull = false
+            };
+            gameTableDB.Insert(tableModel);
+            GameTable table = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetGameTableByTableName(tableName));
+            JoinGameTable(user, table);
+            return table;
         }
 
         public bool DeleteGameTable(int id) {
             bool res = false;
-            GameTable table = gameTableDB.GetById(id);
+            GameTable table = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(id));
             if (table != null) {
-                gameTableDB.Delete(table);
+                gameTableDB.Delete(GameTableConverter.ConvertFromGameTableToGameTableModel(table));
                 res = true;
             }
             return res;
         }
 
         public IEnumerable<GameTable> GetAll() {
-            return gameTableDB.GetAll();
+            return GameTableConverter.ConvertFromListOfGameTableModelToListOfGameTable((List<GameTableModel>)gameTableDB.GetAll());
         }
 
         public GameTable GetGameTableById(int id) {
-            return gameTableDB.GetById(id);
+            return GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(id));
         }
 
         public GameTable JoinGameTable(CGUser user, GameTable chosenTable) {
@@ -50,15 +52,15 @@ namespace Server.Services.GameTableManagementService {
             //TODO: Add a check to see if a user is at another table, and then remove him form that table.
             try {
                 using (TransactionScope scope = new TransactionScope()) {
-                    databaseTable = gameTableDB.GetById(chosenTable.Id);
+                    databaseTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(chosenTable.Id));
                     if (chosenTable.IsFull == databaseTable.IsFull && databaseTable.Users.Count < 4) {
                         userManagement.UpdateUserTableId(user, databaseTable.Id);
                         databaseTable.Users.Add(user);
                         if (databaseTable.Users.Count == 4) {
                             databaseTable.IsFull = true;
-                            gameTableDB.Update(databaseTable);
+                            gameTableDB.Update(GameTableConverter.ConvertFromGameTableToGameTableModel(databaseTable));
                         }
-                        gameTableDB.UpdateGameTableSeats(databaseTable, 1);
+                        gameTableDB.UpdateGameTableSeats(GameTableConverter.ConvertFromGameTableToGameTableModel(databaseTable), 1);
                     }
                     scope.Complete();
                 }
@@ -70,7 +72,7 @@ namespace Server.Services.GameTableManagementService {
         }
 
         public GameTable GetGameTableByTableName(string name) {
-            return gameTableDB.GetGameTableByTableName(name);
+            return GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetGameTableByTableName(name));
         }
     }
 }
