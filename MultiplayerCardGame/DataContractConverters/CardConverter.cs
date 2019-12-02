@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Converters.DataContractConverters {
-    class CardConverter {
+    public class CardConverter {
         public static CardModel ConvertFromCardToCardModel(Card card) {
             CardModel cardModel = new CardModel() {
                 cardType = (CardModel.CardType)card.cardtype,
