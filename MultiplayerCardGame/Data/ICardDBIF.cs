@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Server.Data.Data
 {
-    public interface ICardDBIF:IGeneralDBIF<CardModel>{
-
+    public interface ICardDBIF : IGeneralDBIF<CardModel> {
+        List<CardModel> GetCardsByUserId(string id);
+        List<CardModel> GetCardsByDeckId(int id);
     }
 }
