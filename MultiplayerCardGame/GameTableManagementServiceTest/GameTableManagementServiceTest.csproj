@@ -62,6 +62,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataContractConverters\DataContractConverters.csproj">
+      <Project>{cc8520db-a252-4d00-93fe-3a9d2cf54e66}</Project>
+      <Name>DataContractConverters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataContract\DataContracts.csproj">
+      <Project>{C35A2E51-1437-4AA6-B6C9-B76895E56F2C}</Project>
+      <Name>DataContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{e2c35aaa-3f22-46c2-8469-424671759d7b}</Project>
       <Name>Data</Name>
