@@ -33,5 +33,8 @@ namespace Server.DataContracts.DataContracts {
             this.Description = description;
             this.Value = value;
         }
+
+        public Card() {
+        }
     }
 }

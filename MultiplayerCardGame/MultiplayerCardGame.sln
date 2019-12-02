@@ -50,6 +50,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContracts", "DataContract\DataContracts.csproj", "{C35A2E51-1437-4AA6-B6C9-B76895E56F2C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Converters", "Converters", "{FC8A6F21-CEDF-475F-912A-A25C4A32573A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContractConverters", "DataContractConverters\DataContractConverters.csproj", "{CC8520DB-A252-4D00-93FE-3A9D2CF54E66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +112,10 @@ Global
 		{C35A2E51-1437-4AA6-B6C9-B76895E56F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C35A2E51-1437-4AA6-B6C9-B76895E56F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C35A2E51-1437-4AA6-B6C9-B76895E56F2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC8520DB-A252-4D00-93FE-3A9D2CF54E66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC8520DB-A252-4D00-93FE-3A9D2CF54E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC8520DB-A252-4D00-93FE-3A9D2CF54E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC8520DB-A252-4D00-93FE-3A9D2CF54E66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,6 +139,8 @@ Global
 		{6D6C97BC-5346-468C-85C4-C504252B90A0} = {7724B3C9-EF33-416E-AA44-56388E0D835A}
 		{095F941F-D5B7-4D22-8C99-CF8F749DF82E} = {6D6C97BC-5346-468C-85C4-C504252B90A0}
 		{C35A2E51-1437-4AA6-B6C9-B76895E56F2C} = {C30A6ECF-D917-4C4E-A3AB-619E03600993}
+		{FC8A6F21-CEDF-475F-912A-A25C4A32573A} = {7724B3C9-EF33-416E-AA44-56388E0D835A}
+		{CC8520DB-A252-4D00-93FE-3A9D2CF54E66} = {FC8A6F21-CEDF-475F-912A-A25C4A32573A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87148347-E100-4333-8C09-F0E81CE16B78}
