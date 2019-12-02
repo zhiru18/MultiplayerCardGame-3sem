@@ -17,57 +17,58 @@ namespace Server.Data.Data {
             conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             //conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString; 
         }
-        public void Delete(CGUser user) {
+        public void Delete(CGUserModel user) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 var sql = "DELETE FROM CGUser WHERE id = @id;";
                 connection.Execute(sql, user);
             }
         }
 
-        public IEnumerable<CGUser> GetAll() {
+        public IEnumerable<CGUserModel> GetAll() {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CGUser>("SELECT Id, userName, email, userType, UserStatus FROM CGUser").ToList();
+                return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, UserStatus FROM CGUser").ToList();
             }
         }
 
-        public CGUser GetById(string id) {
+        public CGUserModel GetById(string id) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CGUser>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE id = @id", new { id }).SingleOrDefault();
+                return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE id = @id", new { id }).SingleOrDefault();
             }
         }
 
-        public CGUser GetUserByEmail(string email) {
+        public CGUserModel GetUserByEmail(string email) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CGUser>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE email = @email", new { email }).SingleOrDefault();
+                return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE email = @email", new { email }).SingleOrDefault();
             }
         }
 
-        public void Insert(CGUser user) {
+        public void Insert(CGUserModel user) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 var sql = "INSERT INTO CGUser (id, userName, email, userType, userStatus) VALUES (@id, @userName, @email, @userType, @userStatus);";
                 connection.Execute(sql, user);
             }
         }
 
-        public void Update(CGUser user) {
+        public void Update(CGUserModel user) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 var sql = "UPDATE CGUser SET userName = @userName, email = @email, userType = @userType, userStatus = @userStatus WHERE id = @id;";
                 connection.Execute(sql, user);
             }
         }
-        public List<CGUser> GetUserByTableId(int id) {
+        public List<CGUserModel> GetUserByTableId(int id) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return (List<CGUser>)connection.Query<CGUser>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE tableId = @id", new { id });
+                return (List<CGUserModel>)connection.Query<CGUserModel>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE tableId = @id", new { id });
             }
         }
-        /*
-        public void UpdateUserTableId(CGUser user, int tableId) {
+        
+        public void UpdateUserTableId(CGUserModel user, int tableId) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 var sql = "UPDATE CGUser SET tableId = @tableId WHERE id = @id;";
                 connection.Execute(sql, user);
             }
         }
-        */
+        
+        /*
         public void UpdateUserTableId(CGUser user, int tableId) {
             string sql = "UPDATE CGUser SET tableId = @tableId WHERE id = @id;";
             using (SqlConnection connection = new SqlConnection(conString)) {
@@ -80,6 +81,7 @@ namespace Server.Data.Data {
                 }
             }
         }
+        */
 
     }
 }

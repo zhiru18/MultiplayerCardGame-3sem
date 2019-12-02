@@ -61,10 +61,6 @@
       <Project>{E2C35AAA-3F22-46C2-8469-424671759D7B}</Project>
       <Name>Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{1033C2B8-3580-427D-B292-FC6D5EF55933}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\UserManagementService\UserManagementService.csproj">
       <Project>{d692c0d2-cee5-4854-9ca6-b4022c51fd14}</Project>
       <Name>UserManagementService</Name>

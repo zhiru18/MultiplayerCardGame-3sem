@@ -17,7 +17,7 @@ namespace Server.Data.Data {
             //conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
-        public void Delete(Deck deck) {
+        public void Delete(DeckModel deck) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
                 var sql = "DELETE FROM Deck WHERE id = @id;";
@@ -25,33 +25,22 @@ namespace Server.Data.Data {
             }
         }
 
-        public IEnumerable<Deck> GetAll() {
+        public IEnumerable<DeckModel> GetAll() {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
-                return connection.Query<Deck>("SELECT Id, deckName FROM Deck").ToList();
+                return connection.Query<DeckModel>("SELECT Id, deckName FROM Deck").ToList();
             }
         }
 
-        public Deck GetById(int id) {
-            ICardDBIF cardDB = new CardDB();
-            Deck deck = new Deck();
-            try {
-                using (TransactionScope scope = new TransactionScope()) {
+        public DeckModel GetById(int id) {
                     using (SqlConnection connection = new SqlConnection(conString)) {
                         connection.Open();
-                        deck = connection.Query<Deck>("SELECT Id, deckName FROM Deck WHERE id = @id", new { id }).SingleOrDefault();
-                        // TODO: Change so it only gets cards that are linked to the deck. Must also add table CardDeck to the db and add column to card.
-                        deck.cards = (List<Card>)cardDB.GetAll();
-                        scope.Complete(); 
+                        return connection.Query<DeckModel>("SELECT Id, deckName FROM Deck WHERE id = @id", new { id }).SingleOrDefault();
+ 
                     }
-                }
-            }catch(TransactionAbortedException tae) {
-                //maybe throw our own exception
-            }
-            return deck;
         }
 
-        public void Insert(Deck deck) {
+        public void Insert(DeckModel deck) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                        connection.Open();
                        var sql = "INSERT INTO Deck (deckName) VALUES (@deckName);";
@@ -59,7 +48,7 @@ namespace Server.Data.Data {
                 }
             }
 
-        public void Update(Deck deck) {
+        public void Update(DeckModel deck) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
                 var sql = "UPDATE Deck SET deckName = @deckName WHERE id = @id;";

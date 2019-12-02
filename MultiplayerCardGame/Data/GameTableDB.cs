@@ -18,7 +18,7 @@ namespace Server.Data.Data {
             //conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
-        public void Delete(GameTable table) {
+        public void Delete(GameTableModel table) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
                 var sql = "DELETE FROM GameTable WHERE id = @id;";
@@ -26,71 +26,26 @@ namespace Server.Data.Data {
             }
         }
 
-        
-        public IEnumerable<GameTable> GetAll() {
-            IDeckDBIF deckDB = new DeckDB();
-            ICGUserDBIF userDB = new CGUserDB();
-            IEnumerable<GameTable> tables = null;
-            try {
-                using (TransactionScope scope = new TransactionScope()) {
-                    using (SqlConnection connection = new SqlConnection(conString)) {
-                        connection.Open();
-                        tables = connection.Query<GameTable>("SELECT Id, tableName, isFull, deckId FROM GameTable").ToList();
-                        foreach(GameTable gameTable in tables) {
-                            gameTable.Deck = deckDB.GetById(gameTable.deckId);
-                            gameTable.Users = userDB.GetUserByTableId(gameTable.Id);
-                        }
-                        scope.Complete();
-                    }
-                }
-            }catch(TransactionAbortedException tae) {
 
+        public IEnumerable<GameTableModel> GetAll() {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                connection.Open();
+                return connection.Query<GameTableModel>("SELECT Id, tableName, isFull, deckId FROM GameTable").ToList();
             }
-            return tables;
         }
 
-        public GameTable GetById(int id) {
-            IDeckDBIF deckDB = new DeckDB();
-            ICGUserDBIF userDB = new CGUserDB();
-            GameTable table = new GameTable();
-            try {
-                using (TransactionScope scope = new TransactionScope()) { 
-                using (SqlConnection connection = new SqlConnection(conString)) {
-                    connection.Open();
-                    table = connection.Query<GameTable>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
-                    table.Deck = deckDB.GetById(table.deckId);
-                    table.Users = userDB.GetUserByTableId(id);
-                        scope.Complete();
-                }
+        public GameTableModel GetById(int id) {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                connection.Open();
+                return connection.Query<GameTableModel>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
             }
-            }catch(TransactionAbortedException tae) {
-                //maybe throw our own exception here to catch further up 
-            }
-            return table;
         }
 
-        public GameTable GetGameTableByTableName(string tableName) {
-            IDeckDBIF deckDB = new DeckDB();
-            ICGUserDBIF userDB = new CGUserDB();
-            GameTable table = new GameTable();
-            try {
-                using (TransactionScope scope = new TransactionScope()) {
-                    using (SqlConnection connection = new SqlConnection(conString)) {                   
-                        connection.Open();
-                        table = connection.Query<GameTable, Deck, GameTable>("select * from GameTable join Deck on deck.id = GameTable.deckId where tableName = @tableName", (gt, dk) => {
-                            gt.Deck = dk;
-                            return gt;
-                        }, new { tableName }).SingleOrDefault();
-                        table.Deck = deckDB.GetById(table.Deck.Id);
-                        table.Users = userDB.GetUserByTableId(table.Id);
-                        scope.Complete();
-                        
-                    }
-                }
-            }catch(TransactionAbortedException tae) {
-                //maybe thorw our own exception
+        public GameTableModel GetGameTableByTableName(string tableName) {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                connection.Open();
+                return connection.Query<GameTableModel>("select Id, tableName, isFull, deckId from GameTable where tableName = @tableName", new { tableName }).SingleOrDefault();
             }
-            return table;
         }
 
         public int GetGameTableSeats(GameTable table) {
@@ -114,6 +69,8 @@ namespace Server.Data.Data {
         //}
 
         //insert the gametable with Deck
+
+        /*
         public void Insert(GameTable table) {
             string insertString = "INSERT INTO GameTable (tableName, isFull, deckId) VALUES (@TableName, @IsFull, @DeckId)";
             using (SqlConnection connection = new SqlConnection(conString))
@@ -128,8 +85,15 @@ namespace Server.Data.Data {
                 createCommand.ExecuteNonQuery();
             }
         }
-
-        public void Update(GameTable table) {
+        */
+        public void Insert(GameTableModel gameTable) {
+        using(SqlConnection connection = new SqlConnection(conString)) {
+                connection.Open();
+                var sql = "INSERT INTO GameTable (tableName, isFull, deckId) VALUES (@TableName, @IsFull, @DeckId)";
+                connection.Execute(sql, gameTable);
+            }
+    }
+        public void Update(GameTableModel table) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
                 var sql = "UPDATE GameTable SET tableName = @tableName, isFull = @isFull  WHERE id = @id;";

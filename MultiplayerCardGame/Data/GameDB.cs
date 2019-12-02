@@ -17,15 +17,16 @@ namespace Server.Data.Data {
             conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         }
 
-        public void Delete(Game t) {
+        public void Delete(GameModel t) {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Game> GetAll() {
+        public IEnumerable<GameModel> GetAll() {
             throw new NotImplementedException();
         }
 
-        public void Insert(Game t) {
+        /*
+        public void Insert(GameModel t) {
             string queryString = "INSERT INTO Game (GameTableId) VALUES (@GametableId);";
             using (SqlConnection connection = new SqlConnection(conString))
             using (SqlCommand insertCommand = new SqlCommand(queryString, connection)) {
@@ -36,15 +37,23 @@ namespace Server.Data.Data {
                 SqlDataReader reader = insertCommand.ExecuteReader();
             }
         }
+        */
+        public void Insert(GameModel game) {
+            using(SqlConnection connection = new SqlConnection(conString)) {
+                connection.Open();
+                var sql = "Insert INTO Game (GameTableId) VALUES (@GameTableId);";
+                connection.Execute(sql, game);
+            }
+        }
 
-        public void Update(Game t) {
+        public void Update(GameModel t) {
             throw new NotImplementedException();
         }
 
-        public Game GetById(int id) {
+        public GameModel GetById(int id) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
-                return connection.Query<Game>("SELECT Id, GameTableId FROM Game WHERE id = @id", new { id }).SingleOrDefault();
+                return connection.Query<GameModel>("SELECT Id, GameTableId FROM Game WHERE id = @id", new { id }).SingleOrDefault();
             }
         }
     }
