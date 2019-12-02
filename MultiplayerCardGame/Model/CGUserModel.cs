@@ -24,12 +24,11 @@ namespace Server.Model.Model {
         public int Health { get; set; }
         public int GameTableID { get; set; }
 
-        public CGUserModel(string userName, string email, UserType userType, UserStatus userStatus, int gameTableId) {
+        public CGUserModel(string userName, string email, UserType userType, UserStatus userStatus) {
             this.UserName = userName;
             this.Email = email;
             this.userType = userType;
             this.userStatus = userStatus;
-            this.GameTableID = gameTableId;
         }
         public CGUserModel() {
         }
