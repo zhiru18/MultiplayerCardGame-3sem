@@ -60,16 +60,16 @@ namespace Server.Data.Data {
                 return (List<CGUserModel>)connection.Query<CGUserModel>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE tableId = @id", new { id });
             }
         }
-        
+        /*
         public void UpdateUserTableId(CGUserModel user, int tableId) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 var sql = "UPDATE CGUser SET tableId = @tableId WHERE id = @id;";
                 connection.Execute(sql, user);
             }
         }
+        */
         
-        /*
-        public void UpdateUserTableId(CGUser user, int tableId) {
+        public void UpdateUserTableId(CGUserModel user, int tableId) {
             string sql = "UPDATE CGUser SET tableId = @tableId WHERE id = @id;";
             using (SqlConnection connection = new SqlConnection(conString)) {
                 using(SqlCommand command = connection.CreateCommand()) {
@@ -81,7 +81,7 @@ namespace Server.Data.Data {
                 }
             }
         }
-        */
+        
 
     }
 }

@@ -18,7 +18,7 @@ namespace WebGameClient.ServiceAcces {
         private static GameServiceReference.Deck ConvertFromClientDeckToServiceDeck(Models.Deck clientDeck) {
             GameServiceReference.Deck serviceDeck = new GameServiceReference.Deck() {
                 Id = clientDeck.Id,
-                Name = clientDeck.Name,
+                DeckName = clientDeck.Name,
                 cards = ConvertFromListOfClientCardsToListOfServiceCards(clientDeck.cards)
             };
             return serviceDeck;
@@ -46,7 +46,7 @@ namespace WebGameClient.ServiceAcces {
         private static object ConvertFromServiceDeckToClientDeck(Deck serviceDeck) {
             Models.Deck clientDeck = new Models.Deck() {
                 Id = serviceDeck.Id,
-                Name = serviceDeck.Name,
+                Name = serviceDeck.DeckName,
                 cards = ConvertFromListOfServiceCardsToListOfClientCards(serviceDeck.cards)
             };
             return clientDeck;
