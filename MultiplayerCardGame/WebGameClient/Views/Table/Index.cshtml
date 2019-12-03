@@ -28,9 +28,6 @@
     Game Table ID:
     <input type="text" name="gameTableID" id="gameTableID">
     <br>
-    Available:
-    <input type="text" name="isFull" id="isFull">
-    <br>
     Game Table Name:
     <input type="text" name="gameTableName" id="gameTableName">
     <br>
@@ -48,7 +45,6 @@
     <table id="table" border="1">
         <tr>
             <th>Game Table ID</th>
-            <th>Is table full</th>
             <th>Game Table name</th>
             <th>Number of players</th>
         </tr>
@@ -56,7 +52,6 @@
             @foreach (WebGameClient.Models.GameTable item in Model) {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.IsFull</td>
                 <td>@item.TableName</td>
                 <td>@item.Users.Count</td>
             </tr>
@@ -68,7 +63,6 @@
                 table.rows[i].onclick = function () {
                     //rIndex = this.rowIndex;
                     document.getElementById("gameTableID").value = this.cells[0].innerHTML;
-                    document.getElementById("isFull").value = this.cells[1].innerHTML;
                     document.getElementById("gameTableName").value = this.cells[2].innerHTML;
                     document.getElementById("users").value = this.cells[3].innerHTML;
                 };

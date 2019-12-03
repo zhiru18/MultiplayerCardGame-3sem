@@ -8,7 +8,6 @@ namespace WebGameClient.Models
     public class GameTable
     {
         public int Id { get; set; }
-        public bool IsFull { get; set; }
         public string TableName { get; set; }
         public List<CGUser> Users { get; set; }
         public Deck Deck { get; internal set; }
