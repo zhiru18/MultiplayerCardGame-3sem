@@ -561,6 +561,18 @@ namespace WebGameClient.GameServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/StartGame", ReplyAction="http://tempuri.org/IGameService/StartGameResponse")]
         System.Threading.Tasks.Task<WebGameClient.GameServiceReference.Game> StartGameAsync(WebGameClient.GameServiceReference.GameTable gameTable);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/CreateGame", ReplyAction="http://tempuri.org/IGameService/CreateGameResponse")]
+        void CreateGame(WebGameClient.GameServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/CreateGame", ReplyAction="http://tempuri.org/IGameService/CreateGameResponse")]
+        System.Threading.Tasks.Task CreateGameAsync(WebGameClient.GameServiceReference.Game game);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetByTableId", ReplyAction="http://tempuri.org/IGameService/GetByTableIdResponse")]
+        WebGameClient.GameServiceReference.Game GetByTableId(int tableId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetByTableId", ReplyAction="http://tempuri.org/IGameService/GetByTableIdResponse")]
+        System.Threading.Tasks.Task<WebGameClient.GameServiceReference.Game> GetByTableIdAsync(int tableId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -596,6 +608,22 @@ namespace WebGameClient.GameServiceReference {
         
         public System.Threading.Tasks.Task<WebGameClient.GameServiceReference.Game> StartGameAsync(WebGameClient.GameServiceReference.GameTable gameTable) {
             return base.Channel.StartGameAsync(gameTable);
+        }
+        
+        public void CreateGame(WebGameClient.GameServiceReference.Game game) {
+            base.Channel.CreateGame(game);
+        }
+        
+        public System.Threading.Tasks.Task CreateGameAsync(WebGameClient.GameServiceReference.Game game) {
+            return base.Channel.CreateGameAsync(game);
+        }
+        
+        public WebGameClient.GameServiceReference.Game GetByTableId(int tableId) {
+            return base.Channel.GetByTableId(tableId);
+        }
+        
+        public System.Threading.Tasks.Task<WebGameClient.GameServiceReference.Game> GetByTableIdAsync(int tableId) {
+            return base.Channel.GetByTableIdAsync(tableId);
         }
     }
 }

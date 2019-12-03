@@ -51,6 +51,10 @@ namespace Server.Controllers.Controller {
             gameDB.Insert(gameModel);
         }
 
+        public GameModel GetByTableId(int tableId) {
+            IGameDBIF gameDB = new GameDB();
+            return gameDB.GetByTabelId(tableId);
+        }
         //Update deck method??
 
         //update game method??

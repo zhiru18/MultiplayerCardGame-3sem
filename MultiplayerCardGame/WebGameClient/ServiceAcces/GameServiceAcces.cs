@@ -17,6 +17,18 @@ namespace WebGameClient.ServiceAcces {
             }
         }
 
-       
+       public void CreateGAme(Models.Game game) {
+            using(GameServiceClient proxy = new GameServiceClient()) {
+                GameServiceReference.Game serviceGame = GameModelConverter.ConvertFromClientGameToServiceGame(game);
+                proxy.CreateGame(serviceGame);
+            }
+        }
+
+        public Models.Game GetByTableId(int tableId) {
+            using (GameServiceClient proxy = new GameServiceClient()) {
+                GameServiceReference.Game game = proxy.GetByTableId(tableId);
+                return GameModelConverter.ConvertFromServiceGameToClientGame(game);
+            }
+        }
     }
 }

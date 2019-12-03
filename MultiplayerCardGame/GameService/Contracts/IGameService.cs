@@ -13,5 +13,11 @@ namespace Server.Services.GameService.Contracts {
     public interface IGameService {
         [OperationContract]
         Game StartGame(GameTable gameTable);
+
+        [OperationContract]
+        void CreateGame(Game game);
+
+        [OperationContract]
+        Game GetByTableId(int tableId);
     }
 }

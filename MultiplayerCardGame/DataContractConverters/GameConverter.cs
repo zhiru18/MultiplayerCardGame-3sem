@@ -17,7 +17,7 @@ namespace Server.Converters.DataContractConverters {
             return gameModel;
         }
 
-        public Game ConvertFromGameModelToGame(GameModel gameModel) {
+        public static Game ConvertFromGameModelToGame(GameModel gameModel) {
             IGameTableDBIF gameTableDB = new GameTableDB();
             GameTableModel gameTableModel = gameTableDB.GetById(gameModel.GameTableId);
             Game game = new Game() {

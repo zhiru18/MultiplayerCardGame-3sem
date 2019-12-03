@@ -32,6 +32,14 @@ namespace WebGameClient.ServiceAcces {
             return clientGame;
         }
 
+        internal static GameServiceReference.Game ConvertFromClientGameToServiceGame(Models.Game clientGame) {
+            GameServiceReference.Game serviceGame = new GameServiceReference.Game() {
+                Id = clientGame.Id,
+                gameTable = ConvertFromClientGameTableToServiceGameTable(clientGame.gameTable)
+            };
+            return serviceGame;
+        }
+
         private static Models.GameTable ConvertFromServiceGameTableToClientGameTable(GameServiceReference.GameTable serviceGameTable) {
             Models.GameTable clientGameTable = new Models.GameTable() {
                 Id = serviceGameTable.Id,

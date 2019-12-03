@@ -56,5 +56,12 @@ namespace Server.Data.Data {
                 return connection.Query<GameModel>("SELECT Id, GameTableId FROM Game WHERE id = @id", new { id }).SingleOrDefault();
             }
         }
+
+        public GameModel GetByTabelId(int tableId) {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                connection.Open();
+                return connection.Query<GameModel>("SELECT Id, GameTableId FROM Game WHERE GameTableId = @GameTableId", new { tableId }).SingleOrDefault();
+            }
+        }
     }
 }

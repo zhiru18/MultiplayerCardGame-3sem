@@ -13,16 +13,54 @@
   <wsdl:message name="IGameService_StartGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:StartGameResponse" />
   </wsdl:message>
+  <wsdl:message name="IGameService_CreateGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_CreateGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_GetByTableId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetByTableId" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_GetByTableId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetByTableIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGameService">
     <wsdl:operation name="StartGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameService/StartGame" message="tns:IGameService_StartGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGameService/StartGameResponse" message="tns:IGameService_StartGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/CreateGame" message="tns:IGameService_CreateGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/CreateGameResponse" message="tns:IGameService_CreateGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetByTableId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/GetByTableId" message="tns:IGameService_GetByTableId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/GetByTableIdResponse" message="tns:IGameService_GetByTableId_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGameService" type="tns:IGameService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="StartGame">
       <soap:operation soapAction="http://tempuri.org/IGameService/StartGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateGame">
+      <soap:operation soapAction="http://tempuri.org/IGameService/CreateGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetByTableId">
+      <soap:operation soapAction="http://tempuri.org/IGameService/GetByTableId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
