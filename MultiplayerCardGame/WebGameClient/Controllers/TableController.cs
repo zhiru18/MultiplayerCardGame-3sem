@@ -6,8 +6,10 @@ using System.Web.Mvc;
 using WebGameClient.Models;
 using WebGameClient.ServiceAcces;
 using Microsoft.AspNet.Identity;
+using System.Web.Routing;
 
 namespace WebGameClient.Controllers {
+    [Authorize]
     public class TableController : Controller {
         // GET: Table
         public ActionResult Index() {
@@ -46,17 +48,20 @@ namespace WebGameClient.Controllers {
               string userId = User.Identity.GetUserId();
               foundGt = gameTableServiceAcces.CreateGameTable(userId,tableName);
             }
-           List<GameTable> tables = new List<GameTable>() { foundGt };
+          // List<GameTable> tables = new List<GameTable>() { foundGt };
             ViewBag.Situation = 3;
-            return View(tables);
+            return View("Lobby", foundGt);
+            
         }
 
         public ActionResult Succes() {
             return View();
         }
+        
         public ActionResult JoinTable() {
             return View();
         }
+        
        [HttpPost]
         public ActionResult JoinTable(string gameTableID) {
             GameTable foundGt = null;
@@ -72,7 +77,14 @@ namespace WebGameClient.Controllers {
             } else {
                 ViewBag.Situation = 5;
             }
-            return View(tables);
+            return View("Lobby", foundGt);
+        }
+        
+        public ActionResult Lobby(int tableId) {
+            GameTable foundGt = null;
+            GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
+            foundGt = gameTableServiceAcces.GetGameTable(tableId);
+            return View(foundGt);
         }
     }
 }
