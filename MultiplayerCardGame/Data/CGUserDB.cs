@@ -81,7 +81,12 @@ namespace Server.Data.Data {
                 }
             }
         }
-        
+        public int GetUserTableId(string id) {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                CGUserModel userModel = connection.Query<CGUserModel>("SELECT tableId FROM CGUser WHERE id = @id", new { id }).SingleOrDefault();
+                return userModel.TableID;
+            }
+        }
 
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Server.Model.Model {
     public class GameTableModel {
         public int Id { get; set; }
-        public bool IsFull { get; set; }
+        public int seats { get; set; }
         public string TableName { get; set; }
         public int DeckId { get; set; }
 
@@ -15,9 +15,8 @@ namespace Server.Model.Model {
             this.TableName = tableName;
         }
 
-        public GameTableModel(string tableName, bool isfull, int deckId) {
+        public GameTableModel(string tableName, int deckId) {
             this.TableName = tableName;
-            this.IsFull = isfull;
             this.DeckId = deckId;
         }
 

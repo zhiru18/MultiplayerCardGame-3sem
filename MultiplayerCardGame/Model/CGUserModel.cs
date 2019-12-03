@@ -22,7 +22,7 @@ namespace Server.Model.Model {
         public UserType userType { get; set; }
         public UserStatus userStatus { get; set; }
         public int Health { get; set; }
-        public int GameTableID { get; set; }
+        public int TableID { get; set; }
 
         public CGUserModel(string userName, string email, UserType userType, UserStatus userStatus) {
             this.UserName = userName;

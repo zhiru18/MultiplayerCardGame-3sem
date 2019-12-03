@@ -14,7 +14,7 @@ namespace Server.Data.Data {
         private string conString;
         public GameTableDB() {
               //conString = "data Source=.; dataBase= CardGameDB; integrated security= true";
-            conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
@@ -30,21 +30,21 @@ namespace Server.Data.Data {
         public IEnumerable<GameTableModel> GetAll() {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
-                return connection.Query<GameTableModel>("SELECT Id, tableName, isFull, deckId FROM GameTable").ToList();
+                return connection.Query<GameTableModel>("SELECT Id, tableName, seats, deckId FROM GameTable").ToList();
             }
         }
 
         public GameTableModel GetById(int id) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
-                return connection.Query<GameTableModel>("SELECT Id, tableName, isFull,deckId FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
+                return connection.Query<GameTableModel>("SELECT Id, tableName, seats,deckId FROM GameTable WHERE id = @id", new { id }).SingleOrDefault();
             }
         }
 
         public GameTableModel GetGameTableByTableName(string tableName) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
-                return connection.Query<GameTableModel>("select Id, tableName, isFull, deckId from GameTable where tableName = @tableName", new { tableName }).SingleOrDefault();
+                return connection.Query<GameTableModel>("select Id, tableName, seats, deckId from GameTable where tableName = @tableName", new { tableName }).SingleOrDefault();
             }
         }
 
@@ -89,14 +89,14 @@ namespace Server.Data.Data {
         public void Insert(GameTableModel gameTable) {
         using(SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
-                var sql = "INSERT INTO GameTable (tableName, isFull, deckId) VALUES (@TableName, @IsFull, @DeckId)";
+                var sql = "INSERT INTO GameTable (tableName, seats, deckId) VALUES (@TableName, @seats, @DeckId)";
                 connection.Execute(sql, gameTable);
             }
     }
         public void Update(GameTableModel table) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
-                var sql = "UPDATE GameTable SET tableName = @tableName, isFull = @isFull  WHERE id = @id;";
+                var sql = "UPDATE GameTable SET tableName = @tableName, seats = @seats  WHERE id = @id;";
                 connection.Execute(sql, table);
             }
         }

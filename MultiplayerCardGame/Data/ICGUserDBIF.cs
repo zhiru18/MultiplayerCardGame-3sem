@@ -11,5 +11,6 @@ namespace Server.Data.Data {
         CGUserModel GetById(string id);
         List<CGUserModel> GetUserByTableId(int id);
         void UpdateUserTableId(CGUserModel user, int tableId);
+        int GetUserTableId(string id);
     }
 }
