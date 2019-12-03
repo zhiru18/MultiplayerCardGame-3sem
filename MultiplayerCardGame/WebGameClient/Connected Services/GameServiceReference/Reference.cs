@@ -29,13 +29,13 @@ namespace WebGameClient.GameServiceReference {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsFullField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TableNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private WebGameClient.GameServiceReference.CGUser[] UsersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int seatsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -74,19 +74,6 @@ namespace WebGameClient.GameServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsFull {
-            get {
-                return this.IsFullField;
-            }
-            set {
-                if ((this.IsFullField.Equals(value) != true)) {
-                    this.IsFullField = value;
-                    this.RaisePropertyChanged("IsFull");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string TableName {
             get {
                 return this.TableNameField;
@@ -108,6 +95,19 @@ namespace WebGameClient.GameServiceReference {
                 if ((object.ReferenceEquals(this.UsersField, value) != true)) {
                     this.UsersField = value;
                     this.RaisePropertyChanged("Users");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int seats {
+            get {
+                return this.seatsField;
+            }
+            set {
+                if ((this.seatsField.Equals(value) != true)) {
+                    this.seatsField = value;
+                    this.RaisePropertyChanged("seats");
                 }
             }
         }

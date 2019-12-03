@@ -7,7 +7,6 @@ namespace WebGameClient.ServiceAcces {
         internal static GameServiceReference.GameTable ConvertFromClientGameTableToServiceGameTable(Models.GameTable clientGameTable) {
             GameServiceReference.GameTable serviceGameTable = new GameServiceReference.GameTable() {
                 Id = clientGameTable.Id,
-                IsFull = clientGameTable.IsFull,
                 TableName = clientGameTable.TableName,
                 Users = ConvertFromClientListOfUsersToServiceListOfUsers(clientGameTable.Users),
                 Deck = ConvertFromClientDeckToServiceDeck(clientGameTable.Deck)
@@ -43,7 +42,6 @@ namespace WebGameClient.ServiceAcces {
         private static Models.GameTable ConvertFromServiceGameTableToClientGameTable(GameServiceReference.GameTable serviceGameTable) {
             Models.GameTable clientGameTable = new Models.GameTable() {
                 Id = serviceGameTable.Id,
-                IsFull = serviceGameTable.IsFull,
                 TableName = serviceGameTable.TableName,
                 Users = ConvertFromServiceListOfUsersToClientListOfUsers(serviceGameTable.Users),
                 Deck = (Models.Deck)ConvertFromServiceDeckToClientDeck(serviceGameTable.Deck)

@@ -10,7 +10,11 @@ namespace Server.Controllers.Controller {
     public class GameController {
         IGameDBIF gameDB = new GameDB();
         public Game StartGame(GameTable gameTable) {
-            Game game = GameConverter.ConvertFromGameModelToGame(gameDB.GetByTableId(gameTable.Id));
+            Game game = null;
+           GameModel gameModel = gameDB.GetByTableId(gameTable.Id);
+            if (gameModel != null) {
+                game = GameConverter.ConvertFromGameModelToGame(gameModel);
+            }
             if (game == null) {
                 using (TransactionScope scope = new TransactionScope()) {
                     gameTable.Deck = ShuffleDeck(gameTable.Deck);

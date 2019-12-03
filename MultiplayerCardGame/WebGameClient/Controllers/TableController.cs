@@ -80,10 +80,10 @@ namespace WebGameClient.Controllers {
             return View("Lobby", foundGt);
         }
         
-        public ActionResult Lobby(int tableId) {
+        public ActionResult Lobby(int? tableId) {
             GameTable foundGt = null;
             GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
-            foundGt = gameTableServiceAcces.GetGameTable(tableId);
+            foundGt = gameTableServiceAcces.GetGameTable((int)tableId);
             return View(foundGt);
         }
     }

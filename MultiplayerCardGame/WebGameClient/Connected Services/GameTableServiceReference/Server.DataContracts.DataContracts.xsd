@@ -56,9 +56,9 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Deck" nillable="true" type="tns:Deck" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="IsFull" type="xs:boolean" />
       <xs:element minOccurs="0" name="TableName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ArrayOfCGUser" />
+      <xs:element minOccurs="0" name="seats" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GameTable" nillable="true" type="tns:GameTable" />
