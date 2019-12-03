@@ -14,7 +14,7 @@ namespace Server.Converters.DataContractConverters {
             GameTableModel gameTableModel = new GameTableModel() {
                 DeckId = gameTable.Deck.Id,
                 Id = gameTable.Id,
-                IsFull = gameTable.IsFull,
+                seats = gameTable.seats,
                 TableName = gameTable.TableName
             };
             return gameTableModel;
@@ -24,7 +24,7 @@ namespace Server.Converters.DataContractConverters {
             DeckDB deckDB = new DeckDB();
             GameTable gameTable = new GameTable() {
                 Id = tableModel.Id,
-                IsFull = tableModel.IsFull,
+                seats = tableModel.seats,
                 TableName = tableModel.TableName,
                 Users = CGUserConverter.ConvertFromListOfCGUserModelToListOfCGUser(cGUserDB.GetUserByTableId(tableModel.Id)),
                 Deck = DeckConverter.ConvertFromDeckModelToDeck(deckDB.GetById(tableModel.DeckId))

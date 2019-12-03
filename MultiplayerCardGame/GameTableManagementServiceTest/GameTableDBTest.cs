@@ -25,7 +25,7 @@ namespace GameTableManagementServiceTest {
             var table5 = new GameTableModel("Game5");
             DeckModel deck = new DeckModel();
             table5.DeckId = 1;
-            table5.IsFull = false;
+            table5.seats = 4;
             gameTableDB.Insert(table5);
             var tableT = gameTableDB.GetById(5);
             Assert.AreEqual(table5.TableName, tableT.TableName);

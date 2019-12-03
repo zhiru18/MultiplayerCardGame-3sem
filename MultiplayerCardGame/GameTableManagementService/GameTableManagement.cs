@@ -21,7 +21,7 @@ namespace Server.Services.GameTableManagementService {
             GameTableModel tableModel = new GameTableModel() {
                 TableName = tableName,
                 DeckId = 2, 
-                IsFull = false
+                seats = 4
             };
             gameTableDB.Insert(tableModel);
             GameTable table = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetGameTableByTableName(tableName));
@@ -52,12 +52,17 @@ namespace Server.Services.GameTableManagementService {
             //TODO: Add a check to see if a user is at another table, and then remove him form that table.
             try {
                 using (TransactionScope scope = new TransactionScope()) {
+                    CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+                    if (userModel.TableID != 0) {
+                        GameTableModel modelTable = gameTableDB.GetById(userModel.TableID);
+                        gameTableDB.UpdateGameTableSeats(modelTable, -1);
+                    }
                     databaseTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(chosenTable.Id));
-                    if (chosenTable.IsFull == databaseTable.IsFull && databaseTable.Users.Count < 4) {
+                    if (chosenTable.seats == databaseTable.seats && databaseTable.Users.Count < 4) {
                         userManagement.UpdateUserTableId(user, databaseTable.Id);
                         databaseTable.Users.Add(user);
                         if (databaseTable.Users.Count == 4) {
-                            databaseTable.IsFull = true;
+                            databaseTable.seats = 4;
                             gameTableDB.Update(GameTableConverter.ConvertFromGameTableToGameTableModel(databaseTable));
                         }
                         gameTableDB.UpdateGameTableSeats(GameTableConverter.ConvertFromGameTableToGameTableModel(databaseTable), 1);

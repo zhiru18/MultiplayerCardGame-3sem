@@ -11,7 +11,7 @@ namespace Server.DataContracts.DataContracts{
         [DataMember]
         public int Id { get; set; }
         [DataMember]
-        public bool IsFull { get; set;}
+        public int seats { get; set; }
         [DataMember]
         public string TableName { get; set;}
         [DataMember]
@@ -27,9 +27,8 @@ namespace Server.DataContracts.DataContracts{
             this.Deck = new Deck();
         }
 
-        public GameTable(string tableName, bool isfull, int deckId) {
+        public GameTable(string tableName, int deckId) {
             this.TableName = tableName;
-            this.IsFull = isfull;
             this.Users = new List<CGUser>();
             this.Deck = new Deck();
             this.Deck.Id = deckId;

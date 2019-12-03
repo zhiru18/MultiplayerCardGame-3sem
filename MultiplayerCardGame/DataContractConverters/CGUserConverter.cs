@@ -10,13 +10,15 @@ using System.Threading.Tasks;
 namespace Server.Converters.DataContractConverters {
     public class CGUserConverter {
         public static CGUserModel ConvertFromCGUserToCGUserModel(CGUser cGUser) {
+            ICGUserDBIF userDB = new CGUserDB();
             CGUserModel cGUserModel = new CGUserModel() {
                 Id= cGUser.Id,
                 UserName = cGUser.UserName,
                 Email = cGUser.Email,
                 userType = (CGUserModel.UserType)cGUser.userType,
                 userStatus = (CGUserModel.UserStatus)cGUser.userStatus,
-                Health = cGUser.Health,
+                Health = cGUser.Health, 
+                TableID = userDB.GetUserTableId(cGUser.Id)
             };
             return cGUserModel;
         }
