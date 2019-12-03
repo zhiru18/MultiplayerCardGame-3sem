@@ -4,11 +4,10 @@
     var errorName = false;
     var numberOfErrors = 0;
     var numberOfErrorsProcessed = 0;
-    alert ("hi")
     // name
     var inputName = "";
     try {
-        inputName = document.Table/Create.tableName.value;
+        inputName = document.TableCreate.tableName.value;
     }
     catch (err) { return true; }
     if (inputName.length < 1) {

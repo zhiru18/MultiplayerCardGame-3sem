@@ -3,9 +3,6 @@
     ViewBag.Title = "Create";
 }
 @Styles.Render("~/Content/Button.css")
-<head>
-    <script src="../js/FormValidate.js"></script>
-</head>
 
 <h2>Create a new Game Table</h2>
 
@@ -16,7 +13,7 @@
         <h3>Players on table: @item.UserName</h3>
     }
 }
-<form name="/Table/Create" method="post">
+<form name="TableCreate" method="post" action='@Url.Action("Create","Table")'>
     <div>
         Name
         <input id="tableName" name="tableName" type="text" maxlength="30" />
