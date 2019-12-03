@@ -15,7 +15,7 @@ namespace WebGameClient.GameServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GameTable", Namespace="http://schemas.datacontract.org/2004/07/Server.Model.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GameTable", Namespace="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts")]
     [System.SerializableAttribute()]
     public partial class GameTable : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -124,7 +124,7 @@ namespace WebGameClient.GameServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Deck", Namespace="http://schemas.datacontract.org/2004/07/Server.Model.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Deck", Namespace="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts")]
     [System.SerializableAttribute()]
     public partial class Deck : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -132,10 +132,10 @@ namespace WebGameClient.GameServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
+        private string DeckNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
+        private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private WebGameClient.GameServiceReference.Card[] cardsField;
@@ -151,6 +151,19 @@ namespace WebGameClient.GameServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeckName {
+            get {
+                return this.DeckNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeckNameField, value) != true)) {
+                    this.DeckNameField = value;
+                    this.RaisePropertyChanged("DeckName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Id {
             get {
                 return this.IdField;
@@ -159,19 +172,6 @@ namespace WebGameClient.GameServiceReference {
                 if ((this.IdField.Equals(value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
                 }
             }
         }
@@ -201,7 +201,7 @@ namespace WebGameClient.GameServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CGUser", Namespace="http://schemas.datacontract.org/2004/07/Server.Model.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CGUser", Namespace="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts")]
     [System.SerializableAttribute()]
     public partial class CGUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -340,7 +340,7 @@ namespace WebGameClient.GameServiceReference {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="CGUser.UserStatus", Namespace="http://schemas.datacontract.org/2004/07/Server.Model.Model")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="CGUser.UserStatus", Namespace="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts")]
         public enum UserStatus : int {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -357,7 +357,7 @@ namespace WebGameClient.GameServiceReference {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="CGUser.UserType", Namespace="http://schemas.datacontract.org/2004/07/Server.Model.Model")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="CGUser.UserType", Namespace="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts")]
         public enum UserType : int {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -370,7 +370,7 @@ namespace WebGameClient.GameServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Card", Namespace="http://schemas.datacontract.org/2004/07/Server.Model.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Card", Namespace="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts")]
     [System.SerializableAttribute()]
     public partial class Card : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -477,7 +477,7 @@ namespace WebGameClient.GameServiceReference {
         }
         
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-        [System.Runtime.Serialization.DataContractAttribute(Name="Card.CardType", Namespace="http://schemas.datacontract.org/2004/07/Server.Model.Model")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="Card.CardType", Namespace="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts")]
         public enum CardType : int {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -493,7 +493,7 @@ namespace WebGameClient.GameServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Game", Namespace="http://schemas.datacontract.org/2004/07/Server.Model.Model")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Game", Namespace="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts")]
     [System.SerializableAttribute()]
     public partial class Game : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         

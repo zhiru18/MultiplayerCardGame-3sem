@@ -213,7 +213,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\GameServiceReference\Server.Model.Model.xsd">
+    <None Include="Connected Services\GameServiceReference\Server.DataContracts.DataContracts.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\GameServiceReference\service.wsdl" />
@@ -226,7 +226,7 @@
     <Content Include="Connected Services\GameServiceReference\WebGameClient.GameServiceReference.Game.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\GameTableServiceReference\Server.Model.Model.xsd">
+    <None Include="Connected Services\GameTableServiceReference\Server.DataContracts.DataContracts.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\GameTableServiceReference\service.wsdl" />
@@ -268,7 +268,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Connected Services\UserManagementServiceReference\Server.Model.Model.xsd">
+    <None Include="Connected Services\UserManagementServiceReference\Server.DataContracts.DataContracts.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\UserManagementServiceReference\service.wsdl" />
