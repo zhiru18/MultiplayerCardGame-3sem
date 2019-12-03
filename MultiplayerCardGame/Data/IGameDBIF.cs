@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace Server.Data.Data {
     public interface IGameDBIF : IGeneralDBIF<GameModel>{
 
-        GameModel GetByTabelId(int tableId);
+        GameModel GetByTableId(int tableId);
     }
 }
