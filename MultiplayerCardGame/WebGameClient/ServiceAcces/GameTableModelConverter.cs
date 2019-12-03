@@ -120,11 +120,15 @@ namespace WebGameClient.ServiceAcces {
         }
 
         private static GameTableServiceReference.Card[] ConvertFromListOfClientCardsToListOfServiceCards(List<Models.Card> clientCards) {
-            GameTableServiceReference.Card[] serviceCards = new GameTableServiceReference.Card[clientCards.Count];
-            for (int i = 0; i < clientCards.Count; i++) {
-                GameTableServiceReference.Card serviceCard = ConvertFromClientCardToServiceCard(clientCards[i]);
-                serviceCards[i] = serviceCard;
+            GameTableServiceReference.Card[] serviceCards = null;
+            if (clientCards != null) {
+                serviceCards = new GameTableServiceReference.Card[clientCards.Count];
+                for (int i = 0; i < clientCards.Count; i++) {
+                    GameTableServiceReference.Card serviceCard = ConvertFromClientCardToServiceCard(clientCards[i]);
+                    serviceCards[i] = serviceCard;
+                }
             }
+            
             return serviceCards;
         }
 

@@ -24,7 +24,8 @@ namespace Server.Services.UserManagementService
         }
 
         public CGUser GetUserByUserId(string id) {
-            return CGUserConverter.convertFromCGUserModelToCGUser(cGUserDB.GetById(id));
+            CGUserModel userModel = cGUserDB.GetById(id);
+            return CGUserConverter.convertFromCGUserModelToCGUser(userModel);
         }
 
         public void UpdateUser(CGUser user) {

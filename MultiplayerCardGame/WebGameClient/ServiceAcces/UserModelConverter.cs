@@ -15,8 +15,10 @@ namespace WebGameClient.ServiceAcces {
                 userType = (Models.CGUser.UserType)serviceUser.userType,
                 userStatus = (Models.CGUser.UserStatus)serviceUser.userStatus,
                 Health = serviceUser.Health,
-                cards = ConvertFromListOfServiceCardsToListOfClientCards(serviceUser.cards)
             };
+            if (serviceUser.cards != null) {
+                clientUser.cards = ConvertFromListOfServiceCardsToListOfClientCards(serviceUser.cards);
+            }
             return clientUser;
         }
 
