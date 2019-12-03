@@ -17,7 +17,7 @@
                 deletedUsers.Add(CGUser);
             }
         }
-        @{users.Except(deletedUsers); }
+        @{List<CGUser> remainingUsers = users.Except(deletedUsers).ToList(); }
         @playerOne.UserName
         <br />
         <svg width="100" height="120">
@@ -62,8 +62,8 @@
         </svg>
     </div>
     <div class="left">
-        @{ CGUser playerTwo = users[0];
-            users.Remove(playerTwo);
+        @{ CGUser playerTwo = remainingUsers[0];
+           remainingUsers.Remove(playerTwo);
         }
         @Html.Label(playerTwo.UserName)
         <br />
@@ -103,8 +103,8 @@
         </svg>
     </div>
     <div class="right">
-        @{ CGUser playerThree = users[0];
-            users.Remove(playerThree);
+        @{ CGUser playerThree = remainingUsers[0];
+            remainingUsers.Remove(playerThree);
         }
         @Html.Label(playerThree.UserName)
         <br />
@@ -144,8 +144,8 @@
         </svg>
     </div>
     <div class="top">
-        @{ CGUser playerFour = users[0];
-            users.Remove(playerFour);
+        @{ CGUser playerFour = remainingUsers[0];
+            remainingUsers.Remove(playerFour);
         }
         @Html.Label(playerFour.UserName)
         <br />
