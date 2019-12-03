@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using Server.Model.Model;
 using Server.Data.Data;
 using Server.DataContracts.DataContracts;
+using Server.Converters.DataContractConverters;
+using System.Transactions;
 
 namespace Server.Controllers.Controller {
     public class GameController {
-
+        IGameDBIF gameDB = new GameDB();
         public Game StartGame(GameTable gameTable) {
-            gameTable.Deck = ShuffleDeck(gameTable.Deck);
-            DealCards(gameTable.Deck, gameTable.Users);
-            Game game = new Game(gameTable);
-            CreateGame(game);
+            Game game = GameConverter.ConvertFromGameModelToGame(gameDB.GetByTabelId(gameTable.Id));
+            if (game == null) {
+                using (TransactionScope scope = new TransactionScope()) {
+                    gameTable.Deck = ShuffleDeck(gameTable.Deck);
+                    DealCards(gameTable.Deck, gameTable.Users);
+                    game = new Game(gameTable);
+                    CreateGame(game);
+                    scope.Complete();
+                }
+            }
             return game;
         }
 
@@ -41,10 +49,9 @@ namespace Server.Controllers.Controller {
                 user.cards.AddRange(dealtCards);
                 dealtCards.Clear();
             }
-              
+
         }
         public void CreateGame(Game game) {
-            IGameDBIF gameDB = new GameDB();
             GameModel gameModel = new GameModel() {
                 GameTableId = game.gameTable.Id
             };
