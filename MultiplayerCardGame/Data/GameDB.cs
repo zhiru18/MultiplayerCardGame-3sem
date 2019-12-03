@@ -58,10 +58,10 @@ namespace Server.Data.Data {
             }
         }
 
-        public GameModel GetByTabelId(int tableId) {
+        public GameModel GetByTableId(int tableId) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
-                return connection.Query<GameModel>("SELECT Id, GameTableId FROM Game WHERE GameTableId = @GameTableId", new { tableId }).SingleOrDefault();
+                return connection.Query<GameModel>("SELECT Id, GameTableId FROM Game WHERE GameTableId = @tableId", new { tableId }).SingleOrDefault();
             }
         }
     }

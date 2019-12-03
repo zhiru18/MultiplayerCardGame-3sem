@@ -10,7 +10,7 @@ namespace Server.Controllers.Controller {
     public class GameController {
         IGameDBIF gameDB = new GameDB();
         public Game StartGame(GameTable gameTable) {
-            Game game = GameConverter.ConvertFromGameModelToGame(gameDB.GetByTabelId(gameTable.Id));
+            Game game = GameConverter.ConvertFromGameModelToGame(gameDB.GetByTableId(gameTable.Id));
             if (game == null) {
                 using (TransactionScope scope = new TransactionScope()) {
                     gameTable.Deck = ShuffleDeck(gameTable.Deck);
@@ -60,7 +60,7 @@ namespace Server.Controllers.Controller {
 
         public GameModel GetByTableId(int tableId) {
             IGameDBIF gameDB = new GameDB();
-            return gameDB.GetByTabelId(tableId);
+            return gameDB.GetByTableId(tableId);
         }
         //Update deck method??
 
