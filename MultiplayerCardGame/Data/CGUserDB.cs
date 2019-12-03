@@ -11,11 +11,11 @@ using System.Data.SqlClient;
 
 namespace Server.Data.Data {
     public class CGUserDB : ICGUserDBIF {
-        private string conString; 
+        private string conString;
 
         public CGUserDB() {
             //conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString; 
+            conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
         public void Delete(CGUserModel user) {
             using (SqlConnection connection = new SqlConnection(conString)) {
@@ -60,15 +60,15 @@ namespace Server.Data.Data {
                 return (List<CGUserModel>)connection.Query<CGUserModel>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE tableId = @id", new { id });
             }
         }
-        /*
+
         public void UpdateUserTableId(CGUserModel user, int tableId) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 var sql = "UPDATE CGUser SET tableId = @tableId WHERE id = @id;";
-                connection.Execute(sql, user);
+                connection.Execute(sql, new { id = user.Id, tableId });
             }
         }
-        */
-        
+
+        /*
         public void UpdateUserTableId(CGUserModel user, int tableId) {
             string sql = "UPDATE CGUser SET tableId = @tableId WHERE id = @id;";
             using (SqlConnection connection = new SqlConnection(conString)) {
@@ -79,12 +79,11 @@ namespace Server.Data.Data {
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
-            }
-        }
+            }*/
+
         public int GetUserTableId(string id) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                CGUserModel userModel = connection.Query<CGUserModel>("SELECT tableId FROM CGUser WHERE id = @id", new { id }).SingleOrDefault();
-                return userModel.TableID;
+                return connection.Query<int>("SELECT tableId FROM CGUser WHERE id = @id", new { id }).SingleOrDefault();
             }
         }
 
