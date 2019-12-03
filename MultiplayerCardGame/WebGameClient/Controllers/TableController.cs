@@ -41,16 +41,12 @@ namespace WebGameClient.Controllers {
         [HttpPost]
         public ActionResult Create(string tableName) {
             GameTable foundGt = null;
-            Game createdGame = null;
             GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
-            GameServiceAcces gameServiceAcces = new GameServiceAcces();
             if (tableName != null ) {       
               string userId = User.Identity.GetUserId();
               foundGt = gameTableServiceAcces.CreateGameTable(userId,tableName);
-                createdGame = new Game(foundGt);
-                gameServiceAcces.CreateGAme(createdGame);
             }
-           // List<GameTable> tables = new List<GameTable>() { foundGt };
+           List<GameTable> tables = new List<GameTable>() { foundGt };
             ViewBag.Situation = 3;
             return View(tables);
         }
@@ -64,16 +60,13 @@ namespace WebGameClient.Controllers {
        [HttpPost]
         public ActionResult JoinTable(string gameTableID) {
             GameTable foundGt = null;
-            Game foundGame = null;
             GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
-            GameServiceAcces gameServiceAcces = new GameServiceAcces();
             if (gameTableID != null) {
                 string userId = User.Identity.GetUserId();
                 int tableId = Int32.Parse(gameTableID);
                 foundGt = gameTableServiceAcces.JoinGameTable(userId, tableId);
-                foundGame = gameServiceAcces.GetByTableId(tableId);
             }
-           // List<GameTable> tables = new List<GameTable>() { foundGt };
+            List<GameTable> tables = new List<GameTable>() { foundGt };
             if (foundGt!=null) {
                 ViewBag.Situation = 4;
             } else {
