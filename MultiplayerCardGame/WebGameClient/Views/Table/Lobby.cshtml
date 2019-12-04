@@ -1,9 +1,9 @@
 ﻿@model WebGameClient.Models.GameTable
 @{
-    ViewBag.Title = "JoinTable";
+    ViewBag.Title = "Lobby";
 }
 
-<h2>Join sucess</h2>
+<h2>@ViewBag.Title</h2>
 <h3>Joined Game Table: @Model.TableName</h3>
 @{
     List<WebGameClient.Models.CGUser> users = Model.Users;
@@ -11,7 +11,14 @@
         <h3>Players on table: @item.UserName</h3>
     }
 }
+
 <div>
-<input type="button" style="float:right; width: 20%; background-color:lawngreen" value="Start Game" onclick="location.href='@Url.Action("Index", "Game", new { id = Model.Id})'"/>
+    <h4>You can start the game when 4 players have joined</h4>
+    <input type="button" style="float:left; width: 20%; background-color:lawngreen" value="Refresh" onclick="location.href='@Url.Action("Lobby", "Table", new { id = Model.Id })'" />
 </div>
+@if(Model.Users.Count == 4) { 
+<div>
+<input type="button" style="float:left; width: 20%; background-color:lawngreen" value="Start Game" onclick="location.href='@Url.Action("Index", "Game", new { id = Model.Id })'"/>
+</div>
+    }
 
