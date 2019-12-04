@@ -16,13 +16,13 @@ namespace Server.Controllers.Controller {
                 game = GameConverter.ConvertFromGameModelToGame(gameModel);
             }
             if (game == null) {
-                using (TransactionScope scope = new TransactionScope()) {
+               // using (TransactionScope scope = new TransactionScope()) {
                     gameTable.Deck = ShuffleDeck(gameTable.Deck);
                     DealCards(gameTable.Deck, gameTable.Users);
                     game = new Game(gameTable);
                     CreateGame(game);
-                    scope.Complete();
-                }
+                //    scope.Complete();
+                //}
             }
             return game;
         }

@@ -17,9 +17,12 @@ namespace Server.Converters.DataContractConverters {
                 Email = cGUser.Email,
                 userType = (CGUserModel.UserType)cGUser.userType,
                 userStatus = (CGUserModel.UserStatus)cGUser.userStatus,
-                Health = cGUser.Health, 
-                TableID = userDB.GetUserTableId(cGUser.Id)
+                Health = cGUser.Health
             };
+            if (userDB.GetUserTableId(cGUser.Id) != 0) {
+                cGUserModel.TableID = userDB.GetUserTableId(cGUser.Id);
+            }
+            
             return cGUserModel;
         }
 
