@@ -86,6 +86,19 @@ namespace Server.Data.Data {
                 return connection.Query<int>("SELECT tableId FROM CGUser WHERE id = @id", new { id }).SingleOrDefault();
             }
         }
-
+        public void InsertHand(List<CardModel> cards, CGUserModel user) {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                var sql = "Insert into CardUser (cgUser_id , card_id) VALUES (@id, @cardId)";
+                foreach (var card in cards) {
+                    connection.Execute(sql, new { id = user.Id, cardId = card.Id });
+                }
+            }
+        }
+        public void DeleteHand(CGUserModel userModel) {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                var sql = "DELETE FROM CardUser WHERE cguser_id = @id";
+                    connection.Execute(sql, userModel);
+            }
+        }
     }
 }

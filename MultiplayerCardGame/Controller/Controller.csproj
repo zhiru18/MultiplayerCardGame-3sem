@@ -12,6 +12,7 @@
     <ProjectReference Include="..\DataContractConverters\DataContractConverters.csproj" />
     <ProjectReference Include="..\DataContract\DataContracts.csproj" />
     <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\UserManagementService\UserManagementService.csproj" />
   </ItemGroup>
 
 </Project>

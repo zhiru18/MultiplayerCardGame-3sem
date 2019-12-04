@@ -40,5 +40,14 @@ namespace Server.Services.UserManagementService
         public List<CGUser> GetUserByTableId(int id) {
             return CGUserConverter.ConvertFromListOfCGUserModelToListOfCGUser(cGUserDB.GetUserByTableId(id));
         }
+        public void SaveHand(List<Card> cards, CGUser user) {
+            List<CardModel> cardModels = CardConverter.ConvertFromListOfCardToListOfCardModel(cards);
+            CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+            cGUserDB.InsertHand(cardModels, userModel);
+        }
+        public void DeleteHand(CGUser user) {
+            CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+            cGUserDB.DeleteHand(userModel);
+        }
     }
 }

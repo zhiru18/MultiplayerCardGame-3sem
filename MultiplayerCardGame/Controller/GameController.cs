@@ -5,24 +5,27 @@ using Server.Data.Data;
 using Server.DataContracts.DataContracts;
 using Server.Converters.DataContractConverters;
 using System.Transactions;
+using Server.Services.UserManagementService;
 
 namespace Server.Controllers.Controller {
     public class GameController {
         IGameDBIF gameDB = new GameDB();
+        UserManagement userManagement = new UserManagement(); 
         public Game StartGame(GameTable gameTable) {
             Game game = null;
+            //foreach (CGUser user in gameTable.Users) {
+            //    if (user.cards.Count > 0)
+            //        userManagement.DeleteHand(user);
+            //}
            GameModel gameModel = gameDB.GetByTableId(gameTable.Id);
             if (gameModel != null) {
                 game = GameConverter.ConvertFromGameModelToGame(gameModel);
             }
             if (game == null) {
-               // using (TransactionScope scope = new TransactionScope()) {
                     gameTable.Deck = ShuffleDeck(gameTable.Deck);
                     DealCards(gameTable.Deck, gameTable.Users);
                     game = new Game(gameTable);
                     CreateGame(game);
-                //    scope.Complete();
-                //}
             }
             return game;
         }
@@ -51,6 +54,7 @@ namespace Server.Controllers.Controller {
                     deck.cards.Remove(card);
                 }
                 user.cards.AddRange(dealtCards);
+                userManagement.SaveHand(user.cards, user);
                 dealtCards.Clear();
             }
 

@@ -38,5 +38,13 @@ namespace Server.Converters.DataContractConverters {
             }
             return userCards;
         }
+        public static List<CardModel> ConvertFromListOfCardToListOfCardModel(List<Card> cards) {
+            List<CardModel> cardModels = new List<CardModel>();
+            foreach (Card card in cards) {
+                CardModel cardModel = ConvertFromCardToCardModel(card);
+                cardModels.Add(cardModel);
+            }
+            return cardModels;
+        }
     }
 }

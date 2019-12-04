@@ -12,5 +12,8 @@ namespace Server.Data.Data {
         List<CGUserModel> GetUserByTableId(int id);
         void UpdateUserTableId(CGUserModel user, int tableId);
         int GetUserTableId(string id);
+
+        void InsertHand(List<CardModel> cards, CGUserModel user);
+        void DeleteHand(CGUserModel userModel);
     }
 }

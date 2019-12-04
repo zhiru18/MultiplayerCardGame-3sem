@@ -22,5 +22,7 @@ namespace Server.Services.UserManagementService.Contracts
 
         void UpdateUserTableId(CGUser cgUser, int tableId);
 
+        void SaveHand(List<Card> cards, CGUser user);
+
     }
 }

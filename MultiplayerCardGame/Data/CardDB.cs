@@ -27,19 +27,19 @@ namespace Server.Data.Data {
         public IEnumerable<CardModel> GetAll()
         {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CardModel>("SELECT cardType, name, description, value FROM CARD").ToList();
+                return connection.Query<CardModel>("SELECT card.id, cardType, name, description, value FROM CARD").ToList();
             }
         }
 
         public List<CardModel> GetCardsByDeckId(int id) {
             using(SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CardModel>("Select cardType, name, description, value from card join CardDeck on card.id = card_id join Deck on deck_id = Deck.id where deck_id = @id", new { id }).ToList();
+                return connection.Query<CardModel>("Select card.id, cardType, name, description, value from card join CardDeck on card.id = card_id join Deck on deck_id = Deck.id where deck_id = @id", new { id }).ToList();
             }
         }
 
         public List<CardModel> GetCardsByUserId(string id) {
             using(SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CardModel>("Select cardType, name, description, value from card join CardUser on card.id = card_id join CGUser on CGUser_id = CGUser.id where CGUser_id = @id", new { id }).ToList();
+                return connection.Query<CardModel>("Select card.id, cardType, name, description, value from card join CardUser on card.id = card_id join CGUser on CGUser_id = CGUser.id where CGUser_id = @id", new { id }).ToList();
             }
            
         }
