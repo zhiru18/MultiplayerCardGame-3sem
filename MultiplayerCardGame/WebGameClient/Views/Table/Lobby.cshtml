@@ -14,7 +14,7 @@
 
 <div>
     <h4>You can start the game when 4 players have joined</h4>
-    <input type="button" style="float:left; width: 20%; background-color:lawngreen" value="Refresh" onclick="location.href='@Url.Action("Lobby", "Table", new { id = Model.Id })'" />
+    <input type="button" style="float:left; width: 20%; background-color:lawngreen" value="Refresh" onclick="window.location.reload()" />
 </div>
 @if(Model.Users.Count == 4) { 
 <div>

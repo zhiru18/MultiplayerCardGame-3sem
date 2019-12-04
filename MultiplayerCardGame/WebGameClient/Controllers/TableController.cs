@@ -50,8 +50,8 @@ namespace WebGameClient.Controllers {
             }
           // List<GameTable> tables = new List<GameTable>() { foundGt };
             ViewBag.Situation = 3;
-            return View("Lobby", foundGt);
-            
+            return RedirectToAction("Lobby", new { tableId = foundGt.Id });
+
         }
 
         public ActionResult Succes() {
@@ -77,7 +77,7 @@ namespace WebGameClient.Controllers {
             } else {
                 ViewBag.Situation = 5;
             }
-            return View("Lobby", foundGt);
+            return RedirectToAction("Lobby", new { tableId = foundGt.Id});
         }
         
         public ActionResult Lobby(int? tableId) {
