@@ -50,8 +50,8 @@ namespace WebGameClient.Controllers {
             }
           // List<GameTable> tables = new List<GameTable>() { foundGt };
             ViewBag.Situation = 3;
-            return View("Lobby", foundGt);
-            
+            return RedirectToAction("Lobby", new { tableId = foundGt.Id });
+
         }
 
         public ActionResult Succes() {
@@ -72,12 +72,12 @@ namespace WebGameClient.Controllers {
                 foundGt = gameTableServiceAcces.JoinGameTable(userId, tableId);
             }
             List<GameTable> tables = new List<GameTable>() { foundGt };
-            //if (foundGt!=null) {
-            //    ViewBag.Situation = 4;
-            //} else {
-            //    ViewBag.Situation = 5;
-            //}
-            return View("Lobby", foundGt);
+            if (foundGt!=null) {
+                ViewBag.Situation = 4;
+            } else {
+                ViewBag.Situation = 5;
+            }
+            return RedirectToAction("Lobby", new { tableId = foundGt.Id});
         }
         
         public ActionResult Lobby(int? tableId) {
