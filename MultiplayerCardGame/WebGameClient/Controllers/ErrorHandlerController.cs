@@ -14,8 +14,9 @@ namespace WebGameClient.Controllers
             return RedirectToAction("Error", new { id = 1});
         }
 
-        public ActionResult Error(int id) {
-            switch (id) {
+        public ActionResult Error(int? id) {
+            int errorId = (int)id;
+            switch (errorId) {
                 case 2:
                     ViewBag.Message = "Sorry an error ocurred while trying to start your game";
                     break;
