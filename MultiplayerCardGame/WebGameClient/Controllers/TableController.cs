@@ -69,14 +69,14 @@ namespace WebGameClient.Controllers {
             if (gameTableID != null) {
                 string userId = User.Identity.GetUserId();
                 int tableId = Int32.Parse(gameTableID);
+                foundGt = gameTableServiceAcces.GetGameTable(tableId);
+                if (foundGt.Users.Count == 4) {
+                    return View("JoinTable");
+                }
                 foundGt = gameTableServiceAcces.JoinGameTable(userId, tableId);
             }
             List<GameTable> tables = new List<GameTable>() { foundGt };
-            if (foundGt!=null) {
-                ViewBag.Situation = 4;
-            } else {
-                ViewBag.Situation = 5;
-            }
+
             return RedirectToAction("Lobby", new { tableId = foundGt.Id});
         }
         

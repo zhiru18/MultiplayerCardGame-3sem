@@ -36,7 +36,7 @@
     <br>
     <br>
 
-    <input id="submitteroni" type="submit" value="Join Game Table" class="button" />
+    <input type="submit" value="Join Game Table" class="button" />
     <br>
     <br>
 
@@ -60,12 +60,12 @@
         <script>
             var table = document.getElementById('table');
             for (var i = 1; i < table.rows.length; i++) {
-                table.rows[i].onclick = function () {
-                    //rIndex = this.rowIndex;
-                    document.getElementById("gameTableID").value = this.cells[0].innerHTML;
-                    document.getElementById("gameTableName").value = this.cells[2].innerHTML;
-                    document.getElementById("users").value = this.cells[3].innerHTML;
-                };
+                    table.rows[i].onclick = function () {
+                        //rIndex = this.rowIndex;
+                        document.getElementById("gameTableID").value = this.cells[0].innerHTML;
+                        document.getElementById("gameTableName").value = this.cells[2].innerHTML;
+                        document.getElementById("users").value = this.cells[3].innerHTML;
+                    };
             }
         </script>
     } else if (ViewBag.Situation == 2) {
