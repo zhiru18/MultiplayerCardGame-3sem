@@ -52,7 +52,7 @@ namespace Server.Services.GameTableManagementService {
             try {
                 using (TransactionScope scope = new TransactionScope()) {
                     CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
-                    if (userModel.TableID != 0) {
+                    if (userModel.TableID != 0 && userModel.TableID != chosenTable.Id) {
                         GameTableModel modelTable = gameTableDB.GetById(userModel.TableID);
                         gameTableDB.UpdateGameTableSeats(modelTable, -1);
                     }
@@ -60,10 +60,6 @@ namespace Server.Services.GameTableManagementService {
                     if (chosenTable.seats == databaseTable.seats && databaseTable.Users.Count < 4) {
                         userManagement.UpdateUserTableId(user, databaseTable.Id);
                         databaseTable.Users.Add(user);
-                        if (databaseTable.Users.Count == 4) {
-                            databaseTable.seats = 4;
-                            gameTableDB.Update(GameTableConverter.ConvertFromGameTableToGameTableModel(databaseTable));
-                        }
                         gameTableDB.UpdateGameTableSeats(GameTableConverter.ConvertFromGameTableToGameTableModel(databaseTable), 1);
                     }
                     scope.Complete();

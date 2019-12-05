@@ -188,6 +188,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorHandlerController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -335,6 +336,7 @@
     <Content Include="Views\Table\Join.cshtml" />
     <Content Include="Views\Table\JoinTable.cshtml" />
     <Content Include="Views\Table\Lobby.cshtml" />
+    <Content Include="Views\ErrorHandler\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

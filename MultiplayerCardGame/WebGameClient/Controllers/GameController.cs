@@ -20,5 +20,11 @@ namespace WebGameClient.Controllers
             Game game= gameServiceAccess.StartGame(gameTable);
             return View(game);
         }
+
+        protected override void OnException(ExceptionContext filterContext) {
+            filterContext.ExceptionHandled = true;
+            filterContext.Result = RedirectToAction("Error", "ErrorHandler", new { id = 2});
+
+        }
     }
 }
