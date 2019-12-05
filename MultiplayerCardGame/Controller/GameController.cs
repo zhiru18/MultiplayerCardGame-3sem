@@ -13,16 +13,16 @@ namespace Server.Controllers.Controller {
         UserManagement userManagement = new UserManagement(); 
         public Game StartGame(GameTable gameTable) {
             Game game = null;
-            //foreach (CGUser user in gameTable.Users) {
-            //    if (user.cards.Count > 0)
-            //        userManagement.DeleteHand(user);
-            //}
+
            GameModel gameModel = gameDB.GetByTableId(gameTable.Id);
             if (gameModel != null) {
                 game = GameConverter.ConvertFromGameModelToGame(gameModel);
             }
             if (game == null) {
-                    gameTable.Deck = ShuffleDeck(gameTable.Deck);
+                foreach (CGUser user in gameTable.Users) {
+                        userManagement.DeleteHand(user);
+                }
+                gameTable.Deck = ShuffleDeck(gameTable.Deck);
                     DealCards(gameTable.Deck, gameTable.Users);
                     game = new Game(gameTable);
                     CreateGame(game);
