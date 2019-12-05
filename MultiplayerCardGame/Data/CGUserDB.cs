@@ -67,20 +67,6 @@ namespace Server.Data.Data {
                 connection.Execute(sql, new { id = user.Id, tableId });
             }
         }
-
-        /*
-        public void UpdateUserTableId(CGUserModel user, int tableId) {
-            string sql = "UPDATE CGUser SET tableId = @tableId WHERE id = @id;";
-            using (SqlConnection connection = new SqlConnection(conString)) {
-                using(SqlCommand command = connection.CreateCommand()) {
-                    command.CommandText = sql;
-                    command.Parameters.AddWithValue("@tableId", tableId);
-                    command.Parameters.AddWithValue("@id", user.Id);
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-            }*/
-
         public int GetUserTableId(string id) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 return connection.Query<int>("SELECT tableId FROM CGUser WHERE id = @id", new { id }).SingleOrDefault();
