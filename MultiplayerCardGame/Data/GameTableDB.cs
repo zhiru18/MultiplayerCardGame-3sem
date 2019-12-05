@@ -58,34 +58,6 @@ namespace Server.Data.Data {
                 }
             }
         }
-
-        //insert the gametable without Deck
-        //public void Insert(GameTable table) {
-        //    using (SqlConnection connection = new SqlConnection(conString)) {
-        //        connection.Open();
-        //        var sql = "INSERT INTO GameTable (tableName, isFull) VALUES (@tableName, @isFull);";
-        //        connection.Execute(sql, table);
-        //    }
-        //}
-
-        //insert the gametable with Deck
-
-        /*
-        public void Insert(GameTable table) {
-            string insertString = "INSERT INTO GameTable (tableName, isFull, deckId) VALUES (@TableName, @IsFull, @DeckId)";
-            using (SqlConnection connection = new SqlConnection(conString))
-            using (SqlCommand createCommand = new SqlCommand(insertString, connection)) {
-                SqlParameter tableNameParam = new SqlParameter("@TableName", table.TableName);
-                createCommand.Parameters.Add(tableNameParam);
-                SqlParameter isFullParam = new SqlParameter("@IsFull", table.IsFull);
-                createCommand.Parameters.Add(isFullParam);
-                SqlParameter deckIdParam = new SqlParameter("@DeckId", table.Deck.Id);
-                createCommand.Parameters.Add(deckIdParam);
-                connection.Open();
-                createCommand.ExecuteNonQuery();
-            }
-        }
-        */
         public void Insert(GameTableModel gameTable) {
         using(SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();

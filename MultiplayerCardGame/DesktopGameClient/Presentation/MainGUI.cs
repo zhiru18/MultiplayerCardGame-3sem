@@ -7,11 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DesktopGameClient.Presentation;
 
 namespace DesktopGameClient {
-    public partial class Form1 : Form {
-        public Form1() {
+    public partial class MainGUI : Form {
+        public MainGUI() {
             InitializeComponent();
+        }
+
+        private void buttonGameTable_Click(object sender, EventArgs e) {
+            GameTableGUI openForm = new GameTableGUI();
+            openForm.Show();
+            this.Hide();
         }
     }
 }
