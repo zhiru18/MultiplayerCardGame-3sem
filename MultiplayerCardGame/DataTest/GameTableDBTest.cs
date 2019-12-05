@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Data.Data.Tests {
+namespace Tests.DataTest {
     [TestClass()]
     public class GameTableDBTest {
         GameTableDB gameTableDB = new GameTableDB();
