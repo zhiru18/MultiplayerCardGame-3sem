@@ -48,14 +48,20 @@ namespace Server.Data.Data {
             }
         }
 
+        //public int GetGameTableSeats(GameTableModel table) {
+        //    var updateString = "SELECT seats FROM GameTable WHERE id = @id;";
+        //    using (SqlConnection connection = new SqlConnection(conString)) {
+        //        using (SqlCommand updateCommand = new SqlCommand(updateString, connection)) {
+        //            updateCommand.Parameters.AddWithValue("@id", table.Id);
+        //            connection.Open();
+        //            return (int)updateCommand.ExecuteScalar();
+        //        }
+        //    }
+        //}
         public int GetGameTableSeats(GameTableModel table) {
-            var updateString = "SELECT seats FROM GameTable WHERE id = @id;";
+            var sql = "SELECT seats FROM GameTable WHERE id = @id;";
             using (SqlConnection connection = new SqlConnection(conString)) {
-                using (SqlCommand updateCommand = new SqlCommand(updateString, connection)) {
-                    updateCommand.Parameters.AddWithValue("@id", table.Id);
-                    connection.Open();
-                    return (int)updateCommand.ExecuteScalar();
-                }
+                return connection.Query<int>(sql, table).SingleOrDefault();
             }
         }
         public void Insert(GameTableModel gameTable) {
@@ -72,16 +78,21 @@ namespace Server.Data.Data {
                 connection.Execute(sql, table);
             }
         }
-
+        //public void UpdateGameTableSeats(GameTableModel table, int seats) {
+        //    var updateString = "UPDATE GameTable SET seats = seats - @seats WHERE id = @id;";
+        //    using (SqlConnection connection = new SqlConnection(conString)) {
+        //        using (SqlCommand updateCommand = new SqlCommand(updateString, connection)) {
+        //            updateCommand.Parameters.AddWithValue("@seats", seats);
+        //            updateCommand.Parameters.AddWithValue("@id", table.Id);
+        //            connection.Open();
+        //            updateCommand.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
         public void UpdateGameTableSeats(GameTableModel table, int seats) {
-            var updateString = "UPDATE GameTable SET seats = seats - @seats WHERE id = @id;";
+            var sql = "UPDATE GameTable SET seats = seats - @seats WHERE id = @id;";
             using (SqlConnection connection = new SqlConnection(conString)) {
-                using (SqlCommand updateCommand = new SqlCommand(updateString, connection)) {
-                    updateCommand.Parameters.AddWithValue("@seats", seats);
-                    updateCommand.Parameters.AddWithValue("@id", table.Id);
-                    connection.Open();
-                    updateCommand.ExecuteNonQuery();
-                }
+                connection.Execute(sql, new { id = table.Id, seats = seats });
             }
         }
     }

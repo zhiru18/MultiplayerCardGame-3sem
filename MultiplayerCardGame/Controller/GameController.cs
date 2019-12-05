@@ -20,7 +20,8 @@ namespace Server.Controllers.Controller {
             }
             if (game == null) {
                 foreach (CGUser user in gameTable.Users) {
-                        userManagement.DeleteHand(user);
+                    userManagement.DeleteHand(user);
+                    user.cards.Clear();
                 }
                 gameTable.Deck = ShuffleDeck(gameTable.Deck);
                     DealCards(gameTable.Deck, gameTable.Users);

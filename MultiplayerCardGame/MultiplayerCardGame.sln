@@ -55,6 +55,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContractConverters", "DataContractConverters\DataContractConverters.csproj", "{CC8520DB-A252-4D00-93FE-3A9D2CF54E66}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopGameClient", "DesktopGameClient\DesktopGameClient.csproj", "{E48EB6DE-6B5A-4D19-9FDD-21CC152D6B21}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6968B2CF-1EF6-4D2A-9095-3A90EDEFB934} = {6968B2CF-1EF6-4D2A-9095-3A90EDEFB934}
+		{D692C0D2-CEE5-4854-9CA6-B4022C51FD14} = {D692C0D2-CEE5-4854-9CA6-B4022C51FD14}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
