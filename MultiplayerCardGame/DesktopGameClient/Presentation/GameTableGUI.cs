@@ -48,11 +48,11 @@ namespace DesktopGameClient.Presentation {
                 bool delete = gameTableController.Delete(tableId);
                 if (delete) {
                     labelDelete.Text ="Table is deleted " + "Table ID: "+GameTableIdTextBox.Text+" Table Name: " + GameTableNameTextBox.Text;
+                    UpdateGameTableListBox();
                 }
             } else {
                 labelDelete.Text = "Input valid tableId !";
-            }
-            UpdateGameTableListBox();
+            }          
         }
 
         private void GameTableListBox_SelectedIndexChanged_1(object sender, EventArgs e) {
