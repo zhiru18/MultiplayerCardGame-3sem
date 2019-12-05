@@ -25,20 +25,6 @@ namespace Server.Data.Data {
         public IEnumerable<GameModel> GetAll() {
             throw new NotImplementedException();
         }
-
-        /*
-        public void Insert(GameModel t) {
-            string queryString = "INSERT INTO Game (GameTableId) VALUES (@GametableId);";
-            using (SqlConnection connection = new SqlConnection(conString))
-            using (SqlCommand insertCommand = new SqlCommand(queryString, connection)) {
-                SqlParameter GameTableIDParam = new SqlParameter("@GameTableId", t.gameTable.Id);
-                insertCommand.Parameters.Add(GameTableIDParam);
-                connection.Open();
-
-                SqlDataReader reader = insertCommand.ExecuteReader();
-            }
-        }
-        */
         public void Insert(GameModel game) {
             using(SqlConnection connection = new SqlConnection(conString)) {
                 connection.Open();
