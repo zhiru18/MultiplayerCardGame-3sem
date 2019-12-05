@@ -54,6 +54,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Converters", "Converters", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContractConverters", "DataContractConverters\DataContractConverters.csproj", "{CC8520DB-A252-4D00-93FE-3A9D2CF54E66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopGameClient", "DesktopGameClient\DesktopGameClient.csproj", "{E48EB6DE-6B5A-4D19-9FDD-21CC152D6B21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,6 +118,10 @@ Global
 		{CC8520DB-A252-4D00-93FE-3A9D2CF54E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC8520DB-A252-4D00-93FE-3A9D2CF54E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC8520DB-A252-4D00-93FE-3A9D2CF54E66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E48EB6DE-6B5A-4D19-9FDD-21CC152D6B21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E48EB6DE-6B5A-4D19-9FDD-21CC152D6B21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E48EB6DE-6B5A-4D19-9FDD-21CC152D6B21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E48EB6DE-6B5A-4D19-9FDD-21CC152D6B21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,6 +147,7 @@ Global
 		{C35A2E51-1437-4AA6-B6C9-B76895E56F2C} = {C30A6ECF-D917-4C4E-A3AB-619E03600993}
 		{FC8A6F21-CEDF-475F-912A-A25C4A32573A} = {7724B3C9-EF33-416E-AA44-56388E0D835A}
 		{CC8520DB-A252-4D00-93FE-3A9D2CF54E66} = {FC8A6F21-CEDF-475F-912A-A25C4A32573A}
+		{E48EB6DE-6B5A-4D19-9FDD-21CC152D6B21} = {98EA643A-C420-453D-BC5F-C90CCB615702}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87148347-E100-4333-8C09-F0E81CE16B78}
