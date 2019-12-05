@@ -58,6 +58,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\GameTableController.cs" />
     <Compile Include="Models\CGUserModel.cs" />
     <Compile Include="Models\GameTableModel.cs" />
     <Compile Include="Presentation\MainGUI.cs">
@@ -75,6 +76,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceAcces\GameTableModelConverter.cs" />
+    <Compile Include="ServiceAcces\GameTableServiceAccess.cs" />
     <EmbeddedResource Include="Presentation\MainGUI.resx">
       <DependentUpon>MainGUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,9 +131,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>

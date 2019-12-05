@@ -44,6 +44,7 @@
             this.GameTableListBox.Name = "GameTableListBox";
             this.GameTableListBox.Size = new System.Drawing.Size(329, 384);
             this.GameTableListBox.TabIndex = 0;
+            this.GameTableListBox.SelectedIndexChanged += new System.EventHandler(this.GameTableListBox_SelectedIndexChanged_1);
             // 
             // PlayersListBox
             // 

@@ -33,10 +33,10 @@ namespace DesktopGameClient.ServiceAcces
             Models.CGUserModel clientUser = new Models.CGUserModel() {
                 Id = serviceUser.Id,
                 UserName = serviceUser.UserName,
-                Email = serviceUser.Email,
-                userType = (Models.CGUserModel.UserType)serviceUser.userType,
-                userStatus = (Models.CGUserModel.UserStatus)serviceUser.userStatus,
-                Health = serviceUser.Health,              
+                //Email = serviceUser.Email,
+                //userType = (Models.CGUserModel.UserType)serviceUser.userType,
+                //userStatus = (Models.CGUserModel.UserStatus)serviceUser.userStatus,
+                //Health = serviceUser.Health,              
             };
             return clientUser;
         }
