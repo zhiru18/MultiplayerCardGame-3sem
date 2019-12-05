@@ -10,7 +10,7 @@ namespace UserManagementServiceTest
     //such that we can run the test 
     //regardless of wether or not we have access to the database</summary>
     [TestClass]
-    public class UnitTest1
+    public class UserManagementTest
     {
        
 
