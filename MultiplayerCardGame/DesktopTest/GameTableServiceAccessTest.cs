@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DesktopGameClient.Models;
 using DesktopGameClient.ServiceAcces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DesktopTest.GameTableServiceReference;
+
 
 namespace DesktopTest {
     [TestClass]
