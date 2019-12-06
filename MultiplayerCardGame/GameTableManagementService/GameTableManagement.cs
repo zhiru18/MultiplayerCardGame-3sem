@@ -18,24 +18,32 @@ namespace Server.Services.GameTableManagementService {
         IGameTableDBIF gameTableDB = new GameTableDB();
         UserManagement userManagement = new UserManagement();
         public GameTable CreateGameTable(CGUser user, string tableName) {
-            GameTableModel tableModel = new GameTableModel() {
-                TableName = tableName,
-                DeckId = 2, 
-                seats = 4
-            };
-            gameTableDB.Insert(tableModel);
-            GameTable table = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetGameTableByTableName(tableName));
-            return JoinGameTable(user, table);
+            if (user == null || tableName == null) {
+                throw new ArgumentNullException();
+            } else {
+                GameTableModel tableModel = new GameTableModel() {
+                    TableName = tableName,
+                    DeckId = 2,
+                    seats = 4
+                };
+                gameTableDB.Insert(tableModel);
+                GameTable table = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetGameTableByTableName(tableName));
+                return JoinGameTable(user, table);
+            }
         }
 
         public bool DeleteGameTable(int id) {
-            bool res = false;
-            GameTable table = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(id));
-            if (table != null) {
-                gameTableDB.Delete(GameTableConverter.ConvertFromGameTableToGameTableModel(table));
-                res = true;
+            if (id == 0) {
+                throw new ArgumentException();
+            } else {
+                bool res = false;
+                GameTable table = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(id));
+                if (table != null) {
+                    gameTableDB.Delete(GameTableConverter.ConvertFromGameTableToGameTableModel(table));
+                    res = true;
+                }
+                return res;
             }
-            return res;
         }
 
         public IEnumerable<GameTable> GetAll() {
@@ -43,36 +51,48 @@ namespace Server.Services.GameTableManagementService {
         }
 
         public GameTable GetGameTableById(int id) {
-            return GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(id));
+            if (id == 0) {
+                throw new ArgumentException();
+            } else {
+                return GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(id));
+            }
         }
 
         public GameTable JoinGameTable(CGUser user, GameTable chosenTable) {
-            GameTable databaseTable = null;
-            //TODO: Add a check to see if a user is at another table, and then remove him form that table.
-            try {
-                using (TransactionScope scope = new TransactionScope()) {
-                    CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
-                    if (userModel.TableID != 0 && userModel.TableID != chosenTable.Id) {
-                        GameTableModel modelTable = gameTableDB.GetById(userModel.TableID);
-                        gameTableDB.UpdateGameTableSeats(modelTable, -1);
+            if (user == null || chosenTable == null) {
+                throw new ArgumentNullException();
+            } else {
+                GameTable databaseTable = null;
+                //TODO: Add a check to see if a user is at another table, and then remove him form that table.
+                try {
+                    using (TransactionScope scope = new TransactionScope()) {
+                        CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+                        if (userModel.TableID != 0 && userModel.TableID != chosenTable.Id) {
+                            GameTableModel modelTable = gameTableDB.GetById(userModel.TableID);
+                            gameTableDB.UpdateGameTableSeats(modelTable, -1);
+                        }
+                        databaseTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(chosenTable.Id));
+                        if (chosenTable.seats == databaseTable.seats && databaseTable.Users.Count < 4) {
+                            userManagement.UpdateUserTableId(user, databaseTable.Id);
+                            databaseTable.Users.Add(user);
+                            gameTableDB.UpdateGameTableSeats(GameTableConverter.ConvertFromGameTableToGameTableModel(databaseTable), 1);
+                        }
+                        scope.Complete();
                     }
-                    databaseTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(chosenTable.Id));
-                    if (chosenTable.seats == databaseTable.seats && databaseTable.Users.Count < 4) {
-                        userManagement.UpdateUserTableId(user, databaseTable.Id);
-                        databaseTable.Users.Add(user);
-                        gameTableDB.UpdateGameTableSeats(GameTableConverter.ConvertFromGameTableToGameTableModel(databaseTable), 1);
-                    }
-                    scope.Complete();
-                }
-            } catch (TransactionAbortedException tae) {
+                } catch (TransactionAbortedException tae) {
 
-                throw;
+                    throw;
+                }
+                return databaseTable;
             }
-            return databaseTable;
         }
 
         public GameTable GetGameTableByTableName(string name) {
-            return GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetGameTableByTableName(name));
+            if (name == null) {
+                throw new ArgumentNullException();
+            } else {
+                return GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetGameTableByTableName(name));
+            }
         }
     }
 }
