@@ -12,7 +12,7 @@ namespace WebGameClient.Controllers
     public class GameController : Controller
     {
         // GET: Game
-        [HandleError]
+        
         public ActionResult Index(int id) 
         {
                 GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
