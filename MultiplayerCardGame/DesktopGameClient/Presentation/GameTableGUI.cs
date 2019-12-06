@@ -37,7 +37,7 @@ namespace DesktopGameClient.Presentation {
         private void UpdatePlayersListBox(List<CGUserModel> users) {
             PlayersListBox.Items.Clear();
             foreach (CGUserModel cgu in users) {
-                PlayersListBox.Items.Add(cgu);
+                PlayersListBox.Items.Add(cgu.UserName);
             }
         }
        
