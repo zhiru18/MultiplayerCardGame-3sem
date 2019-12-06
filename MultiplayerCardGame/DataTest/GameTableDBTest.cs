@@ -8,56 +8,97 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Tests.DataTest {
-    [TestClass()]
+    [TestClass]
     public class GameTableDBTest {
         GameTableDB gameTableDB = new GameTableDB();
-        [TestMethod()]
+        [TestMethod]
         public void GetGameTableSeatsTest() {
+            List<GameTableModel> gameTables = gameTableDB.GetAll().ToList();
+            GameTableModel table = null;
+            if (gameTables.Count > 0) {
+                table = gameTables[0];
+            }
             
-            GameTableModel table = gameTableDB.GetById(89);
             int seats = gameTableDB.GetGameTableSeats(table);
             Assert.IsTrue(0 <= seats && seats <= 4);
-            //TODO: Make this test actually useful.
         }
         [TestMethod]
         public void DeleteTest() {
             gameTableDB = new GameTableDB();
-            var table1 = gameTableDB.GetById(1);
-            gameTableDB.Delete(table1);
-            table1 = gameTableDB.GetById(1);
-            Assert.IsNull(table1);
+            List<GameTableModel> gameTables = gameTableDB.GetAll().ToList();
+            bool found = false;
+            GameTableModel table = new GameTableModel { 
+                DeckId = 2, 
+                TableName = "TestTable" 
+            };
+            for (int i = 0; i < gameTables.Count && !found; i++) {
+                if (gameTables[i].TableName == table.TableName) {
+                    table.Id = gameTables[i].Id;
+                }
+                
+            }
+            var table1 = gameTableDB.GetById(table.Id);
+            gameTableDB.Delete(table);
+            table = gameTableDB.GetById(table.Id);
+            Assert.IsNull(table);
         }
         [TestMethod]
         public void InsertTest() {
+            //Arrange
             gameTableDB = new GameTableDB();
-            var table5 = new GameTableModel("Game5");
-            DeckModel deck = new DeckModel();
-            table5.DeckId = 1;
-            table5.seats = 4;
-            gameTableDB.Insert(table5);
-            var tableT = gameTableDB.GetById(5);
-            Assert.AreEqual(table5.TableName, tableT.TableName);
+            bool found = false;
+            var table = new GameTableModel("TestTable");
+            table.DeckId = 2;
+            //Act
+            gameTableDB.Insert(table);
+            List<GameTableModel> gameTables = gameTableDB.GetAll().ToList();
+            for (int i = 0; i < gameTables.Count && !found; i++) {
+                if (gameTables[i].TableName == table.TableName) {
+                    table.Id = gameTables[i].Id;
+                }
+            }
+            var tableT = gameTableDB.GetById(table.Id);
+            //Assert
+            Assert.AreEqual(table.TableName, tableT.TableName);
+            //Cleanup
+            gameTableDB.Delete(table);
         }
         [TestMethod]
         public void GetbyIdTest() {
             gameTableDB = new GameTableDB();
-            GameTableModel table1 = gameTableDB.GetById(2);
-            Assert.AreEqual(2, table1.Id);
+            GameTableModel table = null, table2 = null;
+            List<GameTableModel> gameTables = gameTableDB.GetAll().ToList();
+            if (gameTables.Count > 0) {
+                table = gameTables[0];
+            }
+            table2 = gameTableDB.GetById(table.Id);
+            Assert.AreEqual(table2.Id, table.Id);
         }
         [TestMethod]
         public void GetAllTest() {
             gameTableDB = new GameTableDB();
-            List<GameTableModel> gameTables = (List<GameTableModel>)gameTableDB.GetAll();
+            List<GameTableModel> gameTables = gameTableDB.GetAll().ToList();
             Assert.IsTrue(gameTables.Count > 0);
         }
         [TestMethod]
         public void UpdateTest() {
+            //Arrange
             gameTableDB = new GameTableDB();
-            var table3 = gameTableDB.GetById(3);
-            table3.TableName = "GameTableUpdate";
-            gameTableDB.Update(table3);
-            var table2 = gameTableDB.GetById(3);
-            Assert.AreEqual("GameTableUpdate", table2.TableName);
+            List<GameTableModel> gameTables = gameTableDB.GetAll().ToList();
+            GameTableModel table = null;
+            if (gameTables.Count > 0) {
+                table = gameTables[0];
+            }
+            var name = table.TableName;
+            //Act
+            table.TableName = "GameTableUpdate";
+            gameTableDB.Update(table);
+            var table2 = gameTableDB.GetGameTableByTableName("GameTableUpdate");
+            //Assert
+            Assert.AreNotEqual(name, table2.TableName);
+            //Cleanup
+            table.TableName = name;
+            gameTableDB.Update(table);
         }
     }
 }

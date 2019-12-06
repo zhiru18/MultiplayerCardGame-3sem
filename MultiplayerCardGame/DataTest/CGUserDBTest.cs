@@ -14,8 +14,15 @@ namespace Tests.DataTest {
         [TestMethod()]
         public void UpdateUserTableIdTest() {
             ICGUserDBIF cgUserDB = new CGUserDB();
-            CGUserModel user = cgUserDB.GetById("3e0cd506-d7d6-431d-9f25-afc70d6ce993");
-            cgUserDB.UpdateUserTableId(user, 10);
+            CGUserModel user = cgUserDB.GetById("Test");
+            if (user.TableID == 999) {
+                cgUserDB.UpdateUserTableId(user, 998);
+            } else {
+                cgUserDB.UpdateUserTableId(user, 999);
+            }
+            CGUserModel user2 = cgUserDB.GetById("Test");
+            Assert.AreNotEqual(user.TableID, user2.TableID);
+
         }
 
         [TestMethod]
@@ -39,30 +46,37 @@ namespace Tests.DataTest {
         [TestMethod]
         public void InsertTest() {
             cgUserDB = new CGUserDB();
-            var anders = new CGUserModel("bob", "Anders@anders.com", CGUserModel.UserType.PLAYER, CGUserModel.UserStatus.STUNNED);
-            anders.Id = "qwerty12345678";
-            cgUserDB.Insert(anders);
+            var bob = new CGUserModel("bob", "bob@bob.com", CGUserModel.UserType.PLAYER, CGUserModel.UserStatus.STUNNED);
+            bob.Id = "qwerty12345678";
+            cgUserDB.Insert(bob);
             var anders2 = cgUserDB.GetById("qwerty12345678");
-            Assert.AreEqual(anders.UserName, anders2.UserName);
-            cgUserDB.Delete(anders);
+            Assert.AreEqual(bob.UserName, anders2.UserName);
+            cgUserDB.Delete(bob);
         }
         [TestMethod]
         public void UpdateTest() {
+            //Arrange
             cgUserDB = new CGUserDB();
-            var anders = new CGUserModel("qwerty12345678", "Anders@anders.com", CGUserModel.UserType.PLAYER, CGUserModel.UserStatus.INGAME);
-            cgUserDB.Update(anders);
-            var anders2 = cgUserDB.GetById("qwerty12345678");
-            Assert.AreEqual(anders.userStatus, anders2.userStatus);
+            var test = cgUserDB.GetById("Test");
+            var name = test.UserName;
+            test.UserName = "Updated";
+            //Act
+            cgUserDB.Update(test);
+            var test2 = cgUserDB.GetById("Test");
+            Assert.AreNotEqual(name, test2.UserName);
+            //Cleanup
+            test.UserName = "Test";
+            cgUserDB.Update(test);
         }
         [TestMethod]
         public void DeleteTest() {
             cgUserDB = new CGUserDB();
-            var anders = new CGUserModel("bob", "Anders@anders.com", CGUserModel.UserType.PLAYER, CGUserModel.UserStatus.INGAME);
-            anders.Id = "asdfg09876";
-            cgUserDB.Insert(anders);
-            cgUserDB.Delete(anders);
-            anders = cgUserDB.GetById("asdfg09876");
-            Assert.IsNull(anders);
+            var bob = new CGUserModel("bob", "Bob@bob.com", CGUserModel.UserType.PLAYER, CGUserModel.UserStatus.INGAME);
+            bob.Id = "asdfg09876";
+            cgUserDB.Insert(bob);
+            cgUserDB.Delete(bob);
+            bob = cgUserDB.GetById("asdfg09876");
+            Assert.IsNull(bob);
         }
     }
 }

@@ -15,26 +15,40 @@ namespace Tests.DataTest {
         public void DeleteTest() {
             //Arrange
             deckDB = new DeckDB();
-            var deck1 = deckDB.GetById(1);
+            DeckModel deck = new DeckModel { 
+                DeckName = "TestDeck" 
+            };
+            deck.Id = deckDB.InsertWithIdentity(deck);
             //Act
-            deckDB.Delete(deck1);
-            deck1 = deckDB.GetById(1);       
+            deckDB.Delete(deck);
+            deck = deckDB.GetById(deck.Id);       
             //Assert
-            Assert.IsNull(deck1);
+            Assert.IsNull(deck);
         }
 
         [TestMethod]
         public void InsertTest() {
             // Arrange
+            bool found = false;
             deckDB = new DeckDB();
-            var deck5 = new DeckModel() {
-                DeckName = "GameDeck5"
+            List<DeckModel> beforeDecks = (List<DeckModel>)deckDB.GetAll();    
+            var testDeck = new DeckModel() {
+                DeckName = "TestDeck"
             };
             //Act
-            deckDB.Insert(deck5);
-            var deckT = deckDB.GetById(5);
+            deckDB.Insert(testDeck);
+            List<DeckModel> afterDecks = (List<DeckModel>)deckDB.GetAll();
             //Assert
-            Assert.AreEqual(deck5.DeckName, deckT.DeckName);
+            Assert.IsTrue(beforeDecks.Count < afterDecks.Count);
+
+            //Cleanup
+            for (int i = 0; i < afterDecks.Count && !found; i++) {
+                if (afterDecks[i].DeckName == testDeck.DeckName) {
+                    testDeck.Id = afterDecks[i].Id;
+                    found = true;
+                }
+            }
+            deckDB.Delete(testDeck);
         }
 
         [TestMethod]
@@ -69,5 +83,6 @@ namespace Tests.DataTest {
             //Assert
             Assert.AreEqual("DeckUpdate", deckU.DeckName);
         }
+
     }
 }

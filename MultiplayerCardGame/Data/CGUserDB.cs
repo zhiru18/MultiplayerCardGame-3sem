@@ -26,19 +26,19 @@ namespace Server.Data.Data {
 
         public IEnumerable<CGUserModel> GetAll() {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, UserStatus FROM CGUser").ToList();
+                return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, tableId UserStatus FROM CGUser").ToList();
             }
         }
 
         public CGUserModel GetById(string id) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE id = @id", new { id }).SingleOrDefault();
+                return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, tableId, UserStatus FROM CGUser WHERE id = @id", new { id }).SingleOrDefault();
             }
         }
 
         public CGUserModel GetUserByEmail(string email) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE email = @email", new { email }).SingleOrDefault();
+                return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, tableId, UserStatus FROM CGUser WHERE email = @email", new { email }).SingleOrDefault();
             }
         }
 
@@ -57,7 +57,7 @@ namespace Server.Data.Data {
         }
         public List<CGUserModel> GetUserByTableId(int id) {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return (List<CGUserModel>)connection.Query<CGUserModel>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE tableId = @id", new { id });
+                return (List<CGUserModel>)connection.Query<CGUserModel>("SELECT Id, userName, email, userType, tableId, UserStatus FROM CGUser WHERE tableId = @id", new { id });
             }
         }
 
