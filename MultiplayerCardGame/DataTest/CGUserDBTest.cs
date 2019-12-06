@@ -27,22 +27,24 @@ namespace Tests.DataTest {
         [TestMethod]
         public void GetByIdTest() {
             cgUserDB = new CGUserDB();
-            CGUserModel manny = cgUserDB.GetById("12345678qwerty");
-            Assert.AreEqual("12345678qwerty", manny.Id);
+            CGUserModel test = cgUserDB.GetById("Test");
+            Assert.AreEqual("Test", test.Id);
         }
         [TestMethod]
-        public void GetUserByUserNameTest() {
+        public void GetUserByEmailTest() {
             cgUserDB = new CGUserDB();
-            CGUserModel manny = cgUserDB.GetUserByEmail("Manny@manny.com");
-            Assert.AreEqual("Manny@manny.com", manny.Email);
+            CGUserModel test = cgUserDB.GetUserByEmail("test@email.com");
+            Assert.AreEqual("test@email.com", test.Email);
         }
         [TestMethod]
         public void InsertTest() {
             cgUserDB = new CGUserDB();
-            var anders = new CGUserModel("qwerty12345678", "Anders@anders.com", CGUserModel.UserType.PLAYER, CGUserModel.UserStatus.STUNNED);
+            var anders = new CGUserModel("bob", "Anders@anders.com", CGUserModel.UserType.PLAYER, CGUserModel.UserStatus.STUNNED);
+            anders.Id = "qwerty12345678";
             cgUserDB.Insert(anders);
             var anders2 = cgUserDB.GetById("qwerty12345678");
             Assert.AreEqual(anders.UserName, anders2.UserName);
+            cgUserDB.Delete(anders);
         }
         [TestMethod]
         public void UpdateTest() {
@@ -55,9 +57,11 @@ namespace Tests.DataTest {
         [TestMethod]
         public void DeleteTest() {
             cgUserDB = new CGUserDB();
-            var anders = new CGUserModel("qwerty12345678", "Anders@anders.com", CGUserModel.UserType.PLAYER, CGUserModel.UserStatus.INGAME);
+            var anders = new CGUserModel("bob", "Anders@anders.com", CGUserModel.UserType.PLAYER, CGUserModel.UserStatus.INGAME);
+            anders.Id = "asdfg09876";
+            cgUserDB.Insert(anders);
             cgUserDB.Delete(anders);
-            anders = cgUserDB.GetById("qwerty12345678");
+            anders = cgUserDB.GetById("asdfg09876");
             Assert.IsNull(anders);
         }
     }

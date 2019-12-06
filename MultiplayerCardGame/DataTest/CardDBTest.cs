@@ -32,8 +32,9 @@ namespace Tests.DataTest
         public void DeleteTest()
         {
             cardDB = new CardDB();
-            List<CardModel> cardList = (List<CardModel>)cardDB.GetAll();
             var testCard = new CardModel(CardModel.CardType.ATTACK, "Attack DeleteTest card", "It can attack", 10);
+            cardDB.Insert(testCard);
+            List<CardModel> cardList = (List<CardModel>)cardDB.GetAll();
             cardDB.Delete(testCard);
             List<CardModel> updatedCardList = (List<CardModel>)cardDB.GetAll();
             Assert.IsTrue(cardList.Count > updatedCardList.Count);
