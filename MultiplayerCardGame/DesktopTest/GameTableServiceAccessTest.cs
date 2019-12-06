@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DesktopGameClient.GameTableServiceReference;
 using DesktopGameClient.Models;
 using DesktopGameClient.ServiceAcces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-
-namespace DesktopTest {
+namespace Tests.DesktopTest {
     [TestClass]
     public class GameTableServiceAccessTest {
         [TestMethod]
