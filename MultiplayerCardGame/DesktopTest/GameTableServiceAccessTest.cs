@@ -22,5 +22,31 @@ namespace Tests.DesktopTest {
             //Assert
             Assert.IsTrue(gameTables.Count > 0);
         }
+        [TestMethod]
+        public void GetByIdTest() {
+            //Arrange
+            GameTableServiceAccess gameTableServiceAccess = new GameTableServiceAccess();
+            GameTableModel gameTable1 = new GameTableModel("MortensTable");
+
+            //Act
+            GameTableModel gameTable2 = gameTableServiceAccess.GetById(88);
+
+            //Assert
+            Assert.AreEqual(gameTable1.TableName, gameTable2.TableName);
+        }
+        [TestMethod]
+        public void DeleteTest() {
+            //Arrange
+            GameTableServiceAccess gameTableServiceAccess = new GameTableServiceAccess();
+            GameTableModel gameTable1 = gameTableServiceAccess.GetById(102);
+            bool res = false;
+
+            //Act
+            res = gameTableServiceAccess.Delete(gameTable1.Id);
+
+
+            //Assert
+            Assert.IsTrue(res);
+        }
     }
 }

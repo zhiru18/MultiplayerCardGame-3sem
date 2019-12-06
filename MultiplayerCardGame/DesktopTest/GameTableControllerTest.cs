@@ -34,14 +34,15 @@ namespace Tests.DesktopTest {
         public void DeleteTest() {
             //Arrange
             GameTableController gameTableController = new GameTableController();
-            GameTableModel gameTable1 = gameTableController.GetById(91);
+            GameTableModel gameTable1 = gameTableController.GetById(103);
+            bool res = false;
 
             //Act
-            gameTableController.Delete(gameTable1.Id);
-            gameTable1 = gameTableController.GetById(gameTable1.Id);
+            res = gameTableController.Delete(gameTable1.Id);
+          
 
             //Assert
-            Assert.IsNull(gameTable1);
+            Assert.IsTrue(res);
         }
     }
 }
