@@ -22,7 +22,7 @@ namespace DesktopGameClient.Models
 
         public override string ToString()
         {
-            return $"{Id} {TableName}"; 
+            return $"{Id}  {TableName} Players:{Users.Count}"; 
         }
     }
 }
