@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CGUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Health" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cards" nillable="true" type="tns:ArrayOfCard" />
+      <xs:element minOccurs="0" name="userStatus" type="tns:CGUser.UserStatus" />
+      <xs:element minOccurs="0" name="userType" type="tns:CGUser.UserType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CGUser" nillable="true" type="tns:CGUser" />
+  <xs:complexType name="ArrayOfCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Card" nillable="true" type="tns:Card" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCard" nillable="true" type="tns:ArrayOfCard" />
+  <xs:complexType name="Card">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" type="xs:int" />
+      <xs:element minOccurs="0" name="cardtype" type="tns:Card.CardType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Card" nillable="true" type="tns:Card" />
+  <xs:simpleType name="Card.CardType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ATTACK" />
+      <xs:enumeration value="DEFENSE" />
+      <xs:enumeration value="EFFECT" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Card.CardType" nillable="true" type="tns:Card.CardType" />
+  <xs:simpleType name="CGUser.UserStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNATTACKABLE" />
+      <xs:enumeration value="ATTACKABLE" />
+      <xs:enumeration value="STUNNED" />
+      <xs:enumeration value="INGAME" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CGUser.UserStatus" nillable="true" type="tns:CGUser.UserStatus" />
+  <xs:simpleType name="CGUser.UserType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PLAYER" />
+      <xs:enumeration value="ADMIN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CGUser.UserType" nillable="true" type="tns:CGUser.UserType" />
+  <xs:complexType name="GameTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Deck" nillable="true" type="tns:Deck" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="TableName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ArrayOfCGUser" />
+      <xs:element minOccurs="0" name="seats" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GameTable" nillable="true" type="tns:GameTable" />
+  <xs:complexType name="Deck">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DeckName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="cards" nillable="true" type="tns:ArrayOfCard" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Deck" nillable="true" type="tns:Deck" />
+  <xs:complexType name="ArrayOfCGUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CGUser" nillable="true" type="tns:CGUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCGUser" nillable="true" type="tns:ArrayOfCGUser" />
+  <xs:complexType name="ArrayOfGameTable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GameTable" nillable="true" type="tns:GameTable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGameTable" nillable="true" type="tns:ArrayOfGameTable" />
+</xs:schema>
