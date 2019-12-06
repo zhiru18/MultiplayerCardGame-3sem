@@ -18,5 +18,30 @@ namespace Tests.DesktopTest {
             //Assert
             Assert.IsTrue(gameTables.Count > 0);
         }
+        [TestMethod]
+        public void GetByIdTest() {
+            //Arrange
+            GameTableController gameTableController = new GameTableController();
+            GameTableModel gameTable1 = new GameTableModel("MortensTable");
+
+            //Act
+            GameTableModel gameTable2 = gameTableController.GetById(88);
+
+            //Assert
+            Assert.AreEqual(gameTable1.TableName, gameTable2.TableName);
+        }
+        [TestMethod]
+        public void DeleteTest() {
+            //Arrange
+            GameTableController gameTableController = new GameTableController();
+            GameTableModel gameTable1 = gameTableController.GetById(91);
+
+            //Act
+            gameTableController.Delete(gameTable1.Id);
+            gameTable1 = gameTableController.GetById(gameTable1.Id);
+
+            //Assert
+            Assert.IsNull(gameTable1);
+        }
     }
 }

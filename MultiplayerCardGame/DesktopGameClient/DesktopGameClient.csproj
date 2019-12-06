@@ -65,7 +65,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Controllers\GameTableController.cs" />
-    <Compile Include="DesktopClientTest\GameTableControllerTest.cs" />
     <Compile Include="Models\CGUserModel.cs" />
     <Compile Include="Models\GameTableModel.cs" />
     <Compile Include="Presentation\MainGUI.cs">
