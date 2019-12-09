@@ -79,8 +79,12 @@ namespace Server.Services.UserManagementService
         }
 
         public void DeleteCGUser(CGUser user) {
-            CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
-            cGUserDB.Delete(userModel);
+            if (user == null) {
+                throw new ArgumentNullException();
+            } else {
+                CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+                cGUserDB.Delete(userModel);
+            }
         }
 
         public List<CGUser> GetAll() {
