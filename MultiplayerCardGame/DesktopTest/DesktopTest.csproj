@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CGUserControllerTest.cs" />
+    <Compile Include="CGUserManagementServiceAccessTest.cs" />
     <Compile Include="GameTableControllerTest.cs" />
     <Compile Include="GameTableServiceAccessTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,9 +63,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{e2c35aaa-3f22-46c2-8469-424671759d7b}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DesktopGameClient\DesktopGameClient.csproj">
       <Project>{e48eb6de-6b5a-4d19-9fdd-21cc152d6b21}</Project>
       <Name>DesktopGameClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{095f941f-d5b7-4d22-8c99-cf8f749df82e}</Project>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
