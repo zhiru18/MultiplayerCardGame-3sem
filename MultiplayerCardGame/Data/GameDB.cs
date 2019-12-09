@@ -18,8 +18,12 @@ namespace Server.Data.Data {
             conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
-        public void Delete(GameModel t) {
-            throw new NotImplementedException();
+        public void Delete(GameModel gameModel) {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                connection.Open();
+                var sql = "Delete FROM Game where GameTableId = @GameTableid;";
+                connection.Execute(sql, gameModel);
+            };
         }
 
         public IEnumerable<GameModel> GetAll() {

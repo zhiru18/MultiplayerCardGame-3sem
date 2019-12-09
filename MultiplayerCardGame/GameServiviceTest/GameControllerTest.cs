@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Server.Controllers.Controller;
+using Server.Converters.DataContractConverters;
+using Server.Data.Data;
 using Server.DataContracts.DataContracts;
+using Server.Model.Model;
+using Server.Services.UserManagementService;
 
 namespace Tests.GameControllerTest {
     [TestClass]
@@ -49,40 +53,46 @@ namespace Tests.GameControllerTest {
 
         [TestMethod]
         public void DealCardsTest() {
+            //Arrange
             GameController gameController = new GameController();
-            Deck deck = new Deck();
-            Card card1 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
-            Card card2 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
-            Card card3 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
-            Card card4 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
-            Card card5 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
-            Card card6 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
-            Card card7 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
-            Card card8 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
-            deck.cards.Add(card1);
-            deck.cards.Add(card2);
-            deck.cards.Add(card3);
-            deck.cards.Add(card4);
-            deck.cards.Add(card5);
-            deck.cards.Add(card6);
-            deck.cards.Add(card7);
-            deck.cards.Add(card8);
-
+            ICGUserDBIF cGUserDB = new CGUserDB();
+            IDeckDBIF deckDB = new DeckDB();
+            ICardDBIF cardDB = new CardDB();
+            UserManagement userManagement = new UserManagement();
+            List<CardModel> cardModels = (List<CardModel>)cardDB.GetAll();
+            List<Card> cards = CardConverter.ConvertFromListOfCardModelToListOfCard(cardModels);
+            Deck deck = DeckConverter.ConvertFromDeckModelToDeck(deckDB.GetById(2));
             List<CGUser> users = new List<CGUser>();
-            CGUser user1 = new CGUser();          
-            users.Add(user1);
-         
+            CGUser user = CGUserConverter.convertFromCGUserModelToCGUser(cGUserDB.GetById("Test"));
+            users.Add(user);
+            userManagement.DeleteHand(user);
+            //Act
             gameController.DealCards(deck, users);
-            List<Card> userCards = user1.cards;
-            
-           Assert.IsTrue(userCards.Count >0);
+            List<Card> userCards = user.cards;
+            //Assert
+            Assert.IsTrue(userCards.Count >0);
+            //Cleanup
+            userManagement.DeleteHand(user);
         }
 
-        //[TestMethod]
-        //public void CreateGameTest() {
-        //    GameController gameController = new GameController();
-        //    Game game1 = new Game();
-        //    gameController.CreateGame(game1);
-        //}
+        [TestMethod]
+        public void CreateGameTest() {
+            //Arrange
+            GameController gameController = new GameController();
+            IGameDBIF gameDB = new GameDB();
+            IGameTableDBIF gameTableDB = new GameTableDB();
+            List<GameTableModel> gameTables = (List<GameTableModel>)gameTableDB.GetAll();
+            //Act
+            if(gameTables.Count > 0) {
+                Game game = new Game();
+                game.gameTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTables[0]);
+                gameController.CreateGame(game);
+            }
+            GameModel gameModel = gameController.GetByTableId(gameTables[0].Id);
+            //Assert
+            Assert.IsNotNull(gameModel);
+            //Cleanup
+            gameDB.Delete(gameModel);
+        }
     }
 }
