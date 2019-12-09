@@ -17,5 +17,9 @@ namespace DesktopGameClient.Controllers {
         public void DeleteCGUser(CGUserModel user) {
             cGUserManagementServiceAccess.DeleteCGUser(user);
         }
+
+        internal CGUserModel GetById(string userId) {
+            cGUserManagementServiceAccess.GetById(userId);
+        }
     }
 }

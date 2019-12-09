@@ -58,7 +58,7 @@ namespace DesktopGameClient.Presentation {
         private void GameTableListBox_SelectedIndexChanged_1(object sender, EventArgs e) {
             labelDelete.Text = "";
             string gameTableText = GameTableListBox.Text;
-            string id = gameTableText.Substring(0, 3);
+            string id = gameTableText.Substring(0, 4);
             int tableId = Int32.Parse(id);
             GameTableIdTextBox.Text = id;
             GameTableModel gt = gameTableController.GetById(tableId);

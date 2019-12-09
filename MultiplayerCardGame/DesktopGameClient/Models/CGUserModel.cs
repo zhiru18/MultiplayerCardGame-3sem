@@ -40,7 +40,7 @@ namespace DesktopGameClient.Models
 
         public override string ToString()
         {
-            return $"{UserName}";
+            return $"{Id}    {UserName}";
         }
 
     }
