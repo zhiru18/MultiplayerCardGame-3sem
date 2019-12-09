@@ -20,5 +20,11 @@ namespace DesktopGameClient {
             openForm.Show();
             this.Hide();
         }
+
+        private void ButtonCGUser_Click(object sender, EventArgs e) {
+            CGUserGUI openForm = new CGUserGUI();
+            openForm.Show();
+            this.Hide();
+        }
     }
 }

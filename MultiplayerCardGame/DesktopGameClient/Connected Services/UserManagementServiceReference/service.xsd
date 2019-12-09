@@ -41,4 +41,28 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="DeleteCGUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts" minOccurs="0" name="user" nillable="true" type="q3:CGUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteCGUserResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts" minOccurs="0" name="GetAllResult" nillable="true" type="q4:ArrayOfCGUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

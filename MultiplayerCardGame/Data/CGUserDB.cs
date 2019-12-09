@@ -55,6 +55,7 @@ namespace Server.Data.Data {
                 connection.Execute(sql, user);
             }
         }
+
         public List<CGUserModel> GetUserByTableId(int id) {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 return (List<CGUserModel>)connection.Query<CGUserModel>("SELECT Id, userName, email, userType, UserStatus FROM CGUser WHERE tableId = @id", new { id });

@@ -52,4 +52,10 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="CGUser.UserType" nillable="true" type="tns:CGUser.UserType" />
+  <xs:complexType name="ArrayOfCGUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CGUser" nillable="true" type="tns:CGUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCGUser" nillable="true" type="tns:ArrayOfCGUser" />
 </xs:schema>

@@ -49,5 +49,15 @@ namespace Server.Services.UserManagementService
             CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
             cGUserDB.DeleteHand(userModel);
         }
+
+        public void DeleteCGUser(CGUser user) {
+            CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+            cGUserDB.Delete(userModel);
+        }
+
+        public List<CGUser> GetAll() {
+            List<CGUser> cgUsers = CGUserConverter.ConvertFromListOfCGUserModelToListOfCGUser((List<CGUserModel>)cGUserDB.GetAll());
+            return cgUsers;
+        }
     }
 }

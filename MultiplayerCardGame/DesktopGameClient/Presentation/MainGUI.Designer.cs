@@ -45,6 +45,7 @@
             this.buttonCGUser.TabIndex = 2;
             this.buttonCGUser.Text = "CGUserManagement";
             this.buttonCGUser.UseVisualStyleBackColor = true;
+            this.buttonCGUser.Click += new System.EventHandler(this.ButtonCGUser_Click);
             // 
             // MainGUI
             // 

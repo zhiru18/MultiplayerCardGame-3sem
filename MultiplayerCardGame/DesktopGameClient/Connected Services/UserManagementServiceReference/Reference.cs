@@ -326,6 +326,18 @@ namespace DesktopGameClient.UserManagementServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/UpdateUser", ReplyAction="http://tempuri.org/IUserManagementService/UpdateUserResponse")]
         System.Threading.Tasks.Task UpdateUserAsync(DesktopGameClient.UserManagementServiceReference.CGUser cguser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/DeleteCGUser", ReplyAction="http://tempuri.org/IUserManagementService/DeleteCGUserResponse")]
+        void DeleteCGUser(DesktopGameClient.UserManagementServiceReference.CGUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/DeleteCGUser", ReplyAction="http://tempuri.org/IUserManagementService/DeleteCGUserResponse")]
+        System.Threading.Tasks.Task DeleteCGUserAsync(DesktopGameClient.UserManagementServiceReference.CGUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll", ReplyAction="http://tempuri.org/IUserManagementService/GetAllResponse")]
+        DesktopGameClient.UserManagementServiceReference.CGUser[] GetAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll", ReplyAction="http://tempuri.org/IUserManagementService/GetAllResponse")]
+        System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAllAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -377,6 +389,22 @@ namespace DesktopGameClient.UserManagementServiceReference {
         
         public System.Threading.Tasks.Task UpdateUserAsync(DesktopGameClient.UserManagementServiceReference.CGUser cguser) {
             return base.Channel.UpdateUserAsync(cguser);
+        }
+        
+        public void DeleteCGUser(DesktopGameClient.UserManagementServiceReference.CGUser user) {
+            base.Channel.DeleteCGUser(user);
+        }
+        
+        public System.Threading.Tasks.Task DeleteCGUserAsync(DesktopGameClient.UserManagementServiceReference.CGUser user) {
+            return base.Channel.DeleteCGUserAsync(user);
+        }
+        
+        public DesktopGameClient.UserManagementServiceReference.CGUser[] GetAll() {
+            return base.Channel.GetAll();
+        }
+        
+        public System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAllAsync() {
+            return base.Channel.GetAllAsync();
         }
     }
 }

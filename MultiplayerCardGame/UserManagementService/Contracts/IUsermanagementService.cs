@@ -24,5 +24,11 @@ namespace Server.Services.UserManagementService.Contracts
 
         void SaveHand(List<Card> cards, CGUser user);
 
+        [OperationContract]
+        void DeleteCGUser(CGUser user);
+
+        [OperationContract]
+        List<CGUser> GetAll();
+
     }
 }
