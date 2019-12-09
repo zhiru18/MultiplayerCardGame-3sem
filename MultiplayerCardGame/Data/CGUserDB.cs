@@ -8,19 +8,29 @@ using System.Configuration;
 using Dapper;
 using System.Data;
 using System.Data.SqlClient;
+using System.Transactions;
 
 namespace Server.Data.Data {
     public class CGUserDB : ICGUserDBIF {
         private string conString;
+        private string clientConString;
 
         public CGUserDB() {
             //conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
+            clientConString = ConfigurationManager.ConnectionStrings["ClientConnection"].ConnectionString;
         }
         public void Delete(CGUserModel user) {
-            using (SqlConnection connection = new SqlConnection(conString)) {
-                var sql = "DELETE FROM CGUser WHERE id = @id;";
-                connection.Execute(sql, user);
+            using (TransactionScope scope = new TransactionScope()) {
+                using (SqlConnection connection1 = new SqlConnection(conString)) {
+                    var sql = "DELETE FROM CGUser WHERE id = @id;";
+                    connection1.Execute(sql, user);
+
+                    using (SqlConnection connection2 = new SqlConnection(clientConString)) {
+                        var sqlClient = "Delete FROM AspNetUsers WHERE id = @id;";
+                        connection2.Execute(sqlClient, user);
+                    }
+                }
             }
         }
 
