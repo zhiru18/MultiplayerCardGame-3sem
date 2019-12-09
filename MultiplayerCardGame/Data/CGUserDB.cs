@@ -18,7 +18,7 @@ namespace Server.Data.Data {
         public CGUserDB() {
             //conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
-            //clientConString = ConfigurationManager.ConnectionStrings["ClientConnection"].ConnectionString;
+            clientConString = ConfigurationManager.ConnectionStrings["ClientConnection"].ConnectionString;
         }
         public void Delete(CGUserModel user) {
             using (TransactionScope scope = new TransactionScope()) {
@@ -26,10 +26,10 @@ namespace Server.Data.Data {
                     var sql = "DELETE FROM CGUser WHERE id = @id;";
                     connection1.Execute(sql, user);
 
-                    //using (SqlConnection connection2 = new SqlConnection(clientConString)) {
-                    //    var sqlClient = "Delete FROM AspNetUsers WHERE id = @id;";
-                    //    connection2.Execute(sqlClient, user);
-                    //}
+                    using (SqlConnection connection2 = new SqlConnection(clientConString)) {
+                        var sqlClient = "Delete FROM AspNetUsers WHERE id = @id;";
+                       connection2.Execute(sqlClient, user);
+                    }
                 }
             }
         }
