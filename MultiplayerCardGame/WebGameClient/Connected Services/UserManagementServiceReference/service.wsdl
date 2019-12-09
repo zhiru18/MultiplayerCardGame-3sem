@@ -25,6 +25,18 @@
   <wsdl:message name="IUserManagementService_UpdateUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManagementService_DeleteCGUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCGUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementService_DeleteCGUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCGUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementService_GetAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementService_GetAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManagementService">
     <wsdl:operation name="CreateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementService/CreateUser" message="tns:IUserManagementService_CreateUser_InputMessage" />
@@ -37,6 +49,14 @@
     <wsdl:operation name="UpdateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementService/UpdateUser" message="tns:IUserManagementService_UpdateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagementService/UpdateUserResponse" message="tns:IUserManagementService_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCGUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementService/DeleteCGUser" message="tns:IUserManagementService_DeleteCGUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagementService/DeleteCGUserResponse" message="tns:IUserManagementService_DeleteCGUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementService/GetAll" message="tns:IUserManagementService_GetAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagementService/GetAllResponse" message="tns:IUserManagementService_GetAll_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserManagementService" type="tns:IUserManagementService">
@@ -61,6 +81,24 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUser">
       <soap:operation soapAction="http://tempuri.org/IUserManagementService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCGUser">
+      <soap:operation soapAction="http://tempuri.org/IUserManagementService/DeleteCGUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <soap:operation soapAction="http://tempuri.org/IUserManagementService/GetAll" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

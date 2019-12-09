@@ -20,10 +20,15 @@ namespace DesktopGameClient.Presentation {
         }
 
         private void ListBoxCGUsers_SelectedIndexChanged(object sender, EventArgs e) {
+            DeleteUserlabel.Text = "";
             string cGUserText = listBoxCGUsers.Text;
             string userId = cGUserText.Substring(0, 40);
             CGUserIdTextBox.Text = userId;
             CGUserModel cgu = cGUserController.GetById(userId);
+            if (cgu != null) {
+                CGUserNameTextBox.Text = cgu.UserName;
+                CGUserEmailTextBox.Text = cgu.Email;
+            }
         }
 
         private void btnBackToMain_Click(object sender, EventArgs e) {
@@ -37,6 +42,20 @@ namespace DesktopGameClient.Presentation {
             listBoxCGUsers.Items.Clear();
             foreach (CGUserModel cgu in allUsers) {
                 listBoxCGUsers.Items.Add(cgu);
+            }
+        }
+
+        private void btnDeleteCGUser_Click(object sender, EventArgs e) {
+            string id = CGUserIdTextBox.Text;
+            if (!string.IsNullOrEmpty(id)) {
+                CGUserModel cgu = cGUserController.GetById(id);
+                bool delete = cGUserController.DeleteCGUser(cgu);
+                if (delete) {
+                    DeleteUserlabel.Text = "CGUser is deleted " +" User Name: " + CGUserNameTextBox.Text;
+                    UpdateCGUsersListBox();
+                }
+            } else {
+                DeleteUserlabel.Text = "Input valid userId !";
             }
         }
     }

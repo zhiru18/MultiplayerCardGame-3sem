@@ -328,10 +328,10 @@ namespace DesktopGameClient.UserManagementServiceReference {
         System.Threading.Tasks.Task UpdateUserAsync(DesktopGameClient.UserManagementServiceReference.CGUser cguser);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/DeleteCGUser", ReplyAction="http://tempuri.org/IUserManagementService/DeleteCGUserResponse")]
-        void DeleteCGUser(DesktopGameClient.UserManagementServiceReference.CGUser user);
+        bool DeleteCGUser(DesktopGameClient.UserManagementServiceReference.CGUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/DeleteCGUser", ReplyAction="http://tempuri.org/IUserManagementService/DeleteCGUserResponse")]
-        System.Threading.Tasks.Task DeleteCGUserAsync(DesktopGameClient.UserManagementServiceReference.CGUser user);
+        System.Threading.Tasks.Task<bool> DeleteCGUserAsync(DesktopGameClient.UserManagementServiceReference.CGUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll", ReplyAction="http://tempuri.org/IUserManagementService/GetAllResponse")]
         DesktopGameClient.UserManagementServiceReference.CGUser[] GetAll();
@@ -391,11 +391,11 @@ namespace DesktopGameClient.UserManagementServiceReference {
             return base.Channel.UpdateUserAsync(cguser);
         }
         
-        public void DeleteCGUser(DesktopGameClient.UserManagementServiceReference.CGUser user) {
-            base.Channel.DeleteCGUser(user);
+        public bool DeleteCGUser(DesktopGameClient.UserManagementServiceReference.CGUser user) {
+            return base.Channel.DeleteCGUser(user);
         }
         
-        public System.Threading.Tasks.Task DeleteCGUserAsync(DesktopGameClient.UserManagementServiceReference.CGUser user) {
+        public System.Threading.Tasks.Task<bool> DeleteCGUserAsync(DesktopGameClient.UserManagementServiceReference.CGUser user) {
             return base.Channel.DeleteCGUserAsync(user);
         }
         

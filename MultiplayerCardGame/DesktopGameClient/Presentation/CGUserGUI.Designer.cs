@@ -33,6 +33,7 @@
             this.CGUserNameTextBox = new System.Windows.Forms.TextBox();
             this.CGUserEmailTextBox = new System.Windows.Forms.TextBox();
             this.Emaillabel = new System.Windows.Forms.Label();
+            this.DeleteUserlabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnDeleteCGUser
@@ -43,6 +44,7 @@
             this.btnDeleteCGUser.TabIndex = 0;
             this.btnDeleteCGUser.Text = "Delete user";
             this.btnDeleteCGUser.UseVisualStyleBackColor = true;
+            this.btnDeleteCGUser.Click += new System.EventHandler(this.btnDeleteCGUser_Click);
             // 
             // btnBackToMain
             // 
@@ -124,11 +126,21 @@
             this.Emaillabel.TabIndex = 10;
             this.Emaillabel.Text = "CGUser Email:";
             // 
+            // DeleteUserlabel
+            // 
+            this.DeleteUserlabel.AutoSize = true;
+            this.DeleteUserlabel.CausesValidation = false;
+            this.DeleteUserlabel.Location = new System.Drawing.Point(75, 396);
+            this.DeleteUserlabel.Name = "DeleteUserlabel";
+            this.DeleteUserlabel.Size = new System.Drawing.Size(0, 20);
+            this.DeleteUserlabel.TabIndex = 11;
+            // 
             // CGUserGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 499);
+            this.Controls.Add(this.DeleteUserlabel);
             this.Controls.Add(this.Emaillabel);
             this.Controls.Add(this.CGUserEmailTextBox);
             this.Controls.Add(this.CGUserNameTextBox);
@@ -158,5 +170,6 @@
         private System.Windows.Forms.TextBox CGUserNameTextBox;
         private System.Windows.Forms.TextBox CGUserEmailTextBox;
         private System.Windows.Forms.Label Emaillabel;
+        private System.Windows.Forms.Label DeleteUserlabel;
     }
 }

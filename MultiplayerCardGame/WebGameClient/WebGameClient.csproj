@@ -240,12 +240,6 @@
     <Content Include="Connected Services\GameTableServiceReference\WebGameClient.GameTableServiceReference.GameTable.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\UserManagementServiceReference\configuration91.svcinfo" />
-    <None Include="Connected Services\UserManagementServiceReference\configuration.svcinfo" />
-    <None Include="Connected Services\UserManagementServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Connected Services\GameServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\GameServiceReference\configuration.svcinfo" />
     <None Include="Connected Services\GameServiceReference\Reference.svcmap">
@@ -255,6 +249,12 @@
     <None Include="Connected Services\GameTableServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\GameTableServiceReference\configuration.svcinfo" />
     <None Include="Connected Services\GameTableServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\UserManagementServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\UserManagementServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\UserManagementServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

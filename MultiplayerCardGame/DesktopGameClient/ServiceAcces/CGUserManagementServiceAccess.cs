@@ -16,10 +16,18 @@ namespace DesktopGameClient.ServiceAcces {
             }
         }
 
-        public void DeleteCGUser(CGUserModel user) {
+        public bool DeleteCGUser(CGUserModel user) {
             using (UserManagementServiceClient proxy = new UserManagementServiceClient()) {
                 CGUser cgU = CGUserModelConverter.ConvertFromClientUserToServiceUser(user);
-                proxy.DeleteCGUser(cgU);
+                return proxy.DeleteCGUser(cgU);
+            }
+        }
+
+        public CGUserModel GetById(string userId) {
+            using (UserManagementServiceClient proxy = new UserManagementServiceClient()) {
+                UserManagementServiceReference.CGUser serviceUser = proxy.GetUserByUserId(userId);
+                Models.CGUserModel clientUser = CGUserModelConverter.ConvertFromServiceUserToClientUser(serviceUser);
+                return clientUser;
             }
         }
     }

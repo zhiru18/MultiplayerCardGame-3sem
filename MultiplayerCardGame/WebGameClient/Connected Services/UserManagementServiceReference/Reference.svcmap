@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9ef8f89c-5ca2-42f2-9b1f-30b715c86763" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ec560da0-9baa-41a6-8270-eec8f2194d7f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:8734/Design_Time_Addresses/UserManagementService/UserManagement/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="83b7c63d-e0a7-495f-a358-e9c29b4f050e" SourceId="1" SourceUrl="http://localhost:8734/Design_Time_Addresses/UserManagementService/UserManagement/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="24817e7e-abb8-4cdb-af21-eef2d756f052" SourceId="1" SourceUrl="http://localhost:8734/Design_Time_Addresses/UserManagementService/UserManagement/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="71eb21d0-20d9-45df-99bf-2faafdaabd98" SourceId="1" SourceUrl="http://localhost:8734/Design_Time_Addresses/UserManagementService/UserManagement/mex" />
-    <MetadataFile FileName="Server.DataContracts.DataContracts.xsd" MetadataType="Schema" ID="fb328609-c17f-456d-b7f0-4b59087d43e3" SourceId="1" SourceUrl="http://localhost:8734/Design_Time_Addresses/UserManagementService/UserManagement/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="56cffa50-f73a-4847-8b63-3e9cc635fade" SourceId="1" SourceUrl="http://localhost:8734/Design_Time_Addresses/UserManagementService/UserManagement/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d38f18a3-8629-42b5-ad0e-4f20bcd549cb" SourceId="1" SourceUrl="http://localhost:8734/Design_Time_Addresses/UserManagementService/UserManagement/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="259b0de3-10ea-4fa5-a986-a051387e4645" SourceId="1" SourceUrl="http://localhost:8734/Design_Time_Addresses/UserManagementService/UserManagement/mex" />
+    <MetadataFile FileName="Server.DataContracts.DataContracts.xsd" MetadataType="Schema" ID="8fa2d2cf-51c8-422d-aef8-6d7d848de4c0" SourceId="1" SourceUrl="http://localhost:8734/Design_Time_Addresses/UserManagementService/UserManagement/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

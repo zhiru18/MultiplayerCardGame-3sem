@@ -326,6 +326,18 @@ namespace WebGameClient.UserManagementServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/UpdateUser", ReplyAction="http://tempuri.org/IUserManagementService/UpdateUserResponse")]
         System.Threading.Tasks.Task UpdateUserAsync(WebGameClient.UserManagementServiceReference.CGUser cguser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/DeleteCGUser", ReplyAction="http://tempuri.org/IUserManagementService/DeleteCGUserResponse")]
+        bool DeleteCGUser(WebGameClient.UserManagementServiceReference.CGUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/DeleteCGUser", ReplyAction="http://tempuri.org/IUserManagementService/DeleteCGUserResponse")]
+        System.Threading.Tasks.Task<bool> DeleteCGUserAsync(WebGameClient.UserManagementServiceReference.CGUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll", ReplyAction="http://tempuri.org/IUserManagementService/GetAllResponse")]
+        WebGameClient.UserManagementServiceReference.CGUser[] GetAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll", ReplyAction="http://tempuri.org/IUserManagementService/GetAllResponse")]
+        System.Threading.Tasks.Task<WebGameClient.UserManagementServiceReference.CGUser[]> GetAllAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -377,6 +389,22 @@ namespace WebGameClient.UserManagementServiceReference {
         
         public System.Threading.Tasks.Task UpdateUserAsync(WebGameClient.UserManagementServiceReference.CGUser cguser) {
             return base.Channel.UpdateUserAsync(cguser);
+        }
+        
+        public bool DeleteCGUser(WebGameClient.UserManagementServiceReference.CGUser user) {
+            return base.Channel.DeleteCGUser(user);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteCGUserAsync(WebGameClient.UserManagementServiceReference.CGUser user) {
+            return base.Channel.DeleteCGUserAsync(user);
+        }
+        
+        public WebGameClient.UserManagementServiceReference.CGUser[] GetAll() {
+            return base.Channel.GetAll();
+        }
+        
+        public System.Threading.Tasks.Task<WebGameClient.UserManagementServiceReference.CGUser[]> GetAllAsync() {
+            return base.Channel.GetAllAsync();
         }
     }
 }

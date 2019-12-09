@@ -14,12 +14,12 @@ namespace DesktopGameClient.Controllers {
             return cGUserManagementServiceAccess.GetAll();
         }
 
-        public void DeleteCGUser(CGUserModel user) {
-            cGUserManagementServiceAccess.DeleteCGUser(user);
+        public bool DeleteCGUser(CGUserModel user) {
+            return cGUserManagementServiceAccess.DeleteCGUser(user);
         }
 
-        internal CGUserModel GetById(string userId) {
-            cGUserManagementServiceAccess.GetById(userId);
+        public CGUserModel GetById(string userId) {
+            return cGUserManagementServiceAccess.GetById(userId);
         }
     }
 }
