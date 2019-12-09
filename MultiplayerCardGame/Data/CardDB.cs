@@ -51,6 +51,13 @@ namespace Server.Data.Data {
                 connection.Execute(sql, card);
             }
         }
+        public int InsertWithIdentity(CardModel card) {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                var sql = "INSERT INTO Card (cardType, name, description, value) VALUES (@cardType, @name, @description, @value); SELECT CAST(SCOPE_IDENTITY() as int)";
+                var id = connection.Query<int>(sql, card).SingleOrDefault();
+                return id;
+            }
+        }
 
         public void Update(CardModel card)
         {

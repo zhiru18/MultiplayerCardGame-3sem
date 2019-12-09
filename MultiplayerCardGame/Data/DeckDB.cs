@@ -48,6 +48,13 @@ namespace Server.Data.Data {
                        connection.Execute(sql, deck);
                 }
             }
+        public int InsertWithIdentity(DeckModel deck) {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                var sql = "INSERT INTO Deck (deckName) VALUES (@deckName); SELECT CAST(SCOPE_IDENTITY() as int)";
+                var id = connection.Query<int>(sql, deck).SingleOrDefault();
+                return id;
+            }
+        }
 
         public void Update(DeckModel deck) {
             using (SqlConnection connection = new SqlConnection(conString)) {

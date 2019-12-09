@@ -16,38 +16,66 @@ namespace Server.Services.UserManagementService
     public class UserManagement : IUserManagementService {
         ICGUserDBIF cGUserDB = new CGUserDB();
         public void CreateUser(string id, string email, string userName) {
-            CGUserModel user = new CGUserModel();
-            user.Email = email;
-            user.Id = id;
-            user.UserName = userName;
-            cGUserDB.Insert(user);
+            if (id == null || email == null || userName == null) {
+                throw new ArgumentNullException();
+            } else {
+                CGUserModel user = new CGUserModel();
+                user.Email = email;
+                user.Id = id;
+                user.UserName = userName;
+                cGUserDB.Insert(user);
+            }
         }
 
         public CGUser GetUserByUserId(string id) {
-            CGUserModel userModel = cGUserDB.GetById(id);
-            return CGUserConverter.convertFromCGUserModelToCGUser(userModel);
+            if (id == null) {
+                throw new ArgumentNullException();
+            } else {
+                CGUserModel userModel = cGUserDB.GetById(id);
+                return CGUserConverter.convertFromCGUserModelToCGUser(userModel);
+            }
         }
 
         public void UpdateUser(CGUser user) {
-            CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
-            cGUserDB.Update(userModel);
+            if (user == null) {
+                throw new ArgumentNullException();
+            } else {
+                CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+                cGUserDB.Update(userModel);
+            }
         }
 
         public void UpdateUserTableId(CGUser user, int tableId) {
-            CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
-            cGUserDB.UpdateUserTableId(userModel, tableId);
+            if (user == null || tableId == 0) {
+                throw new ArgumentNullException();
+            } else {
+                CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+                cGUserDB.UpdateUserTableId(userModel, tableId);
+            }
         }
         public List<CGUser> GetUserByTableId(int id) {
-            return CGUserConverter.ConvertFromListOfCGUserModelToListOfCGUser(cGUserDB.GetUserByTableId(id));
+            if (id == 0) {
+                throw new ArgumentException();
+            } else {
+                return CGUserConverter.ConvertFromListOfCGUserModelToListOfCGUser(cGUserDB.GetUserByTableId(id));
+            }
         }
         public void SaveHand(List<Card> cards, CGUser user) {
-            List<CardModel> cardModels = CardConverter.ConvertFromListOfCardToListOfCardModel(cards);
-            CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
-            cGUserDB.InsertHand(cardModels, userModel);
+            if (cards == null || user == null) {
+                throw new ArgumentNullException();
+            } else {
+                List<CardModel> cardModels = CardConverter.ConvertFromListOfCardToListOfCardModel(cards);
+                CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+                cGUserDB.InsertHand(cardModels, userModel);
+            }
         }
         public void DeleteHand(CGUser user) {
-            CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
-            cGUserDB.DeleteHand(userModel);
+            if (user == null) {
+                throw new ArgumentNullException();
+            } else {
+                CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+                cGUserDB.DeleteHand(userModel);
+            }
         }
 
         public void DeleteCGUser(CGUser user) {

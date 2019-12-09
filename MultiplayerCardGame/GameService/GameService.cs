@@ -16,16 +16,28 @@ namespace Server.Services.GameService {
         GameController gameCtrl = new GameController();
 
         public void CreateGame(Game game) {
-            gameCtrl.CreateGame(game);
+            if (game == null) {
+                throw new ArgumentNullException();
+            } else {
+                gameCtrl.CreateGame(game);
+            }
         }
 
         public Game StartGame(GameTable gameTable) {
-           return gameCtrl.StartGame(gameTable);
+            if (gameTable == null) {
+                throw new ArgumentNullException();
+            } else {
+                return gameCtrl.StartGame(gameTable);
+            }
         }
 
         public Game GetByTableId(int tableId) {
-            Game game = GameConverter.ConvertFromGameModelToGame(gameCtrl.GetByTableId(tableId));
-            return game;
+            if (tableId == 0) {
+                throw new ArgumentException();
+            } else {
+                Game game = GameConverter.ConvertFromGameModelToGame(gameCtrl.GetByTableId(tableId));
+                return game;
+            }
         }
         
     }

@@ -33,7 +33,7 @@ namespace Tests.DataTest
         {
             cardDB = new CardDB();
             var testCard = new CardModel(CardModel.CardType.ATTACK, "Attack DeleteTest card", "It can attack", 10);
-            cardDB.Insert(testCard);
+            testCard.Id = cardDB.InsertWithIdentity(testCard);
             List<CardModel> cardList = (List<CardModel>)cardDB.GetAll();
             cardDB.Delete(testCard);
             List<CardModel> updatedCardList = (List<CardModel>)cardDB.GetAll();
