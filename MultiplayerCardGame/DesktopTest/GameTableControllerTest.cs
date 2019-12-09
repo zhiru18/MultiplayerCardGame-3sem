@@ -22,23 +22,38 @@ namespace Tests.DesktopTest {
         public void GetByIdTest() {
             //Arrange
             GameTableController gameTableController = new GameTableController();
-            GameTableModel gameTable1 = new GameTableModel("MortensTable");
-
+            GameTableModel gameTable = null, gameTable2 = null;
+            List<GameTableModel> tables = gameTableController.GetAll();
+            if(tables.Count > 0) {
+                gameTable = tables[0];
+            }
             //Act
-            GameTableModel gameTable2 = gameTableController.GetById(88);
+            gameTable2 = gameTableController.GetById(gameTable.Id);
 
             //Assert
-            Assert.AreEqual(gameTable1.TableName, gameTable2.TableName);
+            Assert.AreEqual(gameTable.TableName, gameTable2.TableName);
         }
         [TestMethod]
         public void DeleteTest() {
             //Arrange
             GameTableController gameTableController = new GameTableController();
-            GameTableModel gameTable1 = gameTableController.GetById(103);
+            CGUserModel userModel = new CGUserModel { 
+                Id = "Test", 
+                Email = "test@email.com", 
+                UserName = "Test" 
+            };
+            GameTableModel tableModel = null;
+            gameTableController.CreateGameTable(userModel, "TestTable");
+            List<GameTableModel> tables = gameTableController.GetAll();
+            foreach (var table in tables) {
+                if(table.TableName == "TestTable") {
+                    tableModel = table;
+                }
+            }
             bool res = false;
 
             //Act
-            res = gameTableController.Delete(gameTable1.Id);
+            res = gameTableController.Delete(tableModel.Id);
           
 
             //Assert

@@ -22,5 +22,8 @@ namespace DesktopGameClient.Controllers {
         public bool Delete(int tableId) {
             return gameTableAccess.Delete(tableId);
         }
+        public GameTableModel CreateGameTable(CGUserModel userModel, string tableName) {
+            return gameTableAccess.CreateGameTable(userModel, tableName);
+        }
     }
 }
