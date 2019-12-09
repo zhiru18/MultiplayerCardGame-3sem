@@ -31,6 +31,7 @@ namespace Server.Data.Data {
                        connection2.Execute(sqlClient, user);
                     }
                 }
+                scope.Complete();
             }
         }
 
@@ -95,6 +96,12 @@ namespace Server.Data.Data {
             using (SqlConnection connection = new SqlConnection(conString)) {
                 var sql = "DELETE FROM CardUser WHERE cguser_id = @id";
                     connection.Execute(sql, userModel);
+            }
+        }
+
+        public CGUserModel GetByUserName(string userName) {
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, tableId, UserStatus FROM CGUser WHERE userName = @userName", new { userName }).SingleOrDefault();
             }
         }
     }

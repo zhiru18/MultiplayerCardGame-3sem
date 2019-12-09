@@ -67,27 +67,29 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAll1">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAll1Response">
+  <xs:element name="DeleteHand">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts" minOccurs="0" name="GetAll1Result" nillable="true" type="q5:ArrayOfCGUser" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts" minOccurs="0" name="user" nillable="true" type="q5:CGUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAll2">
+  <xs:element name="DeleteHandResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAll2Response">
+  <xs:element name="GetCGUserByUserName">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts" minOccurs="0" name="GetAll2Result" nillable="true" type="q6:ArrayOfCGUser" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCGUserByUserNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Server.DataContracts.DataContracts" minOccurs="0" name="GetCGUserByUserNameResult" nillable="true" type="q6:CGUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

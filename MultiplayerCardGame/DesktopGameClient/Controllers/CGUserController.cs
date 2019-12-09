@@ -21,5 +21,9 @@ namespace DesktopGameClient.Controllers {
         public CGUserModel GetById(string userId) {
             return cGUserManagementServiceAccess.GetById(userId);
         }
+
+        public CGUserModel GetUserByUserName(string userName) {
+            return cGUserManagementServiceAccess.GetUserByUserName(userName);
+        }
     }
 }

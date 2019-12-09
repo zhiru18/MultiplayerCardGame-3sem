@@ -15,5 +15,6 @@ namespace Server.Data.Data {
 
         void InsertHand(List<CardModel> cards, CGUserModel user);
         void DeleteHand(CGUserModel userModel);
+        CGUserModel GetByUserName(string userName);
     }
 }

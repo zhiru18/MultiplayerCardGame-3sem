@@ -339,17 +339,17 @@ namespace DesktopGameClient.UserManagementServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll", ReplyAction="http://tempuri.org/IUserManagementService/GetAllResponse")]
         System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAllAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll1", ReplyAction="http://tempuri.org/IUserManagementService/GetAll1Response")]
-        DesktopGameClient.UserManagementServiceReference.CGUser[] GetAll1();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/DeleteHand", ReplyAction="http://tempuri.org/IUserManagementService/DeleteHandResponse")]
+        void DeleteHand(DesktopGameClient.UserManagementServiceReference.CGUser user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll1", ReplyAction="http://tempuri.org/IUserManagementService/GetAll1Response")]
-        System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAll1Async();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/DeleteHand", ReplyAction="http://tempuri.org/IUserManagementService/DeleteHandResponse")]
+        System.Threading.Tasks.Task DeleteHandAsync(DesktopGameClient.UserManagementServiceReference.CGUser user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll2", ReplyAction="http://tempuri.org/IUserManagementService/GetAll2Response")]
-        DesktopGameClient.UserManagementServiceReference.CGUser[] GetAll2();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetCGUserByUserName", ReplyAction="http://tempuri.org/IUserManagementService/GetCGUserByUserNameResponse")]
+        DesktopGameClient.UserManagementServiceReference.CGUser GetCGUserByUserName(string userName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll2", ReplyAction="http://tempuri.org/IUserManagementService/GetAll2Response")]
-        System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAll2Async();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetCGUserByUserName", ReplyAction="http://tempuri.org/IUserManagementService/GetCGUserByUserNameResponse")]
+        System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser> GetCGUserByUserNameAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -419,20 +419,20 @@ namespace DesktopGameClient.UserManagementServiceReference {
             return base.Channel.GetAllAsync();
         }
         
-        public DesktopGameClient.UserManagementServiceReference.CGUser[] GetAll1() {
-            return base.Channel.GetAll1();
+        public void DeleteHand(DesktopGameClient.UserManagementServiceReference.CGUser user) {
+            base.Channel.DeleteHand(user);
         }
         
-        public System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAll1Async() {
-            return base.Channel.GetAll1Async();
+        public System.Threading.Tasks.Task DeleteHandAsync(DesktopGameClient.UserManagementServiceReference.CGUser user) {
+            return base.Channel.DeleteHandAsync(user);
         }
         
-        public DesktopGameClient.UserManagementServiceReference.CGUser[] GetAll2() {
-            return base.Channel.GetAll2();
+        public DesktopGameClient.UserManagementServiceReference.CGUser GetCGUserByUserName(string userName) {
+            return base.Channel.GetCGUserByUserName(userName);
         }
         
-        public System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAll2Async() {
-            return base.Channel.GetAll2Async();
+        public System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser> GetCGUserByUserNameAsync(string userName) {
+            return base.Channel.GetCGUserByUserNameAsync(userName);
         }
     }
 }

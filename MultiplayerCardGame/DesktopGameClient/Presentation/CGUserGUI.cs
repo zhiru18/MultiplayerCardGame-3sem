@@ -19,17 +19,7 @@ namespace DesktopGameClient.Presentation {
             UpdateCGUsersListBox();
         }
 
-        private void ListBoxCGUsers_SelectedIndexChanged(object sender, EventArgs e) {
-            DeleteUserlabel.Text = "";
-            string cGUserText = listBoxCGUsers.Text;
-            string userId = cGUserText.Substring(0, 40);
-            CGUserIdTextBox.Text = userId;
-            CGUserModel cgu = cGUserController.GetById(userId);
-            if (cgu != null) {
-                CGUserNameTextBox.Text = cgu.UserName;
-                CGUserEmailTextBox.Text = cgu.Email;
-            }
-        }
+       
 
         private void btnBackToMain_Click(object sender, EventArgs e) {
             MainGUI openForm = new MainGUI();
@@ -46,9 +36,9 @@ namespace DesktopGameClient.Presentation {
         }
 
         private void btnDeleteCGUser_Click(object sender, EventArgs e) {
-            string id = CGUserIdTextBox.Text;
-            if (!string.IsNullOrEmpty(id)) {
-                CGUserModel cgu = cGUserController.GetById(id);
+            string userName = CGUserNameTextBox.Text;
+            if (!string.IsNullOrEmpty(userName)) {
+                CGUserModel cgu = cGUserController.GetUserByUserName(userName);
                 bool delete = cGUserController.DeleteCGUser(cgu);
                 if (delete) {
                     DeleteUserlabel.Text = "CGUser is deleted " +" User Name: " + CGUserNameTextBox.Text;
@@ -56,6 +46,18 @@ namespace DesktopGameClient.Presentation {
                 }
             } else {
                 DeleteUserlabel.Text = "Input valid userId !";
+            }
+        }
+
+        private void listBoxCGUsers_SelectedIndexChanged(object sender, EventArgs e) {
+            DeleteUserlabel.Text = "";
+            string userName = listBoxCGUsers.Text;
+            //string userId = cGUserText.Substring(0, 40);
+            CGUserNameTextBox.Text = userName;
+            CGUserModel cgu = cGUserController.GetUserByUserName(userName);
+            if (cgu != null) {
+                CGUserIdTextBox.Text = cgu.Id;
+                CGUserEmailTextBox.Text = cgu.Email;
             }
         }
     }

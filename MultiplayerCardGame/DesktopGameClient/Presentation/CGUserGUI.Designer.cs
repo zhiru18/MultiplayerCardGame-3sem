@@ -25,7 +25,6 @@
         private void InitializeComponent() {
             this.btnDeleteCGUser = new System.Windows.Forms.Button();
             this.btnBackToMain = new System.Windows.Forms.Button();
-            this.listBoxCGUsers = new System.Windows.Forms.ListBox();
             this.lblAllCGUsers = new System.Windows.Forms.Label();
             this.CGUserIdTextBox = new System.Windows.Forms.TextBox();
             this.UserIdlabel = new System.Windows.Forms.Label();
@@ -34,6 +33,7 @@
             this.CGUserEmailTextBox = new System.Windows.Forms.TextBox();
             this.Emaillabel = new System.Windows.Forms.Label();
             this.DeleteUserlabel = new System.Windows.Forms.Label();
+            this.listBoxCGUsers = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btnDeleteCGUser
@@ -56,16 +56,6 @@
             this.btnBackToMain.UseVisualStyleBackColor = true;
             this.btnBackToMain.Click += new System.EventHandler(this.btnBackToMain_Click);
             // 
-            // listBoxCGUsers
-            // 
-            this.listBoxCGUsers.FormattingEnabled = true;
-            this.listBoxCGUsers.ItemHeight = 20;
-            this.listBoxCGUsers.Location = new System.Drawing.Point(75, 56);
-            this.listBoxCGUsers.Name = "listBoxCGUsers";
-            this.listBoxCGUsers.Size = new System.Drawing.Size(357, 244);
-            this.listBoxCGUsers.TabIndex = 2;
-            this.listBoxCGUsers.SelectedIndexChanged += new System.EventHandler(this.ListBoxCGUsers_SelectedIndexChanged);
-            // 
             // lblAllCGUsers
             // 
             this.lblAllCGUsers.AutoSize = true;
@@ -79,7 +69,7 @@
             // 
             this.CGUserIdTextBox.Location = new System.Drawing.Point(675, 47);
             this.CGUserIdTextBox.Name = "CGUserIdTextBox";
-            this.CGUserIdTextBox.Size = new System.Drawing.Size(184, 26);
+            this.CGUserIdTextBox.Size = new System.Drawing.Size(260, 26);
             this.CGUserIdTextBox.TabIndex = 5;
             // 
             // UserIdlabel
@@ -106,14 +96,14 @@
             // 
             this.CGUserNameTextBox.Location = new System.Drawing.Point(675, 112);
             this.CGUserNameTextBox.Name = "CGUserNameTextBox";
-            this.CGUserNameTextBox.Size = new System.Drawing.Size(184, 26);
+            this.CGUserNameTextBox.Size = new System.Drawing.Size(260, 26);
             this.CGUserNameTextBox.TabIndex = 8;
             // 
             // CGUserEmailTextBox
             // 
             this.CGUserEmailTextBox.Location = new System.Drawing.Point(675, 183);
             this.CGUserEmailTextBox.Name = "CGUserEmailTextBox";
-            this.CGUserEmailTextBox.Size = new System.Drawing.Size(184, 26);
+            this.CGUserEmailTextBox.Size = new System.Drawing.Size(260, 26);
             this.CGUserEmailTextBox.TabIndex = 9;
             // 
             // Emaillabel
@@ -135,11 +125,22 @@
             this.DeleteUserlabel.Size = new System.Drawing.Size(0, 20);
             this.DeleteUserlabel.TabIndex = 11;
             // 
+            // listBoxCGUsers
+            // 
+            this.listBoxCGUsers.FormattingEnabled = true;
+            this.listBoxCGUsers.ItemHeight = 20;
+            this.listBoxCGUsers.Location = new System.Drawing.Point(79, 58);
+            this.listBoxCGUsers.Name = "listBoxCGUsers";
+            this.listBoxCGUsers.Size = new System.Drawing.Size(357, 224);
+            this.listBoxCGUsers.TabIndex = 12;
+            this.listBoxCGUsers.SelectedIndexChanged += new System.EventHandler(this.listBoxCGUsers_SelectedIndexChanged);
+            // 
             // CGUserGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 499);
+            this.Controls.Add(this.listBoxCGUsers);
             this.Controls.Add(this.DeleteUserlabel);
             this.Controls.Add(this.Emaillabel);
             this.Controls.Add(this.CGUserEmailTextBox);
@@ -148,7 +149,6 @@
             this.Controls.Add(this.UserIdlabel);
             this.Controls.Add(this.CGUserIdTextBox);
             this.Controls.Add(this.lblAllCGUsers);
-            this.Controls.Add(this.listBoxCGUsers);
             this.Controls.Add(this.btnBackToMain);
             this.Controls.Add(this.btnDeleteCGUser);
             this.Name = "CGUserGUI";
@@ -162,7 +162,6 @@
 
         private System.Windows.Forms.Button btnDeleteCGUser;
         private System.Windows.Forms.Button btnBackToMain;
-        private System.Windows.Forms.ListBox listBoxCGUsers;
         private System.Windows.Forms.Label lblAllCGUsers;
         private System.Windows.Forms.TextBox CGUserIdTextBox;
         private System.Windows.Forms.Label UserIdlabel;
@@ -171,5 +170,6 @@
         private System.Windows.Forms.TextBox CGUserEmailTextBox;
         private System.Windows.Forms.Label Emaillabel;
         private System.Windows.Forms.Label DeleteUserlabel;
+        private System.Windows.Forms.ListBox listBoxCGUsers;
     }
 }
