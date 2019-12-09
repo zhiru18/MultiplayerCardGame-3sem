@@ -49,5 +49,16 @@ namespace DesktopGameClient.ServiceAcces
             }
             return clientGameTables;
         }
+        public static GameTableServiceReference.CGUser ConvertFromClientUserToServiceUser(CGUserModel modelUser) {
+            CGUser serviceUser = new CGUser() {
+                Id = modelUser.Id,
+                UserName = modelUser.UserName,
+                Email = modelUser.Email,
+                //userType = (Models.CGUserModel.UserType)serviceUser.userType,
+                //userStatus = (Models.CGUserModel.UserStatus)serviceUser.userStatus,
+                //Health = serviceUser.Health,              
+            };
+            return serviceUser;
+        }
     }
 }

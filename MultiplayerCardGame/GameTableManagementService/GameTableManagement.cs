@@ -63,13 +63,14 @@ namespace Server.Services.GameTableManagementService {
                 throw new ArgumentNullException();
             } else {
                 GameTable databaseTable = null;
-                //TODO: Add a check to see if a user is at another table, and then remove him form that table.
                 try {
                     using (TransactionScope scope = new TransactionScope()) {
                         CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
                         if (userModel.TableID != 0 && userModel.TableID != chosenTable.Id) {
                             GameTableModel modelTable = gameTableDB.GetById(userModel.TableID);
-                            gameTableDB.UpdateGameTableSeats(modelTable, -1);
+                            if(modelTable != null) {
+                                gameTableDB.UpdateGameTableSeats(modelTable, -1);
+                            }
                         }
                         databaseTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(chosenTable.Id));
                         if (chosenTable.seats == databaseTable.seats && databaseTable.Users.Count < 4) {

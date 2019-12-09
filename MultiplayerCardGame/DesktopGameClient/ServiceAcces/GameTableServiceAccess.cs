@@ -29,5 +29,13 @@ namespace DesktopGameClient.ServiceAcces {
                 return proxy.DeleteGameTable(tableId);
             }
         }
+        public GameTableModel CreateGameTable(CGUserModel userModel, string tableName) {
+            using (GameTableManagementServiceClient proxy = new GameTableManagementServiceClient()) {
+                GameTableModel tableModel = null;
+                CGUser user = GameTableModelConverter. ConvertFromClientUserToServiceUser(userModel);
+                tableModel = GameTableModelConverter.ConvertFromServiceGameTableToClientGameTable(proxy.CreateGameTable(user, tableName));
+                return tableModel;
+            }
+        }
     }
 }
