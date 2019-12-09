@@ -40,11 +40,12 @@ namespace Tests.DataTest
             Assert.IsTrue(cardList.Count > updatedCardList.Count);
         }
 
-        //[TestMethod]
-        //public void GetCardsByDeckIdTest() {
-        //    cardDB = new CardDB();
-        //    List<CardModel> cardList = (List<CardModel>)cardDB.GetCardsByDeckId(2);
-        //}
+        [TestMethod]
+        public void GetCardsByDeckIdTest() {
+           cardDB = new CardDB();
+           List<CardModel> cardList = (List<CardModel>)cardDB.GetCardsByDeckId(2);
+            Assert.IsTrue(cardList.Count > 0);
+        }
         // TODO: Fix this method.
         //[TestMethod]
         //public void UpdateTest()
