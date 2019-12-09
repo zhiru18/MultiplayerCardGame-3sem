@@ -37,6 +37,18 @@
   <wsdl:message name="IUserManagementService_GetAll_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManagementService_GetAll1_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll1" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementService_GetAll1_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll1Response" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementService_GetAll2_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll2" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagementService_GetAll2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll2Response" />
+  </wsdl:message>
   <wsdl:portType name="IUserManagementService">
     <wsdl:operation name="CreateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementService/CreateUser" message="tns:IUserManagementService_CreateUser_InputMessage" />
@@ -57,6 +69,14 @@
     <wsdl:operation name="GetAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementService/GetAll" message="tns:IUserManagementService_GetAll_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagementService/GetAllResponse" message="tns:IUserManagementService_GetAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll1">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementService/GetAll1" message="tns:IUserManagementService_GetAll1_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagementService/GetAll1Response" message="tns:IUserManagementService_GetAll1_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagementService/GetAll2" message="tns:IUserManagementService_GetAll2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagementService/GetAll2Response" message="tns:IUserManagementService_GetAll2_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserManagementService" type="tns:IUserManagementService">
@@ -99,6 +119,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetAll">
       <soap:operation soapAction="http://tempuri.org/IUserManagementService/GetAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll1">
+      <soap:operation soapAction="http://tempuri.org/IUserManagementService/GetAll1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll2">
+      <soap:operation soapAction="http://tempuri.org/IUserManagementService/GetAll2" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

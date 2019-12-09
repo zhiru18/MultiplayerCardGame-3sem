@@ -28,7 +28,12 @@ namespace Server.Services.UserManagementService.Contracts
         bool DeleteCGUser(CGUser user);
 
         [OperationContract]
-        List<CGUser> GetAll();
+        IEnumerable<CGUser> GetAll();
 
+        [OperationContract]
+        List<CGUser> GetAll1();
+
+        [OperationContract]
+        List<CGUser> GetAll2();
     }
 }

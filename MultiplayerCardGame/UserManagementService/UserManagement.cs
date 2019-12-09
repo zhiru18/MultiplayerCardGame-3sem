@@ -31,7 +31,7 @@ namespace Server.Services.UserManagementService
             if (id == null) {
                 throw new ArgumentNullException();
             } else {
-                CGUserModel userModel = cGUserDB.GetById(id);
+                CGUserModel userModel = cGUserDB.GetById("0dba05c5-ffcd-47d9-b9a9-6657d47f7bcc");
                 return CGUserConverter.convertFromCGUserModelToCGUser(userModel);
             }
         }
@@ -92,9 +92,33 @@ namespace Server.Services.UserManagementService
             }
         }
 
-        public List<CGUser> GetAll() {
+        public IEnumerable<CGUser> GetAll() {
+            var data = cGUserDB.GetAll();
             List<CGUser> cgUsers = CGUserConverter.ConvertFromListOfCGUserModelToListOfCGUser((List<CGUserModel>)cGUserDB.GetAll());
             return cgUsers;
+        }
+
+        public List<CGUser> GetAll1() {
+            CGUserModel userModel = cGUserDB.GetById("0dba05c5-ffcd-47d9-b9a9-6657d47f7bcc");
+            CGUser cg = CGUserConverter.convertFromCGUserModelToCGUser(userModel);
+            List<CGUser> data = new List<CGUser>() { cg };
+            return data;
+            
+        }
+
+        public List<CGUser> GetAll2() {
+            var data = cGUserDB.GetAll();
+            List<CGUser> data2 = new List<CGUser>();
+            CGUser tempCGUser = null;
+            int propesize = 20, loopNo = 0;
+            foreach(CGUserModel user in data) {
+                tempCGUser = CGUserConverter.convertFromCGUserModelToCGUser(user);
+                if (loopNo < propesize) {
+                    data2.Add(tempCGUser);
+                    loopNo++;
+                }
+            }
+            return data2;
         }
     }
 }

@@ -338,6 +338,18 @@ namespace DesktopGameClient.UserManagementServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll", ReplyAction="http://tempuri.org/IUserManagementService/GetAllResponse")]
         System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAllAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll1", ReplyAction="http://tempuri.org/IUserManagementService/GetAll1Response")]
+        DesktopGameClient.UserManagementServiceReference.CGUser[] GetAll1();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll1", ReplyAction="http://tempuri.org/IUserManagementService/GetAll1Response")]
+        System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAll1Async();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll2", ReplyAction="http://tempuri.org/IUserManagementService/GetAll2Response")]
+        DesktopGameClient.UserManagementServiceReference.CGUser[] GetAll2();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagementService/GetAll2", ReplyAction="http://tempuri.org/IUserManagementService/GetAll2Response")]
+        System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAll2Async();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -405,6 +417,22 @@ namespace DesktopGameClient.UserManagementServiceReference {
         
         public System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAllAsync() {
             return base.Channel.GetAllAsync();
+        }
+        
+        public DesktopGameClient.UserManagementServiceReference.CGUser[] GetAll1() {
+            return base.Channel.GetAll1();
+        }
+        
+        public System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAll1Async() {
+            return base.Channel.GetAll1Async();
+        }
+        
+        public DesktopGameClient.UserManagementServiceReference.CGUser[] GetAll2() {
+            return base.Channel.GetAll2();
+        }
+        
+        public System.Threading.Tasks.Task<DesktopGameClient.UserManagementServiceReference.CGUser[]> GetAll2Async() {
+            return base.Channel.GetAll2Async();
         }
     }
 }

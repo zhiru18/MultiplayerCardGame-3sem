@@ -39,11 +39,11 @@ namespace DesktopGameClient.ServiceAcces {
             };
             return serviceUser;
         }
-        internal static List<UserManagementServiceReference.CGUser> ConvertFromClientListOfUsersToServiceListOfUsers(Models.CGUserModel[] clientCGUsers) {
-            List<UserManagementServiceReference.CGUser> serviceCGUsers = new List<UserManagementServiceReference.CGUser>();
-            foreach (Models.CGUserModel sCGU in clientCGUsers) {
-                UserManagementServiceReference.CGUser cgU = ConvertFromClientUserToServiceUser(sCGU);
-                serviceCGUsers.Add(cgU);
+        internal static UserManagementServiceReference.CGUser[] ConvertFromClientListOfUsersToServiceListOfUsers(List<Models.CGUserModel> clientCGUsers) {
+            UserManagementServiceReference.CGUser[] serviceCGUsers = new UserManagementServiceReference.CGUser[clientCGUsers.Count];
+            for(int i = 0; i < clientCGUsers.Count; i++) {
+                UserManagementServiceReference.CGUser cgU = ConvertFromClientUserToServiceUser(clientCGUsers[i]);
+                serviceCGUsers[i] = cgU;
             }
             return serviceCGUsers;
         }
