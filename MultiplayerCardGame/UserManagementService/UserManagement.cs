@@ -106,5 +106,21 @@ namespace Server.Services.UserManagementService
                 return CGUserConverter.convertFromCGUserModelToCGUser(userModel);
             }
         }
+        /*
+        public IEnumerable<CGUser> GetAll2() {
+            var data = cGUserDB.GetAll();
+            List<CGUser> users = new List<CGUser>();
+            CGUser temp = null;
+            int sample = 17, loop = 0;
+            foreach (CGUserModel user in data) {
+                if (loop < sample) {
+                    temp = CGUserConverter.convertFromCGUserModelToCGUser(user);
+                    users.Add(temp);
+                    loop++;
+                }
+            }
+            return users;
+        }
+        */
     }
 }

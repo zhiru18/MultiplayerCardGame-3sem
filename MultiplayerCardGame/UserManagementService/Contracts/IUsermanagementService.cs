@@ -29,7 +29,10 @@ namespace Server.Services.UserManagementService.Contracts
 
         [OperationContract]
         IEnumerable<CGUser> GetAll();
-
+        /*
+        [OperationContract]
+        IEnumerable<CGUser> GetAll2();
+        */
         [OperationContract]
         void DeleteHand(CGUser user);
         [OperationContract]
