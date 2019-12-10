@@ -37,7 +37,7 @@ namespace Server.Data.Data {
 
         public IEnumerable<CGUserModel> GetAll() {
             using (SqlConnection connection = new SqlConnection(conString)) {
-                return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, tableId UserStatus FROM CGUser").ToList();
+                return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, tableId, UserStatus FROM CGUser").ToList();
             }
         }
 
