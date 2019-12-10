@@ -11,7 +11,8 @@ using Server.Model.Model;
 using Server.Services.GameTableManagementService;
 
 namespace Tests.GameTableManagementServiceTest {
-    public class GameTableManagementTest {
+    [TestClass]
+    public class GameTableManagementServiceTest {
         GameTableManagement gameTableManagement;
         [TestMethod]
         public void CreateGameTableTest() {
@@ -30,35 +31,38 @@ namespace Tests.GameTableManagementServiceTest {
         public void DeleteGameTableTest() {
             // arrange
             gameTableManagement = new GameTableManagement();
+            IGameTableDBIF tableDB = new GameTableDB();
+            ICGUserDBIF userDB = new CGUserDB();
+            CGUser user = CGUserConverter.convertFromCGUserModelToCGUser(userDB.GetById("Test"));
+            gameTableManagement.CreateGameTable(user, "TestTable");
+            GameTable table = gameTableManagement.GetGameTableByTableName("TestTable");
 
             //Act
-            bool res = gameTableManagement.DeleteGameTable(1);
+            gameTableManagement.DeleteGameTable(table.Id);
 
             //Assert
-            Assert.IsTrue(res);
+            Assert.IsNull(tableDB.GetById(table.Id));
         }
 
-        public class GameTableManagementServiceTest {
-            [TestMethod]
-            public void JoinGameTableTest() {
-                //Assert
-                GameTableManagement gameTableManagement = new GameTableManagement();
-                ICGUserDBIF userDB = new CGUserDB();
-                List<GameTable> tables = (List<GameTable>)gameTableManagement.GetAll();
-                GameTable table = null;
-                if (tables != null) {
-                    table = tables[0];
-                }
-                CGUser user = CGUserConverter.convertFromCGUserModelToCGUser(userDB.GetById("Test"));
-                //Act
-                GameTable table2 = gameTableManagement.JoinGameTable(user, table);
-                //Assert
-                Assert.IsTrue(table.Users.Count < table2.Users.Count);
-                //Cleanup
-                gameTableManagement.UpdateGameTableSeats(table2, -1);
-                userDB.UpdateUserTableId(CGUserConverter.ConvertFromCGUserToCGUserModel(user), 0);
-
+        [TestMethod]
+        public void JoinGameTableTest() {
+            //Assert
+            gameTableManagement = new GameTableManagement();
+            ICGUserDBIF userDB = new CGUserDB();
+            List<GameTable> tables = (List<GameTable>)gameTableManagement.GetAll();
+            GameTable table = null;
+            if (tables != null) {
+                table = tables[0];
             }
+            CGUser user = CGUserConverter.convertFromCGUserModelToCGUser(userDB.GetById("Test"));
+            //Act
+            GameTable table2 = gameTableManagement.JoinGameTable(user, table);
+            //Assert
+            Assert.IsTrue(table.Users.Count < table2.Users.Count);
+            //Cleanup
+            gameTableManagement.UpdateGameTableSeats(table2, -1);
+            userDB.UpdateUserTableId(CGUserConverter.ConvertFromCGUserToCGUserModel(user), 0);
+
         }
     }
 }
