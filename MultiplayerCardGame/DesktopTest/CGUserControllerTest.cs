@@ -44,23 +44,21 @@ namespace Tests.DesktopTest {
             //Arrange
             CGUserController cGUserController = new CGUserController();
             CGUserModel userModel = new CGUserModel {
-                Id = "Test",
-                Email = "test@email.com",
-                UserName = "Test"
+                Id = "Test2",
+                Email = "test2@email.com",
+                UserName = "TestUser"
             };
-            GameTableModel tableModel = null;
-            gameTableController.CreateGameTable(userModel, "TestTable");
-            List<GameTableModel> tables = gameTableController.GetAll();
-            foreach (var table in tables) {
-                if (table.TableName == "TestTable") {
-                    tableModel = table;
+            cGUserController.CreateUser("Test2", "test2@email.com", "TestUser");
+            List<CGUserModel> users = cGUserController.GetAll();
+            foreach (var user in users) {
+                if (user.UserName == "TestUser") {
+                    userModel = user;
                 }
             }
             bool res = false;
 
             //Act
-            res = gameTableController.Delete(tableModel.Id);
-
+            res = cGUserController.DeleteCGUser(userModel);
 
             //Assert
             Assert.IsTrue(res);
