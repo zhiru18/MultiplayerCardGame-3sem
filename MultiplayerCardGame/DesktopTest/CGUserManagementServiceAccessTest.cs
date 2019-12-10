@@ -25,14 +25,15 @@ namespace Tests.DesktopTest {
         [TestMethod]
         public void GetUserByUserNameTest() {
             //Arrange
-            CGUserManagementServiceAccess cGUserServiceAccess = new CGUserManagementServiceAccess(); 
-            CGUserModel user1 = new CGUserModel() {
-                UserName = "test12",
-                Email = "mail@mail.com"
-            };
+            CGUserManagementServiceAccess cGUserServiceAccess = new CGUserManagementServiceAccess();
+            CGUserModel user1 = null, user2 = null;
+            List<CGUserModel> users = cGUserServiceAccess.GetAll();
+            if (users.Count > 0) {
+                user1 = users[0];
+            }
 
             //Act
-           CGUserModel user2 = cGUserServiceAccess.GetUserByUserName("test12");
+            user2 = cGUserServiceAccess.GetUserByUserName(user1.UserName);
 
             //Assert
             Assert.AreEqual(user1.Email, user2.Email);
@@ -42,15 +43,22 @@ namespace Tests.DesktopTest {
         public void DeleteTest() {
             //Arrange
             CGUserManagementServiceAccess cGUserServiceAccess = new CGUserManagementServiceAccess();
-            CGUserDB cgUserDB = new CGUserDB();
-            var bob2 = new Server.Model.Model.CGUserModel("bob2", "Bob@bob.com", Server.Model.Model.CGUserModel.UserType.PLAYER, Server.Model.Model.CGUserModel.UserStatus.INGAME);
-            bob2.Id = "asdfg098761";
-            cgUserDB.Insert(bob2);
-            CGUserModel user = cGUserServiceAccess.GetUserByUserName("bob2");
+            CGUserModel userModel = new CGUserModel {
+                Id = "Test2",
+                Email = "test2@email.com",
+                UserName = "TestUser"
+            };
+            cGUserServiceAccess.CreateUser("Test2", "test2@email.com", "TestUser");
+            List<CGUserModel> users = cGUserServiceAccess.GetAll();
+            foreach (var user in users) {
+                if (user.UserName == "TestUser") {
+                    userModel = user;
+                }
+            }
             bool res = false;
 
             //Act
-            res = cGUserServiceAccess.DeleteCGUser(user);
+            res = cGUserServiceAccess.DeleteCGUser(userModel);
 
             //Assert
             Assert.IsTrue(res);

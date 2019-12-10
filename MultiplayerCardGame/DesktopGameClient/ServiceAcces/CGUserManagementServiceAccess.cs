@@ -24,6 +24,12 @@ namespace DesktopGameClient.ServiceAcces {
             }
         }
 
+        public void CreateUser(string id, string email, string userName) {
+            using (UserManagementServiceClient proxy = new UserManagementServiceClient()) {
+                proxy.CreateUser(id, email, userName);
+            }
+        }
+
         public CGUserModel GetUserByUserName(string userName) {
             using (UserManagementServiceClient proxy = new UserManagementServiceClient()) {
                 UserManagementServiceReference.CGUser serviceUser = proxy.GetCGUserByUserName(userName);

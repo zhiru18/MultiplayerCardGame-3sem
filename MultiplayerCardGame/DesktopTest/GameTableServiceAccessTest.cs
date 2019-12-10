@@ -26,23 +26,38 @@ namespace Tests.DesktopTest {
         public void GetByIdTest() {
             //Arrange
             GameTableServiceAccess gameTableServiceAccess = new GameTableServiceAccess();
-            GameTableModel gameTable1 = new GameTableModel("MortensTable");
-
+            GameTableModel gameTable = null, gameTable2 = null;
+            List<GameTableModel> tables = gameTableServiceAccess.GetAll();
+            if (tables.Count > 0) {
+                gameTable = tables[0];
+            }
             //Act
-            GameTableModel gameTable2 = gameTableServiceAccess.GetById(88);
+            gameTable2 = gameTableServiceAccess.GetById(gameTable.Id);
 
             //Assert
-            Assert.AreEqual(gameTable1.TableName, gameTable2.TableName);
+            Assert.AreEqual(gameTable.TableName, gameTable2.TableName);
         }
         [TestMethod]
         public void DeleteTest() {
             //Arrange
             GameTableServiceAccess gameTableServiceAccess = new GameTableServiceAccess();
-            GameTableModel gameTable1 = gameTableServiceAccess.GetById(102);
+            CGUserModel userModel = new CGUserModel {
+                Id = "Test",
+                Email = "test@email.com",
+                UserName = "Test"
+            };
+            GameTableModel tableModel = null;
+            gameTableServiceAccess.CreateGameTable(userModel, "TestTable");
+            List<GameTableModel> tables = gameTableServiceAccess.GetAll();
+            foreach (var table in tables) {
+                if (table.TableName == "TestTable") {
+                    tableModel = table;
+                }
+            }
             bool res = false;
 
             //Act
-            res = gameTableServiceAccess.Delete(gameTable1.Id);
+            res = gameTableServiceAccess.Delete(tableModel.Id);
 
 
             //Assert
