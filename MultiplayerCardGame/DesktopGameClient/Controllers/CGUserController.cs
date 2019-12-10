@@ -25,5 +25,8 @@ namespace DesktopGameClient.Controllers {
         public CGUserModel GetUserByUserName(string userName) {
             return cGUserManagementServiceAccess.GetUserByUserName(userName);
         }
+        public void CreateUser(string id, string email, string userName) {
+            return cGUserManagementServiceAccess.CreateUser(id,email,userName);
+        }
     }
 }

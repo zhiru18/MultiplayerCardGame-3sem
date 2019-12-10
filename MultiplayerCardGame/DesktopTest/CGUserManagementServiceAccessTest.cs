@@ -42,10 +42,10 @@ namespace Tests.DesktopTest {
         public void DeleteTest() {
             //Arrange
             CGUserManagementServiceAccess cGUserServiceAccess = new CGUserManagementServiceAccess();
-            CGUserDB cgUserDB = new CGUserDB();
-            var bob2 = new Server.Model.Model.CGUserModel("bob2", "Bob@bob.com", Server.Model.Model.CGUserModel.UserType.PLAYER, Server.Model.Model.CGUserModel.UserStatus.INGAME);
-            bob2.Id = "asdfg098761";
-            cgUserDB.Insert(bob2);
+            //CGUserDB cgUserDB = new CGUserDB();
+            //var bob2 = new Server.Model.Model.CGUserModel("bob2", "Bob@bob.com", Server.Model.Model.CGUserModel.UserType.PLAYER, Server.Model.Model.CGUserModel.UserStatus.INGAME);
+            //bob2.Id = "asdfg098761";
+            //cgUserDB.Insert(bob2);
             CGUserModel user = cGUserServiceAccess.GetUserByUserName("bob2");
             bool res = false;
 
