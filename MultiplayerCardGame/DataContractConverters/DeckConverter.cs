@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Converters.DataContractConverters {
+    /*This class converts DeckModel objects to the equivalent datacontract 
+       */
     public class DeckConverter {
         public static DeckModel ConvertFromDeckToDeckModel(Deck deck) {
             DeckModel deckModel = new DeckModel() {

@@ -11,7 +11,8 @@ using System.ServiceModel;
 using System.Text;
 
 namespace Server.Services.GameService {
-
+    /* This service takes care of creating, starting and getting games out of the database
+     */
     public class GameService : IGameService {
         GameController gameCtrl = new GameController();
 

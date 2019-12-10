@@ -13,7 +13,9 @@ using Server.Services.GameTableManagementService.Contracts;
 using Server.Services.UserManagementService;
 
 namespace Server.Services.GameTableManagementService {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+    /* This service takes care of creating, deleting, updating and getting GameTables out of the database. 
+     * Furthermore it allows users to join a table  
+     */
     public class GameTableManagement : IGameTableManagementService {
         IGameTableDBIF gameTableDB = new GameTableDB();
         UserManagement userManagement = new UserManagement();
@@ -57,7 +59,11 @@ namespace Server.Services.GameTableManagementService {
                 return GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(id));
             }
         }
-
+        /* This method is called when a user want to join a GameTable. 
+         * It checks wether or notthe table is already full and if it is the user cannot join the table.
+         * if a user is successfull in joining a table, a seat is subtracted from the seat count,
+         * such that the it can keep track of how many users have joined the table
+         */
         public GameTable JoinGameTable(CGUser user, GameTable chosenTable) {
             if (user == null || chosenTable == null) {
                 throw new ArgumentNullException();

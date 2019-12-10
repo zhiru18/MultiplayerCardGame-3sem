@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Server.Converters.DataContractConverters {
     public class CardConverter {
+        /*This class converts CardModel objects to the equivalent datacontract 
+         */
         public static CardModel ConvertFromCardToCardModel(Card card) {
             CardModel cardModel = new CardModel() {
                 cardType = (CardModel.CardType)card.cardtype,

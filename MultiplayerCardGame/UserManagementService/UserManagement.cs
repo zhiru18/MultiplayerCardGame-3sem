@@ -12,7 +12,9 @@ using Server.Converters.DataContractConverters;
 
 namespace Server.Services.UserManagementService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+    /* This service takes care of creating, updating deleting and getting CGUsers out of the database.
+     * Furthermore it has methods to inserting ad deleting the cards that a user has on its hand when playing
+     */
     public class UserManagement : IUserManagementService {
         ICGUserDBIF cGUserDB = new CGUserDB();
         public void CreateUser(string id, string email, string userName) {
@@ -107,21 +109,5 @@ namespace Server.Services.UserManagementService
                 return CGUserConverter.convertFromCGUserModelToCGUser(userModel);
             }
         }
-        /*
-        public IEnumerable<CGUser> GetAll2() {
-            var data = cGUserDB.GetAll();
-            List<CGUser> users = new List<CGUser>();
-            CGUser temp = null;
-            int sample = 17, loop = 0;
-            foreach (CGUserModel user in data) {
-                if (loop < sample) {
-                    temp = CGUserConverter.convertFromCGUserModelToCGUser(user);
-                    users.Add(temp);
-                    loop++;
-                }
-            }
-            return users;
-        }
-        */
     }
 }

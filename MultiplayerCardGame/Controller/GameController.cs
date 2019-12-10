@@ -8,6 +8,10 @@ using System.Transactions;
 using Server.Services.UserManagementService;
 
 namespace Server.Controllers.Controller {
+    /* This class implements the logic for the GameService,
+     * such as shuffling the deck and dealing cards to the players
+     * when a game is started
+     */
     public class GameController {
         IGameDBIF gameDB = new GameDB();
         UserManagement userManagement = new UserManagement(); 
@@ -36,11 +40,8 @@ namespace Server.Controllers.Controller {
             Random random = new Random();
             int randomIndex = 0;
             while (inputDeck.cards.Count > 0) {
-                //random tager et tilfældigt index som ligger imellem start og slut af listen cards. Altså den vælger et random object i listen. 
-                randomIndex = random.Next(0, inputDeck.cards.Count);
-                //Objektet randomIndex bliver tilføjet til outputDecket. 
-                outputDeck.cards.Add(inputDeck.cards[randomIndex]);
-                //fjerner objektet igen fra inputlisten. 
+                randomIndex = random.Next(0, inputDeck.cards.Count); 
+                outputDeck.cards.Add(inputDeck.cards[randomIndex]); 
                 inputDeck.cards.RemoveAt(randomIndex);
             }
             return outputDeck;
@@ -71,8 +72,5 @@ namespace Server.Controllers.Controller {
             IGameDBIF gameDB = new GameDB();
             return gameDB.GetByTableId(tableId);
         }
-        //Update deck method??
-
-        //update game method??
     }
 }

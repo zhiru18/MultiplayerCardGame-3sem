@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Converters.DataContractConverters {
+    /*This class converts CGUserModel objects to the equivalent datacontract 
+       */
     public class CGUserConverter {
         public static CGUserModel ConvertFromCGUserToCGUserModel(CGUser cGUser) {
             ICGUserDBIF userDB = new CGUserDB();
