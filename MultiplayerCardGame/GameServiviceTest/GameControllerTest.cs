@@ -13,6 +13,7 @@ namespace Tests.GameControllerTest {
     public class GameControllerTest {
         [TestMethod]
         public void ShuffleDeckTest() {
+            //Arrange
             GameController gameController = new GameController();
             Deck deck = new Deck();
             Card card1 = new Card(Card.CardType.ATTACK, "Attack", "Attack", 10);
@@ -41,9 +42,9 @@ namespace Tests.GameControllerTest {
             TestCards.Add(card7);
             TestCards.Add(card8);
             Deck testDeck = new Deck();
-
+            //Act
             testDeck = gameController.ShuffleDeck(deck);
-
+            //Assert
             foreach(Card c1 in deck.cards) {
                 foreach(Card c2 in testDeck.cards) {
                     Assert.AreNotEqual(c2, c1);
