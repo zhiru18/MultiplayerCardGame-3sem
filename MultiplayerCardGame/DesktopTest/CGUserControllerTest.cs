@@ -62,6 +62,7 @@ namespace Tests.DesktopTest {
 
             //Assert
             Assert.IsTrue(res);
+
         }
     }
 }

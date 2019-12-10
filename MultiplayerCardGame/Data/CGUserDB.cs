@@ -110,7 +110,9 @@ namespace Server.Data.Data {
         public void UpdateTableSeats(CGUserModel user, int amount) {
             IGameTableDBIF gameTableDB = new GameTableDB();
             GameTableModel gameTable = gameTableDB.GetById(user.TableID);
-            gameTableDB.UpdateGameTableSeats(gameTable, amount);
+            if (gameTable != null) {
+                gameTableDB.UpdateGameTableSeats(gameTable, amount);
+            }
         }
     }
 }
