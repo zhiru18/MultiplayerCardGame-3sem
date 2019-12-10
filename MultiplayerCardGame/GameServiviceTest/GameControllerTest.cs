@@ -94,5 +94,37 @@ namespace Tests.GameControllerTest {
             //Cleanup
             gameDB.Delete(gameModel);
         }
+        [TestMethod]
+        public void StartGameTest() {
+            //Arrange
+            GameController gameController = new GameController();
+            IGameDBIF gameDB = new GameDB();
+            IDeckDBIF deckDb = new DeckDB();
+            ICGUserDBIF userDB = new CGUserDB();
+            IGameTableDBIF gameTableDB = new GameTableDB();
+            List<GameModel> games = (List<GameModel>)gameDB.GetAll();
+            List<CGUser> users = CGUserConverter.ConvertFromListOfCGUserModelToListOfCGUser((List<CGUserModel>)userDB.GetAll());
+            GameTable gameTable = new GameTable {
+                Deck = DeckConverter.ConvertFromDeckModelToDeck(deckDb.GetById(2)),
+                seats = 4,
+                TableName = "TestTable",
+            };
+            if (users.Count > 4) {
+                for (int i = 0; i < 4; i++) {
+                    gameTable.Users.Add(users[i]);
+                }
+            }
+            gameTableDB.Insert(GameTableConverter.ConvertFromGameTableToGameTableModel(gameTable));
+            gameTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetGameTableByTableName("TestTable"));
+
+            //Act
+            gameController.StartGame(gameTable);
+            List<GameModel> games2 = (List<GameModel>)gameDB.GetAll();
+            //Assert
+            Assert.AreNotEqual(games.Count, games2.Count);
+            //Cleanup
+            gameDB.Delete(gameDB.GetByTableId(gameTable.Id));
+            gameTableDB.Delete(GameTableConverter.ConvertFromGameTableToGameTableModel(gameTable));
+        }
     }
 }

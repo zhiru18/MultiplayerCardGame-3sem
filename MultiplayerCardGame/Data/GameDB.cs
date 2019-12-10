@@ -27,7 +27,10 @@ namespace Server.Data.Data {
         }
 
         public IEnumerable<GameModel> GetAll() {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(conString)) {
+                connection.Open();
+                return connection.Query<GameModel>("SELECT Id, GameTableId FROM Game");
+            }
         }
         public void Insert(GameModel game) {
             using(SqlConnection connection = new SqlConnection(conString)) {
