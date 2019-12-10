@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace Server.Converters.DataContractConverters {
     /*This class converts GameModel objects to the equivalent datacontract 
-       */
+     * and vice versa
+     */
     public class GameConverter {
         public static GameModel ConvertFromGameToGameModel(Game game) {
             GameModel gameModel = new GameModel() {

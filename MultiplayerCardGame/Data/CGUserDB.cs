@@ -12,11 +12,13 @@ using System.Transactions;
 
 namespace Server.Data.Data {
     public class CGUserDB : ICGUserDBIF {
+        /* This class is used to access the database,
+         * in particular it takes care of everything that has to do with with the CGUser table
+         */
         private string conString;
         private string clientConString;
 
         public CGUserDB() {
-            //conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
             clientConString = ConfigurationManager.ConnectionStrings["ClientConnection"].ConnectionString;
         }

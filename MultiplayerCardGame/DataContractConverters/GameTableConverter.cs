@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Converters.DataContractConverters {
-    /*This class converts GameTableModel objects to the equivalent datacontract 
+    /*This class converts GameTableModel objects to the equivalent datacontract
+     * and vice versa
        */
     public class GameTableConverter {
  

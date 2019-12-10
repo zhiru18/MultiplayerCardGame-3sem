@@ -11,10 +11,11 @@ using Server.Model.Model;
 
 namespace Server.Data.Data {
     public class GameTableDB : IGameTableDBIF {
+        /* This class is used to access the database,
+         * in particular it takes care of everything that has to do with with the GameTable table
+         */
         private string conString;
         public GameTableDB() {
-              //conString = "data Source=.; dataBase= CardGameDB; integrated security= true";
-            //conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
@@ -48,16 +49,6 @@ namespace Server.Data.Data {
             }
         }
 
-        //public int GetGameTableSeats(GameTableModel table) {
-        //    var updateString = "SELECT seats FROM GameTable WHERE id = @id;";
-        //    using (SqlConnection connection = new SqlConnection(conString)) {
-        //        using (SqlCommand updateCommand = new SqlCommand(updateString, connection)) {
-        //            updateCommand.Parameters.AddWithValue("@id", table.Id);
-        //            connection.Open();
-        //            return (int)updateCommand.ExecuteScalar();
-        //        }
-        //    }
-        //}
         public int GetGameTableSeats(GameTableModel table) {
             var sql = "SELECT seats FROM GameTable WHERE id = @id;";
             using (SqlConnection connection = new SqlConnection(conString)) {
@@ -78,17 +69,6 @@ namespace Server.Data.Data {
                 connection.Execute(sql, table);
             }
         }
-        //public void UpdateGameTableSeats(GameTableModel table, int seats) {
-        //    var updateString = "UPDATE GameTable SET seats = seats - @seats WHERE id = @id;";
-        //    using (SqlConnection connection = new SqlConnection(conString)) {
-        //        using (SqlCommand updateCommand = new SqlCommand(updateString, connection)) {
-        //            updateCommand.Parameters.AddWithValue("@seats", seats);
-        //            updateCommand.Parameters.AddWithValue("@id", table.Id);
-        //            connection.Open();
-        //            updateCommand.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
         public void UpdateGameTableSeats(GameTableModel table, int seats) {
             var sql = "UPDATE GameTable SET seats = seats - @seats WHERE id = @id;";
             using (SqlConnection connection = new SqlConnection(conString)) {

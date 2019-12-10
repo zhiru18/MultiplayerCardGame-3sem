@@ -11,10 +11,12 @@ using System.Configuration;
 
 namespace Server.Data.Data {
     public class DeckDB : IDeckDBIF {
+        /* This class is used to access the database,
+         * in particular it takes care of everything that has to do with with the Deck table
+         */
         private string conString;
 
         public DeckDB() {
-            //conString = "Server=tcp:cardgameucn.database.windows.net,1433;Initial Catalog=CardGameDB;Persist Security Info=False;User ID=gameadmin;Password=Bamsesjul1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             conString = ConfigurationManager.ConnectionStrings["Con"].ConnectionString;
         }
 
