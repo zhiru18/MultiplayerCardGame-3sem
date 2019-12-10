@@ -28,7 +28,7 @@ namespace Server.Data.Data {
 
                     using (SqlConnection connection2 = new SqlConnection(clientConString)) {
                         var sqlClient = "Delete FROM AspNetUsers WHERE id = @id;";
-                       connection2.Execute(sqlClient, user);
+                        connection2.Execute(sqlClient, user);
                     }
                 }
                 scope.Complete();
