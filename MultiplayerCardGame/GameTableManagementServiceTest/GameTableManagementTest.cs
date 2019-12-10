@@ -10,7 +10,7 @@ using Server.DataContracts.DataContracts;
 using Server.Model.Model;
 using Server.Services.GameTableManagementService;
 
-namespace GameTableManagementServiceTest {
+namespace Tests.GameTableManagementServiceTest {
     public class GameTableManagementTest {
         GameTableManagement gameTableManagement;
         [TestMethod]
@@ -41,13 +41,22 @@ namespace GameTableManagementServiceTest {
         public class GameTableManagementServiceTest {
             [TestMethod]
             public void JoinGameTableTest() {
+                //Assert
                 GameTableManagement gameTableManagement = new GameTableManagement();
                 ICGUserDBIF userDB = new CGUserDB();
-                GameTable table = gameTableManagement.GetGameTableById(2);
-                CGUser cGUser = CGUserConverter.convertFromCGUserModelToCGUser(userDB.GetById("ce2b4942-69bc-4423-a2c0-2b28f53e7817"));
-                gameTableManagement.JoinGameTable(cGUser, table);
-                // TODO: Fix this test.
-                //Assert.IsFalse(succeeded);
+                List<GameTable> tables = (List<GameTable>)gameTableManagement.GetAll();
+                GameTable table = null;
+                if (tables != null) {
+                    table = tables[0];
+                }
+                CGUser user = CGUserConverter.convertFromCGUserModelToCGUser(userDB.GetById("Test"));
+                //Act
+                GameTable table2 = gameTableManagement.JoinGameTable(user, table);
+                //Assert
+                Assert.IsTrue(table.Users.Count < table2.Users.Count);
+                //Cleanup
+                gameTableManagement.UpdateGameTableSeats(table2, -1);
+                userDB.UpdateUserTableId(CGUserConverter.ConvertFromCGUserToCGUserModel(user), 0);
 
             }
         }
