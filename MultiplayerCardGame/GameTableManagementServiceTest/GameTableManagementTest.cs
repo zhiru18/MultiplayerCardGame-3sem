@@ -18,13 +18,18 @@ namespace Tests.GameTableManagementServiceTest {
         public void CreateGameTableTest() {
             // arrange
             gameTableManagement = new GameTableManagement();
+            IGameTableDBIF tableDB = new GameTableDB();
             var user1 = new CGUser();
 
             //Act
-            var table2 = gameTableManagement.CreateGameTable(user1, "GameTable");
+            var table = gameTableManagement.CreateGameTable(user1, "GameTable");
+            var tableModel = tableDB.GetGameTableByTableName("GameTable");
 
             //Assert
-            Assert.AreEqual(table2.TableName, "GameTable");
+            Assert.AreEqual(tableModel.TableName, "GameTable");
+
+            //Cleanup
+            tableDB.Delete(tableModel);
         }
 
         [TestMethod]
