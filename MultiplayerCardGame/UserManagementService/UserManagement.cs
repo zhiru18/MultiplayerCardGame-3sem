@@ -85,6 +85,7 @@ namespace Server.Services.UserManagementService
                 bool res = false;
                 CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
                 if (userModel != null) {
+                    cGUserDB.UpdateTableSeats(userModel, -1);
                     cGUserDB.Delete(userModel);
                     res = true;
                 }

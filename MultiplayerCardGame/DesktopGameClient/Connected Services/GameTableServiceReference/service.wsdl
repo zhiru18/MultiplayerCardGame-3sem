@@ -43,6 +43,12 @@
   <wsdl:message name="IGameTableManagementService_JoinGameTable_OutputMessage">
     <wsdl:part name="parameters" element="tns:JoinGameTableResponse" />
   </wsdl:message>
+  <wsdl:message name="IGameTableManagementService_UpdateGameTableSeats_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGameTableSeats" />
+  </wsdl:message>
+  <wsdl:message name="IGameTableManagementService_UpdateGameTableSeats_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGameTableSeatsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IGameTableManagementService">
     <wsdl:operation name="CreateGameTable">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameTableManagementService/CreateGameTable" message="tns:IGameTableManagementService_CreateGameTable_InputMessage" />
@@ -67,6 +73,10 @@
     <wsdl:operation name="JoinGameTable">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameTableManagementService/JoinGameTable" message="tns:IGameTableManagementService_JoinGameTable_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGameTableManagementService/JoinGameTableResponse" message="tns:IGameTableManagementService_JoinGameTable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGameTableSeats">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameTableManagementService/UpdateGameTableSeats" message="tns:IGameTableManagementService_UpdateGameTableSeats_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameTableManagementService/UpdateGameTableSeatsResponse" message="tns:IGameTableManagementService_UpdateGameTableSeats_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IGameTableManagementService" type="tns:IGameTableManagementService">
@@ -118,6 +128,15 @@
     </wsdl:operation>
     <wsdl:operation name="JoinGameTable">
       <soap:operation soapAction="http://tempuri.org/IGameTableManagementService/JoinGameTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGameTableSeats">
+      <soap:operation soapAction="http://tempuri.org/IGameTableManagementService/UpdateGameTableSeats" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -76,7 +76,7 @@ namespace Server.Services.GameTableManagementService {
                         if (chosenTable.seats == databaseTable.seats && databaseTable.Users.Count < 4) {
                             userManagement.UpdateUserTableId(user, databaseTable.Id);
                             databaseTable.Users.Add(user);
-                            gameTableDB.UpdateGameTableSeats(GameTableConverter.ConvertFromGameTableToGameTableModel(databaseTable), 1);
+                            UpdateGameTableSeats(databaseTable, 1);
                         }
                         scope.Complete();
                     }
@@ -94,6 +94,10 @@ namespace Server.Services.GameTableManagementService {
             } else {
                 return GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetGameTableByTableName(name));
             }
+        }
+
+        public void UpdateGameTableSeats(GameTable gameTable, int amount) {
+            gameTableDB.UpdateGameTableSeats(GameTableConverter.ConvertFromGameTableToGameTableModel(gameTable), amount);
         }
     }
 }

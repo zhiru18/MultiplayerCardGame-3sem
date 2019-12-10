@@ -24,5 +24,7 @@ namespace Server.Services.GameTableManagementService.Contracts {
         GameTable GetGameTableByTableName(string name);
         [OperationContract]
         GameTable JoinGameTable(CGUser user, GameTable table);
+        [OperationContract]
+        void UpdateGameTableSeats(GameTable gameTable, int amount);
     }
 }

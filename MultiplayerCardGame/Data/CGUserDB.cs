@@ -104,5 +104,11 @@ namespace Server.Data.Data {
                 return connection.Query<CGUserModel>("SELECT Id, userName, email, userType, tableId, UserStatus FROM CGUser WHERE userName = @userName", new { userName }).SingleOrDefault();
             }
         }
+
+        public void UpdateTableSeats(CGUserModel user, int amount) {
+            IGameTableDBIF gameTableDB = new GameTableDB();
+            GameTableModel gameTable = gameTableDB.GetById(user.TableID);
+            gameTableDB.UpdateGameTableSeats(gameTable, amount);
+        }
     }
 }

@@ -530,6 +530,12 @@ namespace DesktopGameClient.GameTableServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/JoinGameTable", ReplyAction="http://tempuri.org/IGameTableManagementService/JoinGameTableResponse")]
         System.Threading.Tasks.Task<DesktopGameClient.GameTableServiceReference.GameTable> JoinGameTableAsync(DesktopGameClient.GameTableServiceReference.CGUser user, DesktopGameClient.GameTableServiceReference.GameTable table);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/UpdateGameTableSeats", ReplyAction="http://tempuri.org/IGameTableManagementService/UpdateGameTableSeatsResponse")]
+        void UpdateGameTableSeats(DesktopGameClient.GameTableServiceReference.GameTable gameTable, int amount);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameTableManagementService/UpdateGameTableSeats", ReplyAction="http://tempuri.org/IGameTableManagementService/UpdateGameTableSeatsResponse")]
+        System.Threading.Tasks.Task UpdateGameTableSeatsAsync(DesktopGameClient.GameTableServiceReference.GameTable gameTable, int amount);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -605,6 +611,14 @@ namespace DesktopGameClient.GameTableServiceReference {
         
         public System.Threading.Tasks.Task<DesktopGameClient.GameTableServiceReference.GameTable> JoinGameTableAsync(DesktopGameClient.GameTableServiceReference.CGUser user, DesktopGameClient.GameTableServiceReference.GameTable table) {
             return base.Channel.JoinGameTableAsync(user, table);
+        }
+        
+        public void UpdateGameTableSeats(DesktopGameClient.GameTableServiceReference.GameTable gameTable, int amount) {
+            base.Channel.UpdateGameTableSeats(gameTable, amount);
+        }
+        
+        public System.Threading.Tasks.Task UpdateGameTableSeatsAsync(DesktopGameClient.GameTableServiceReference.GameTable gameTable, int amount) {
+            return base.Channel.UpdateGameTableSeatsAsync(gameTable, amount);
         }
     }
 }
