@@ -86,6 +86,8 @@ namespace Server.Services.GameTableManagementService {
                             if (modelTable != null) {
                                 gameTableDB.UpdateGameTableSeats(modelTable, -1);
                             }
+                        } else {
+                            throw new Exception("Table busy");
                         }
                         Thread.Sleep(2000);
                         scope.Complete();
