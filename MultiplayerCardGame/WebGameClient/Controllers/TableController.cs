@@ -46,7 +46,11 @@ namespace WebGameClient.Controllers {
             GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
             if (tableName != null ) {       
               string userId = User.Identity.GetUserId();
-              foundGt = gameTableServiceAcces.CreateGameTable(userId,tableName);
+                try {
+                    foundGt = gameTableServiceAcces.CreateGameTable(userId, tableName);
+                }catch(Exception e) {
+                    return RedirectToAction("Error", "ErrorHandler", new { id = 4 });
+                }
             }
           // List<GameTable> tables = new List<GameTable>() { foundGt };
             ViewBag.Situation = 3;
@@ -82,7 +86,7 @@ namespace WebGameClient.Controllers {
                 try {
                     foundGt = gameTableServiceAcces.JoinGameTable(userId, tableId);
                 } catch (Exception e) {
-                    RedirectToAction("Error", "ErrorHandler", new { id = 2 });
+                    return RedirectToAction("Error", "ErrorHandler", new { id = 3 });
                 }
             }
             List<GameTable> tables = new List<GameTable>() { foundGt };

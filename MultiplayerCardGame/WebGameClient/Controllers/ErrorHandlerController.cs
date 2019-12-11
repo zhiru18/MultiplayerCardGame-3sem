@@ -19,12 +19,18 @@ namespace WebGameClient.Controllers
             switch (errorId) {
                 case 2:
                     ViewBag.Message = "Sorry an error ocurred while trying to start your game";
-                    break;
+                    return View("Error");
+                case 3:
+                    ViewBag.Message = "Sorry an error ocurred while trying to join the table";
+                    return View("Error");
+                case 4:
+                    ViewBag.Message = "Sorry an error ocurred while trying to create the table";
+                    return View("Error");
                 default:
                     ViewBag.Message = "Sorry an error ocurred";
-                    break;
+                    return View("Error");
             }
-            return View();
+            
         }
     }
 }
