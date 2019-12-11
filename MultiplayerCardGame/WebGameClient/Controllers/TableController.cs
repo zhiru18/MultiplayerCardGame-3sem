@@ -79,7 +79,11 @@ namespace WebGameClient.Controllers {
                 if (foundGt.Users.Count == 4 && !userFound) {
                     return View("JoinTable");
                 }
-                foundGt = gameTableServiceAcces.JoinGameTable(userId, tableId);
+                try {
+                    foundGt = gameTableServiceAcces.JoinGameTable(userId, tableId);
+                } catch (Exception e) {
+                    RedirectToAction("Error", "ErrorHandler", new { id = 2 });
+                }
             }
             List<GameTable> tables = new List<GameTable>() { foundGt };
 

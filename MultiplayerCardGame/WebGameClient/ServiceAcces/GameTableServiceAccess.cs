@@ -55,14 +55,14 @@ namespace WebGameClient.ServiceAcces {
 
         public Models.GameTable JoinGameTable(string userId, int tableId) {
             UserManagementServiceAccess userManagement = new UserManagementServiceAccess();
-            using (GameTableManagementServiceClient proxy = new GameTableManagementServiceClient()) {
+            GameTableManagementServiceClient proxy = new GameTableManagementServiceClient();
                 Models.CGUser user = userManagement.GetUserByUserId(userId);
                 GameTableServiceReference.CGUser serviceUser = GameTableModelConverter.ConvertFromClientUserToServiceUser(user);
                 GameTableServiceReference.GameTable serviceTable1 = proxy.GetGameTableById(tableId);
                 GameTableServiceReference.GameTable serviceGameTable = proxy.JoinGameTable(serviceUser, serviceTable1);
                 Models.GameTable clientGameTable = GameTableModelConverter.ConvertFromServiceGameTableToClientGameTable(serviceGameTable);
                 return clientGameTable;        
-            }
+            
         }
     }
 }
