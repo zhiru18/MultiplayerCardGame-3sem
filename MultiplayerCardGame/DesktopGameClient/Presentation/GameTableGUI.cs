@@ -42,16 +42,21 @@ namespace DesktopGameClient.Presentation {
         }
        
         private void buttonDelete_Click(object sender, EventArgs e) {
-            string id = GameTableIdTextBox.Text;
-            if (!string.IsNullOrEmpty(id)) {
-                int tableId = Int32.Parse(id);
-                bool delete = gameTableController.Delete(tableId);
-                if (delete) {
-                    labelDelete.Text ="Table is deleted " + "Table ID: "+GameTableIdTextBox.Text+" Table Name: " + GameTableNameTextBox.Text;
-                    UpdateGameTableListBox();
+            try {
+                string id = GameTableIdTextBox.Text;
+                if (!string.IsNullOrEmpty(id)) {
+                    int tableId = Int32.Parse(id);
+                    bool delete = gameTableController.Delete(tableId);
+                    if (delete) {
+                        labelDelete.Text = "Table is deleted " + "Table ID: " + GameTableIdTextBox.Text + " Table Name: " + GameTableNameTextBox.Text;
+                        UpdateGameTableListBox();
+                    }
+                } else {
+                    labelDelete.Text = "Input valid tableId !";
                 }
-            } else {
-                labelDelete.Text = "Input valid tableId !";
+            } catch (Exception) {
+
+                MessageBox.Show("Bordet er i brug", "Bordet kan ikke slettes");
             }          
         }
 
