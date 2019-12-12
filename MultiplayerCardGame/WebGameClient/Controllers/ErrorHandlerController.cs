@@ -21,7 +21,7 @@ namespace WebGameClient.Controllers
                     ViewBag.Message = "Sorry an error ocurred while trying to start your game";
                     return View("Error");
                 case 3:
-                    ViewBag.Message = "Sorry an error ocurred while trying to join the table";
+                    ViewBag.Message = "The table is busy try again or find another table";
                     return View("Error");
                 case 4:
                     ViewBag.Message = "Sorry an error ocurred while trying to create the table";
