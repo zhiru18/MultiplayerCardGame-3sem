@@ -48,12 +48,12 @@ namespace DesktopGameClient.Presentation {
                     int tableId = Int32.Parse(id);
                     bool delete = gameTableController.Delete(tableId);
                     if (delete) {
-                        labelDelete.BackColor = Color.Green;
+                        labelDelete.ForeColor = Color.Green;
                         labelDelete.Text = "Table is deleted " + "Table ID: " + GameTableIdTextBox.Text + " Table Name: " + GameTableNameTextBox.Text;
                         UpdateGameTableListBox();
                     }
                 } else {
-                    labelDelete.BackColor = Color.Red;
+                    labelDelete.ForeColor = Color.Red;
                     labelDelete.Text = "Input valid tableId !";
                 }
             } catch (Exception) {

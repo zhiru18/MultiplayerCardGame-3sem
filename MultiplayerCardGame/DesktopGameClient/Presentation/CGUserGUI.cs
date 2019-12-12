@@ -41,12 +41,12 @@ namespace DesktopGameClient.Presentation {
                 CGUserModel cgu = cGUserController.GetUserByUserName(userName);
                 bool delete = cGUserController.DeleteCGUser(cgu);
                 if (delete) {
-                    DeleteUserlabel.BackColor = Color.Green;
+                    DeleteUserlabel.ForeColor = Color.Green;
                     DeleteUserlabel.Text = "CGUser is deleted " +" User Name: " + CGUserNameTextBox.Text;
                     UpdateCGUsersListBox();
                 }
             } else {
-                DeleteUserlabel.BackColor = Color.Red;
+                DeleteUserlabel.ForeColor = Color.Red;
                 DeleteUserlabel.Text = "Input valid userId !";
             }
         }

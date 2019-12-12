@@ -78,9 +78,9 @@
             this.UserIdlabel.CausesValidation = false;
             this.UserIdlabel.Location = new System.Drawing.Point(505, 53);
             this.UserIdlabel.Name = "UserIdlabel";
-            this.UserIdlabel.Size = new System.Drawing.Size(92, 20);
+            this.UserIdlabel.Size = new System.Drawing.Size(68, 20);
             this.UserIdlabel.TabIndex = 6;
-            this.UserIdlabel.Text = "CGUser ID:";
+            this.UserIdlabel.Text = "User ID:";
             // 
             // UserNamelabel
             // 
@@ -88,9 +88,9 @@
             this.UserNamelabel.CausesValidation = false;
             this.UserNamelabel.Location = new System.Drawing.Point(480, 115);
             this.UserNamelabel.Name = "UserNamelabel";
-            this.UserNamelabel.Size = new System.Drawing.Size(117, 20);
+            this.UserNamelabel.Size = new System.Drawing.Size(93, 20);
             this.UserNamelabel.TabIndex = 7;
-            this.UserNamelabel.Text = "CGUser Name:";
+            this.UserNamelabel.Text = "User Name:";
             // 
             // CGUserNameTextBox
             // 
@@ -112,9 +112,9 @@
             this.Emaillabel.CausesValidation = false;
             this.Emaillabel.Location = new System.Drawing.Point(483, 189);
             this.Emaillabel.Name = "Emaillabel";
-            this.Emaillabel.Size = new System.Drawing.Size(114, 20);
+            this.Emaillabel.Size = new System.Drawing.Size(90, 20);
             this.Emaillabel.TabIndex = 10;
-            this.Emaillabel.Text = "CGUser Email:";
+            this.Emaillabel.Text = "User Email:";
             // 
             // DeleteUserlabel
             // 
