@@ -72,7 +72,9 @@ namespace Server.Services.GameTableManagementService {
                 GameTable databaseTable = null;
                 GameTableModel modelTable = null;
                 try {
-                    using (TransactionScope scope = new TransactionScope()) {
+                    TransactionOptions transOptions = new TransactionOptions();
+                    transOptions.IsolationLevel = IsolationLevel.Serializable;
+                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transOptions)) {
                         
                         CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
                         if (userModel.TableID != 0 && userModel.TableID != chosenTable.Id) {
