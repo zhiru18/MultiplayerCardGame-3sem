@@ -91,6 +91,7 @@ namespace Tests.GameControllerTest {
                 for (int i = 0; i < gameTables.Count && !found; i++) {
                     if (gameController.GetByTableId(gameTables[i].Id) == null) {
                         gameTable = gameTables[i];
+                        found = true;
                     }
                 }
                 game.gameTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTable);
