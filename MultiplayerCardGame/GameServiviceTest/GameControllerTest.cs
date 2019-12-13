@@ -83,13 +83,21 @@ namespace Tests.GameControllerTest {
             IGameDBIF gameDB = new GameDB();
             IGameTableDBIF gameTableDB = new GameTableDB();
             List<GameTableModel> gameTables = (List<GameTableModel>)gameTableDB.GetAll();
+            GameTableModel gameTable = null;
+            bool found = false;
+            Game game = new Game();
             //Act
-            if(gameTables.Count > 0) {
-                Game game = new Game();
-                game.gameTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTables[0]);
+            if (gameTables.Count > 0) {
+                for (int i = 0; i < gameTables.Count && !found; i++) {
+                    if (gameController.GetByTableId(gameTables[i].Id) == null) {
+                        gameTable = gameTables[i];
+                        found = true;
+                    }
+                }
+                game.gameTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTable);
                 gameController.CreateGame(game);
             }
-            GameModel gameModel = gameController.GetByTableId(gameTables[0].Id);
+            GameModel gameModel = gameController.GetByTableId(gameTable.Id);
             //Assert
             Assert.IsNotNull(gameModel);
             //Cleanup
