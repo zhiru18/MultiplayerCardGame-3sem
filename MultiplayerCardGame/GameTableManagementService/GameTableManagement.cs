@@ -72,38 +72,39 @@ namespace Server.Services.GameTableManagementService {
                 GameTable databaseTable = null;
                 GameTableModel modelTable = null;
                 CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+                //Checking if the user is already sitting at the table and returning it without modifying if so.
                 for (int i = 0; i < chosenTable.Users.Count; i++) {
                     if(userModel.UserName == chosenTable.Users[i].UserName) {
                         return chosenTable;
                     }
                 }
-                try {
-                    TransactionOptions transOptions = new TransactionOptions();
-                    transOptions.IsolationLevel = IsolationLevel.ReadUncommitted;
-                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transOptions)) {
-                        
-                        if (userModel.TableID != 0 && userModel.TableID != chosenTable.Id) {
-                            modelTable = gameTableDB.GetById(userModel.TableID);
-                        }
-                        databaseTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(chosenTable.Id));
-                        if (chosenTable.seats == databaseTable.seats && databaseTable.seats > 0) {
-                            userManagement.UpdateUserTableId(user, databaseTable.Id);
-                            databaseTable.Users.Add(user);
-                            UpdateGameTableSeats(databaseTable, 1);
-                            if (modelTable != null) {
-                                gameTableDB.UpdateGameTableSeats(modelTable, -1);
-                            }
-                        } else {
-                            throw new Exception("Table busy");
-                        }
-                        Thread.Sleep(2000);
-                        scope.Complete();
+                TransactionOptions transOptions = new TransactionOptions();
+                transOptions.IsolationLevel = IsolationLevel.ReadUncommitted;
+                using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transOptions)) {
+                    //Checking if the user is sitting at another table.
+                    if (userModel.TableID != 0 && userModel.TableID != chosenTable.Id) {
+                        modelTable = gameTableDB.GetById(userModel.TableID);
                     }
-                } catch (Exception e) {
-
-                    throw;
+                    //Getting the table from the database for later comparison.
+                    databaseTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(chosenTable.Id));
+                    //Optimistically handling concurrency by checking if the seats available at the chosen table
+                    //are the same as the seats available in the database, if not we throw an exception.
+                    if (chosenTable.seats == databaseTable.seats && databaseTable.seats > 0) {
+                        userManagement.UpdateUserTableId(user, databaseTable.Id);
+                        databaseTable.Users.Add(user);
+                        UpdateGameTableSeats(databaseTable, 1);
+                        //If the user was sitting at another table we free up the seat.
+                        if (modelTable != null) {
+                            gameTableDB.UpdateGameTableSeats(modelTable, -1);
+                        }
+                    } else {
+                        throw new Exception("Table busy");
+                    }
+                    Thread.Sleep(2000);
+                    scope.Complete();
                 }
-                return databaseTable;
+
+            return databaseTable;
             }
         }
 
