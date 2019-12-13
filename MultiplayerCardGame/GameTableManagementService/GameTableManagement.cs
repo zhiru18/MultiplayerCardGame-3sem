@@ -68,12 +68,12 @@ namespace Server.Services.GameTableManagementService {
         public GameTable JoinGameTable(CGUser user, GameTable chosenTable) {
             if (user == null || chosenTable == null) {
                 throw new ArgumentNullException();
-            } else {
+            } else{
                 GameTable databaseTable = null;
                 GameTableModel modelTable = null;
                 try {
                     TransactionOptions transOptions = new TransactionOptions();
-                    transOptions.IsolationLevel = IsolationLevel.Serializable;
+                    transOptions.IsolationLevel = IsolationLevel.ReadUncommitted;
                     using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transOptions)) {
                         
                         CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
@@ -81,7 +81,7 @@ namespace Server.Services.GameTableManagementService {
                             modelTable = gameTableDB.GetById(userModel.TableID);
                         }
                         databaseTable = GameTableConverter.ConvertFromGameTableModelToGameTable(gameTableDB.GetById(chosenTable.Id));
-                        if (chosenTable.seats == databaseTable.seats && databaseTable.Users.Count < 4) {
+                        if (chosenTable.seats == databaseTable.seats && databaseTable.seats > 0) {
                             userManagement.UpdateUserTableId(user, databaseTable.Id);
                             databaseTable.Users.Add(user);
                             UpdateGameTableSeats(databaseTable, 1);
