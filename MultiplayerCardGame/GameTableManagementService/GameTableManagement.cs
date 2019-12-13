@@ -71,12 +71,17 @@ namespace Server.Services.GameTableManagementService {
             } else{
                 GameTable databaseTable = null;
                 GameTableModel modelTable = null;
+                CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
+                for (int i = 0; i < chosenTable.Users.Count; i++) {
+                    if(userModel.UserName == chosenTable.Users[i].UserName) {
+                        return chosenTable;
+                    }
+                }
                 try {
                     TransactionOptions transOptions = new TransactionOptions();
                     transOptions.IsolationLevel = IsolationLevel.ReadUncommitted;
                     using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, transOptions)) {
                         
-                        CGUserModel userModel = CGUserConverter.ConvertFromCGUserToCGUserModel(user);
                         if (userModel.TableID != 0 && userModel.TableID != chosenTable.Id) {
                             modelTable = gameTableDB.GetById(userModel.TableID);
                         }
