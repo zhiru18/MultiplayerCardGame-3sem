@@ -18,10 +18,6 @@ namespace DesktopGameClient.Controllers {
             return cGUserManagementServiceAccess.DeleteCGUser(user);
         }
 
-        public CGUserModel GetById(string userId) {
-            return cGUserManagementServiceAccess.GetById(userId);
-        }
-
         public CGUserModel GetUserByUserName(string userName) {
             return cGUserManagementServiceAccess.GetUserByUserName(userName);
         }

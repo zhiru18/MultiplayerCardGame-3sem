@@ -37,13 +37,5 @@ namespace DesktopGameClient.ServiceAcces {
                 return clientUser;
             }
         }
-
-        public CGUserModel GetById(string userId) {
-            using (UserManagementServiceClient proxy = new UserManagementServiceClient()) {
-                UserManagementServiceReference.CGUser serviceUser = proxy.GetUserByUserId(userId);
-                Models.CGUserModel clientUser = CGUserModelConverter.ConvertFromServiceUserToClientUser(serviceUser);
-                return clientUser;
-            }
-        }
     }
 }

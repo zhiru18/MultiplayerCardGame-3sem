@@ -332,8 +332,6 @@
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Table\Index.cshtml" />
     <Content Include="Views\Table\Create.cshtml" />
-    <Content Include="Views\Table\Succes.cshtml" />
-    <Content Include="Views\Table\Join.cshtml" />
     <Content Include="Views\Table\JoinTable.cshtml" />
     <Content Include="Views\Table\Lobby.cshtml" />
     <Content Include="Views\ErrorHandler\Error.cshtml" />

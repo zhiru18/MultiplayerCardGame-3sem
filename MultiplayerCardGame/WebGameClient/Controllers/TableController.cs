@@ -30,12 +30,6 @@ namespace WebGameClient.Controllers {
             ViewBag.Situation = 2;
             return View(tables);
         }
-        //public ActionResult Index() {
-        //    GameTableServiceAccess gameTableServiceAcces = new GameTableServiceAccess();
-        //    List<GameTable> gameTables = gameTableServiceAcces.GetAll();
-        //    return View(gameTables);
-
-        //}
         public ActionResult Create() {
 
             return View();
@@ -52,16 +46,10 @@ namespace WebGameClient.Controllers {
                     return RedirectToAction("Error", "ErrorHandler", new { id = 4 });
                 }
             }
-          // List<GameTable> tables = new List<GameTable>() { foundGt };
             ViewBag.Situation = 3;
             return RedirectToAction("Lobby", new { tableId = foundGt.Id });
 
-        }
-
-        public ActionResult Succes() {
-            return View();
-        }
-        
+        }        
         public ActionResult JoinTable() {
             return View();
         }
